@@ -7,15 +7,18 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
   return (
     <nav className="px-6 py-4 bg-white shadow">
       <div className="flex justify-between items-center">
-        {/* Brand */}
-           <Link to="/" className="flex items-center space-x-2">
+        {/* Brand with Logo */}
+        <Link to="/" className="flex items-center space-x-2">
           <img
-            src="/Cryptoinsiderlogo.png"
+            src="/logo.png"
             alt="CryptoInsider Logo"
             className="h-8 w-8"
           />
-          
+          <span className="text-2xl font-bold text-indigo-700 hover:text-indigo-900">
+            CryptoInsider
+          </span>
         </Link>
+
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center space-x-6 font-medium text-gray-700">
           <li><Link to="/about" className="hover:text-indigo-600">About Us</Link></li>
