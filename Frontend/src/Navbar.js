@@ -7,13 +7,27 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
   return (
     <nav className="px-6 py-4 bg-white shadow">
       <div className="flex justify-between items-center">
-        {/* Brand with Logo */}
+        {/* Brand with SVG Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <img
-            src="public/logo.png"
-            alt="CryptoInsider Logo"
-            className="h-8 w-8"
-          />
+          {/* SVG Logo */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            className="h-10 w-10 text-indigo-600"
+            fill="currentColor"
+          >
+            <circle cx="32" cy="32" r="30" stroke="currentColor" strokeWidth="4" fill="white" />
+            <text
+              x="32"
+              y="38"
+              textAnchor="middle"
+              fontSize="20"
+              fontWeight="bold"
+              fill="currentColor"
+            >
+              ₿
+            </text>
+          </svg>
           <span className="text-2xl font-bold text-indigo-700 hover:text-indigo-900">
             CryptoInsider
           </span>
@@ -59,7 +73,6 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
           <Link to="/about" className="hover:text-indigo-600">About Us</Link>
           <Link to="/features" className="hover:text-indigo-600">Features</Link>
 
-          {/* Styled mobile Login button */}
           <button
             onClick={onLoginClick}
             className="px-4 py-2 border border-indigo-600 text-indigo-700 rounded hover:bg-indigo-50 transition"
@@ -67,7 +80,6 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
             Login
           </button>
 
-          {/* Primary mobile Sign Up button */}
           <button
             onClick={onSignupClick}
             className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
