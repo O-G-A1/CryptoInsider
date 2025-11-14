@@ -13,32 +13,32 @@ export default function Dashboard() {
 
   // Fetch latest user data from backend without redirecting
   const fetchUser = async () => {
-    const token = localStorage.getItem("authToken");
-    if (!token) {
-      setUser(null);
-      setLoading(false);
-      return;
-    }
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    setUser(null);
+    setLoading(false);
+    return;
+  }
 
-    try {
-      const res = await fetch("http://localhost:5001/api/user/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
-        }
-      });
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
 
-      if (!res.ok) throw new Error("Failed to fetch user");
-      const data = await res.json();
-      setUser(data.user);
-      setLastUpdated(new Date());
-    } catch (err) {
-      console.error("Dashboard fetch error:", err);
-      setUser(null); // Don't redirect; show unauthorized UI
-    } finally {
-      setLoading(false);
-    }
-  };
+    if (!res.ok) throw new Error("Failed to fetch user");
+    const data = await res.json();
+    setUser(data.user);
+    setLastUpdated(new Date());
+  } catch (err) {
+    console.error("Dashboard fetch error:", err);
+    setUser(null); // Don't redirect; show unauthorized UI
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Always fetch user on mount
   useEffect(() => {

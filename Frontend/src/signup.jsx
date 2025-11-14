@@ -19,7 +19,10 @@ export default function Signup({ onClose }) {
     setLoading(true);
     try {
       console.log("Submitting signup form:", form);
-      await axios.post("http://localhost:5001/api/auth/signup", form);
+await axios.post(
+  `${process.env.REACT_APP_API_URL}/api/auth/signup`,
+  form
+);
 
       // ✅ Redirect to login with success flag
       navigate("/login", {

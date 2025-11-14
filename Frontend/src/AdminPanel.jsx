@@ -10,11 +10,14 @@ export default function AdminPanel() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5001/api/admin/update-balance", {
-        email,
-        amount: Number(amount),
-        type
-      });
+      const res = await axios.post(
+  `${process.env.REACT_APP_API_URL}/api/admin/update-balance`,
+  {
+    email,
+    amount: Number(amount),
+    type
+  }
+);
 
       setResult(res.data.user); // ✅ store updated user info
       alert(res.data.message || "Balance updated successfully!");

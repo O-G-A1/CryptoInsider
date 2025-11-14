@@ -9,22 +9,26 @@ export default function SignupModal({ onClose, onShowLogin }) {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await axios.post("http://localhost:5001/api/auth/signup", form);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    // ✅ Call backend signup route using env variable
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/auth/signup`,
+      form
+    );
 
-      // ✅ Add a short delay before showing success message
-      setTimeout(() => {
-        setSuccess(true);
-        setLoading(false);
-      }, 2000); // 2 seconds delay
-    } catch (err) {
-      alert("Signup failed: " + (err.response?.data?.message || err.message));
+    // ✅ Add a short delay before showing success message
+    setTimeout(() => {
+      setSuccess(true);
       setLoading(false);
-    }
-  };
+    }, 2000); // 2 seconds delay
+  } catch (err) {
+    alert("Signup failed: " + (err.response?.data?.message || err.message));
+    setLoading(false);
+  }
+};
 
   if (success) {
     return (

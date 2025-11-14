@@ -10,28 +10,31 @@ export default function LoginModal({ onClose }) {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      // ✅ Call backend login route
-      const res = await axios.post("http://localhost:5001/api/auth/login", form);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    // ✅ Call backend login route using env variable
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/auth/login`,
+      form
+    );
 
-      // ✅ Extract token + user object
-      const { token, user } = res.data;
+    // ✅ Extract token + user object
+    const { token, user } = res.data;
 
-      // ✅ Optionally store token for route protection later
-      localStorage.setItem("authToken", token);
+    // ✅ Store token for route protection later
+    localStorage.setItem("authToken", token);
 
-      // ✅ Close modal and navigate to dashboard with user info
-      onClose();
-      navigate("/dashboard", { state: { user } });
-    } catch (err) {
-      alert("Login failed: " + (err.response?.data?.message || err.message));
-    } finally {
-      setLoading(false);
-    }
-  };
+    // ✅ Close modal and navigate to dashboard with user info
+    onClose();
+    navigate("/dashboard", { state: { user } });
+  } catch (err) {
+    alert("Login failed: " + (err.response?.data?.message || err.message));
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
