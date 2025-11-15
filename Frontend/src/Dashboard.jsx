@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+);
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -10,6 +29,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [goalAmount, setGoalAmount] = useState(0);
 
   // Fetch latest user data
   const fetchUser = async () => {
@@ -63,7 +83,7 @@ export default function Dashboard() {
   const handleDeposit = () => setShowDeposit(true);
   const handleWithdraw = () => {
     if (user?.balance > 0) {
-      alert("You haven't invested!");
+      alert("Withdraw flow goes here!");
     }
   };
 
@@ -90,6 +110,27 @@ export default function Dashboard() {
   }
 
   const weeklyEarnings = user.balance * 0.05;
+  const portfolioValue = user.balance + weeklyEarnings + 233;
+
+  // Dummy performance data (replace with backend history if available)
+  const performanceData = {
+    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    datasets: [
+      {
+        label: "Portfolio Value",
+        data: [
+          portfolioValue * 0.8,
+          portfolioValue * 0.9,
+          portfolioValue * 0.95,
+          portfolioValue,
+        ],
+        borderColor: "rgba(79, 70, 229, 1)",
+        backgroundColor: "rgba(79, 70, 229, 0.2)",
+        tension: 0.3,
+        pointRadius: 3,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
@@ -125,38 +166,12 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Confirmation Modal */}
-      {showConfirm && !loggingOut && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
-            <h2 className="text-xl font-bold mb-4">Confirm Logout</h2>
-            <p className="mb-6 text-gray-700">
-              Are you sure you want to log out?
-            </p>
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={confirmLogout}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
-              >
-                Yes, Logout
-              </button>
-              <button
-                onClick={cancelLogout}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Account Summary */}
       <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-gray-600 font-medium">Portfolio Value</h2>
           <p className="text-3xl font-bold text-indigo-700 mt-1">
-            {formatCurrency(user.balance + weeklyEarnings + 233)}
+            {formatCurrency(portfolioValue)}
           </p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
@@ -176,6 +191,83 @@ export default function Dashboard() {
             Based on 5% weekly return
           </p>
         </div>
+      </section>
+
+      {/* Performance Chart */}
+      <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">
+          Performance Overview
+        </h2>
+        <div className="w-full overflow-x-auto">
+          <Line
+            data={performanceData}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: true } },
+              scales: {
+                y: { ticks: { callback: (v) => `$${v.toLocaleString()}` } },
+              },
+            }}
+            height={300}
+          />
+        </div>
+      </section>
+
+      {/* Goals & Milestones */}
+      <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">
+          Goals & Milestones
+        </h2>
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <input
+            type="number"
+            placeholder="Enter your goal amount"
+            className="flex-1 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            value={goalAmount}
+            onChange={(e) => setGoalAmount(Number(e.target.value))}
+            min={0}
+          />
+          <button
+            onClick={() => alert(`Goal set to ${formatCurrency(goalAmount)}`)}
+            className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+          >
+            Set Goal
+          </button>
+        </div>
+
+        <p className="text-gray-600 mb-2">
+          Current Portfolio Value:{" "}
+          <span className="font-bold text-indigo-700">
+            {formatCurrency(portfolioValue)}
+          </span>
+        </p>
+        <p className="text-gray-600 mb-2">
+          Goal:{" "}
+          <span className="font-bold text-green-600">
+            {goalAmount > 0 ? formatCurrency(goalAmount) : "Not set"}
+          </span>
+        </p>
+
+        {goalAmount > 0 && (
+          <>
+            <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+              <div
+                className="bg-green-500 h-4 rounded-full transition-all"
+                style={{
+                  width: `${Math.min(
+                    (portfolioValue / goalAmount) * 100,
+                    100
+                  )}%`,
+                }}
+              />
+            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              {Math.min((portfolioValue / goalAmount) * 100, 100).toFixed(1)}%
+              of your goal reached
+            </p>
+          </>
+        )}
       </section>
 
       {/* Actions */}
