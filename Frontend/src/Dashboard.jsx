@@ -63,7 +63,7 @@ export default function Dashboard() {
   const handleDeposit = () => setShowDeposit(true);
   const handleWithdraw = () => {
     if (user?.balance > 0) {
-      alert("Withdraw flow goes here!");
+      alert("You haven't invested!");
     }
   };
 
@@ -273,11 +273,6 @@ export default function Dashboard() {
           <p className="text-gray-500 text-sm">No transactions yet</p>
         )}
       </section>
-
-      {/* Footer */}
-      <footer className="text-center text-sm text-yellow-300 font-bold py-8">
-        <p>© 2025 CryptoInsider Technologies Ltd</p>
-      </footer>
     </div>
   );
 }
