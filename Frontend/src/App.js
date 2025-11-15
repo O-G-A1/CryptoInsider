@@ -37,9 +37,9 @@ function App() {
                     </p> 
 
                     {/* 🎁 Promo Badge */}
-                    <p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6">
-                      🎁 Sign up and get up to $500 in Crypto
-                    </p>
+<p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
+  🎁 Sign up and get $500 in Crypto
+</p>
 
                     <button
                       onClick={() => setShowSignup(true)}
