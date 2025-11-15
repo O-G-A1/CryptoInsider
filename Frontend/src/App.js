@@ -34,7 +34,7 @@ function App() {
               element={
                 <section className="min-h-screen bg-gradient-to-br from-purple-800 to-indigo-900 text-white px-6 py-12">
                   <div className="max-w-5xl mx-auto text-center">
-                    <h1 className="text-4xl font-bold mb-6">
+                    <h1 className="text-4xl font-bold mb-4 text-yellow-400">
                       Invest in Crypto with Confidence
                     </h1>
                     <p className="text-lg mb-8 max-w-3xl mx-auto">

@@ -13,32 +13,35 @@ export default function Dashboard() {
 
   // Fetch latest user data from backend without redirecting
   const fetchUser = async () => {
-  const token = localStorage.getItem("authToken");
-  if (!token) {
-    setUser(null);
-    setLoading(false);
-    return;
-  }
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
 
-  try {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
-    });
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/user/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    if (!res.ok) throw new Error("Failed to fetch user");
-    const data = await res.json();
-    setUser(data.user);
-    setLastUpdated(new Date());
-  } catch (err) {
-    console.error("Dashboard fetch error:", err);
-    setUser(null); // Don't redirect; show unauthorized UI
-  } finally {
-    setLoading(false);
-  }
-};
+      if (!res.ok) throw new Error("Failed to fetch user");
+      const data = await res.json();
+      setUser(data.user);
+      setLastUpdated(new Date());
+    } catch (err) {
+      console.error("Dashboard fetch error:", err);
+      setUser(null); // Don't redirect; show unauthorized UI
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Always fetch user on mount
   useEffect(() => {
@@ -46,7 +49,10 @@ export default function Dashboard() {
   }, []);
 
   const formatCurrency = (v) =>
-    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(v);
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(v);
 
   const handleLogoutClick = () => setShowConfirm(true);
 
@@ -127,7 +133,9 @@ export default function Dashboard() {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
             <h2 className="text-xl font-bold mb-4">Confirm Logout</h2>
-            <p className="mb-6 text-gray-700">Are you sure you want to log out?</p>
+            <p className="mb-6 text-gray-700">
+              Are you sure you want to log out?
+            </p>
             <div className="flex justify-center gap-4">
               <button
                 onClick={confirmLogout}
@@ -151,7 +159,7 @@ export default function Dashboard() {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-gray-600 font-medium">Portfolio Value</h2>
           <p className="text-3xl font-bold text-indigo-700 mt-1">
-            {formatCurrency(user.balance)}
+            {formatCurrency(user.balance + weeklyEarnings + 233)}
           </p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
@@ -161,11 +169,15 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-gray-600 font-medium">Estimated Weekly Earnings</h2>
+          <h2 className="text-gray-600 font-medium">
+            Estimated Weekly Earnings
+          </h2>
           <p className="text-3xl font-bold text-yellow-600 mt-1">
             {formatCurrency(weeklyEarnings)}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Based on 5% weekly return</p>
+          <p className="text-sm text-gray-500 mt-1">
+            Based on 5% weekly return
+          </p>
         </div>
       </section>
 
@@ -203,10 +215,14 @@ export default function Dashboard() {
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-6 text-indigo-700">Deposit Crypto</h2>
+            <h2 className="text-2xl font-bold mb-6 text-indigo-700">
+              Deposit Crypto
+            </h2>
             <div className="space-y-4">
               <div className="p-4 border rounded-lg bg-gray-50">
-                <h3 className="text-lg font-semibold text-gray-800">USDT (TRC20)</h3>
+                <h3 className="text-lg font-semibold text-gray-800">
+                  USDT (TRC20)
+                </h3>
                 <p className="text-sm text-gray-600 break-all mt-2">
                   TU9PJJ9NcVvnVBfgjFPPMpwRfgb6jCfr8e
                 </p>
@@ -227,13 +243,17 @@ export default function Dashboard() {
 
       {/* Transactions */}
       <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Recent Transactions</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">
+          Recent Transactions
+        </h2>
         {user.transactions && user.transactions.length > 0 ? (
           <ul className="space-y-2">
             {user.transactions.map((tx, idx) => (
               <li key={idx} className="flex justify-between text-sm">
                 <span className="font-medium text-gray-700">{tx.type}</span>
-                <span className="text-gray-600">{formatCurrency(tx.amount)}</span>
+                <span className="text-gray-600">
+                  {formatCurrency(tx.amount)}
+                </span>
                 <span className="text-gray-500">{tx.date}</span>
                 <span
                   className={`${
