@@ -30,11 +30,17 @@ function App() {
               element={
                 <section className="min-h-screen bg-gradient-to-br from-purple-800 to-indigo-900 text-white px-6 py-12">
                   <div className="max-w-5xl mx-auto text-center">
-                    <h1 className="text-5xl font-bold mb-6">Invest in Crypto with Confidence</h1>
+                    <h1 className="text-4xl font-bold mb-6">Invest in Crypto with Confidence</h1>
                     <p className="text-lg mb-8 max-w-3xl mx-auto">
                       CryptoInsider is your gateway to the future of finance. Whether you're new to crypto or a seasoned investor,
                       our platform offers secure, profitable, and user-friendly tools to grow your digital wealth.
+                    </p> 
+
+                    {/* 🎁 Promo Badge */}
+                    <p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6">
+                      🎁 Sign up and get up to $500 in Crypto
                     </p>
+
                     <button
                       onClick={() => setShowSignup(true)}
                       className="bg-white text-purple-700 font-semibold px-6 py-3 rounded hover:bg-gray-100 transition"
