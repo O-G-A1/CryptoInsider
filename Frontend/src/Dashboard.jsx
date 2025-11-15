@@ -165,6 +165,30 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
+      {showConfirm && !loggingOut && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
+            <h2 className="text-xl font-bold mb-4">Confirm Logout</h2>
+            <p className="mb-6 text-gray-700">
+              Are you sure you want to log out?
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={confirmLogout}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+              >
+                Yes, Logout
+              </button>
+              <button
+                onClick={cancelLogout}
+                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Account Summary */}
       <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
