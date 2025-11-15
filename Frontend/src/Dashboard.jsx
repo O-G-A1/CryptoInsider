@@ -83,7 +83,7 @@ export default function Dashboard() {
   const handleDeposit = () => setShowDeposit(true);
   const handleWithdraw = () => {
     if (user?.balance > 0) {
-      alert("Withdraw flow goes here!");
+      alert("No active investment plan yet!");
     }
   };
 
@@ -98,7 +98,7 @@ export default function Dashboard() {
   if (!user) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-xl text-red-600 p-4">
-        Unauthorized. Please log in.
+        Unauthorized. Please log in or sign up.
         <button
           onClick={() => navigate("/")}
           className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
