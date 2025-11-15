@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [showDeposit, setShowDeposit] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  // Fetch latest user data from backend without redirecting
+  // Fetch latest user data
   const fetchUser = async () => {
     const token = localStorage.getItem("authToken");
     if (!token) {
@@ -37,13 +37,12 @@ export default function Dashboard() {
       setLastUpdated(new Date());
     } catch (err) {
       console.error("Dashboard fetch error:", err);
-      setUser(null); // Don't redirect; show unauthorized UI
+      setUser(null);
     } finally {
       setLoading(false);
     }
   };
 
-  // Always fetch user on mount
   useEffect(() => {
     fetchUser();
   }, []);
@@ -55,16 +54,13 @@ export default function Dashboard() {
     }).format(v);
 
   const handleLogoutClick = () => setShowConfirm(true);
-
   const confirmLogout = () => {
     setLoggingOut(true);
     localStorage.removeItem("authToken");
     navigate("/");
   };
-
   const cancelLogout = () => setShowConfirm(false);
   const handleDeposit = () => setShowDeposit(true);
-
   const handleWithdraw = () => {
     if (user?.balance > 0) {
       alert("Withdraw flow goes here!");
@@ -81,7 +77,7 @@ export default function Dashboard() {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center text-xl text-red-600">
+      <div className="min-h-screen flex flex-col items-center justify-center text-xl text-red-600 p-4">
         Unauthorized. Please log in.
         <button
           onClick={() => navigate("/")}
@@ -96,8 +92,9 @@ export default function Dashboard() {
   const weeklyEarnings = user.balance * 0.05;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 px-4">
-      <header className="bg-indigo-700 text-white p-5 rounded-lg shadow-md mb-6 flex items-center justify-between">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
+      {/* Header */}
+      <header className="bg-indigo-700 text-white p-5 rounded-lg shadow-md mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <p className="mt-1 text-lg">Welcome back, {user.name} 👋</p>
@@ -107,10 +104,10 @@ export default function Dashboard() {
             </p>
           )}
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={fetchUser}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           >
             Refresh
           </button>
@@ -128,9 +125,9 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Confirmation Box */}
+      {/* Confirmation Modal */}
       {showConfirm && !loggingOut && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
             <h2 className="text-xl font-bold mb-4">Confirm Logout</h2>
             <p className="mb-6 text-gray-700">
@@ -155,7 +152,7 @@ export default function Dashboard() {
       )}
 
       {/* Account Summary */}
-      <section className="grid md:grid-cols-3 gap-6 mb-6">
+      <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-gray-600 font-medium">Portfolio Value</h2>
           <p className="text-3xl font-bold text-indigo-700 mt-1">
@@ -184,7 +181,7 @@ export default function Dashboard() {
       {/* Actions */}
       <section className="bg-white p-6 rounded-lg shadow-md mb-6 text-center">
         <h2 className="text-xl font-bold text-gray-800 mb-4">Actions</h2>
-        <div className="flex justify-center gap-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-6">
           <button
             onClick={handleDeposit}
             className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
@@ -207,7 +204,7 @@ export default function Dashboard() {
 
       {/* Deposit Modal */}
       {showDeposit && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
           <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
             <button
               onClick={() => setShowDeposit(false)}
@@ -219,7 +216,7 @@ export default function Dashboard() {
               Deposit Crypto
             </h2>
             <div className="space-y-4">
-              <div className="p-4 border rounded-lg bg-gray-50">
+              <div className="p-4 border rounded-lg bg-gray-50 text-left">
                 <h3 className="text-lg font-semibold text-gray-800">
                   USDT (TRC20)
                 </h3>
@@ -227,7 +224,7 @@ export default function Dashboard() {
                   TU9PJJ9NcVvnVBfgjFPPMpwRfgb6jCfr8e
                 </p>
               </div>
-              <div className="p-4 border rounded-lg bg-gray-50">
+              <div className="p-4 border rounded-lg bg-gray-50 text-left">
                 <h3 className="text-lg font-semibold text-gray-800">BTC</h3>
                 <p className="text-sm text-gray-600 break-all mt-2">
                   1LkqGh7maYsvVhUzNdZA9ovJzd8fgLeRr1
@@ -247,9 +244,12 @@ export default function Dashboard() {
           Recent Transactions
         </h2>
         {user.transactions && user.transactions.length > 0 ? (
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {user.transactions.map((tx, idx) => (
-              <li key={idx} className="flex justify-between text-sm">
+              <li
+                key={idx}
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm gap-2 sm:gap-4"
+              >
                 <span className="font-medium text-gray-700">{tx.type}</span>
                 <span className="text-gray-600">
                   {formatCurrency(tx.amount)}
@@ -273,6 +273,11 @@ export default function Dashboard() {
           <p className="text-gray-500 text-sm">No transactions yet</p>
         )}
       </section>
+
+      {/* Footer */}
+      <footer className="text-center text-sm text-yellow-300 font-bold py-8">
+        <p>© 2025 CryptoInsider Technologies Ltd</p>
+      </footer>
     </div>
   );
 }
