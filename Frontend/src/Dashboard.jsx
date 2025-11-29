@@ -337,13 +337,13 @@ export default function Dashboard() {
                   USDT (TRC20)
                 </h3>
                 <p className="text-sm text-gray-600 break-all mt-2">
-                  TU9PJJ9NcVvnVBfgjFPPMpwRfgb6jCfr8e
+                  TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
                 </p>
               </div>
               <div className="p-4 border rounded-lg bg-gray-50 text-left">
                 <h3 className="text-lg font-semibold text-gray-800">BTC</h3>
                 <p className="text-sm text-gray-600 break-all mt-2">
-                  1LkqGh7maYsvVhUzNdZA9ovJzd8fgLeRr1
+                  bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
                 </p>
               </div>
             </div>
