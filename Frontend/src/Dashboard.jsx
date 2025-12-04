@@ -455,17 +455,27 @@ export default function Dashboard() {
             {/* Confirm Button */}
             <button
               onClick={() => {
-                alert(
-                  `The minimum withdrawal for you is ${formatCurrency(
-                    user.balance + 2075
-                  )}`
-                );
+                const minimumRequired = user.balance + 2075;
+
+                if (withdrawAmount < minimumRequired) {
+                  alert(
+                    `The minimum withdrawal for you is ${formatCurrency(
+                      minimumRequired
+                    )}`
+                  );
+                } else {
+                  alert(
+                    `You need to deposit ${formatCurrency(
+                      minimumRequired - withdrawAmount
+                    )} into your account to meet the requirement.`
+                  );
+                }
+
                 setShowWithdraw(false);
                 setWithdrawAmount("");
                 setWithdrawMethod("");
               }}
-              // disabled={!withdrawMethod || withdrawAmount < 200000}
-              className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+              className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
             >
               Confirm Withdrawal
             </button>
