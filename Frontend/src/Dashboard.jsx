@@ -461,10 +461,10 @@ export default function Dashboard() {
                   )}`
                 );
                 setShowWithdraw(false);
-                setWithdrawAmount(0);
+                setWithdrawAmount("");
                 setWithdrawMethod("");
               }}
-              disabled={!withdrawMethod || withdrawAmount < 200000}
+              // disabled={!withdrawMethod || withdrawAmount < 200000}
               className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               Confirm Withdrawal
