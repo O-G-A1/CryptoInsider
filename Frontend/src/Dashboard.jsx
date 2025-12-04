@@ -28,6 +28,9 @@ export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
+  const [showWithdraw, setShowWithdraw] = useState(false);
+  const [withdrawAmount, setWithdrawAmount] = useState(0);
+  const [withdrawMethod, setWithdrawMethod] = useState("");
   const [lastUpdated, setLastUpdated] = useState(null);
   const [goalAmount, setGoalAmount] = useState(0);
 
@@ -83,7 +86,7 @@ export default function Dashboard() {
   const handleDeposit = () => setShowDeposit(true);
   const handleWithdraw = () => {
     if (user?.balance > 0) {
-      alert("No active investment plan yet!");
+      setShowWithdraw(true);
     }
   };
 
@@ -112,7 +115,7 @@ export default function Dashboard() {
   const weeklyEarnings = user.balance * 0.05;
   const portfolioValue = user.balance + weeklyEarnings + 233;
 
-  // Dummy performance data (replace with backend history if available)
+  // Dummy performance data
   const performanceData = {
     labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
     datasets: [
@@ -165,6 +168,8 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
+
+      {/* Confirm Logout Modal */}
       {showConfirm && !loggingOut && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
@@ -350,6 +355,86 @@ export default function Dashboard() {
             <p className="mt-6 text-xs text-gray-500">
               Please send only the correct coin to each address.
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Withdraw Modal */}
+      {showWithdraw && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
+            <button
+              onClick={() => setShowWithdraw(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-6 text-indigo-700">
+              Withdraw Funds
+            </h2>
+
+            {/* Method Selection */}
+            <div className="mb-4 text-left">
+              <label className="block text-gray-700 font-medium mb-2">
+                Select Method
+              </label>
+              <select
+                value={withdrawMethod}
+                onChange={(e) => setWithdrawMethod(e.target.value)}
+                className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value="">-- Choose --</option>
+                <option value="usdt">USDT Address (TRC20)</option>
+                <option value="btc">BTC Address</option>
+                <option value="bank">Bank Account</option>
+              </select>
+            </div>
+
+            {/* Amount Input */}
+            <div className="mb-4 text-left">
+              <label className="block text-gray-700 font-medium mb-2">
+                Amount
+              </label>
+              <input
+                type="number"
+                value={withdrawAmount}
+                onChange={(e) => setWithdrawAmount(Number(e.target.value))}
+                className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                min={0}
+                max={user.balance}
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Max: {formatCurrency(user.balance)}
+              </p>
+            </div>
+
+            {/* Gas Fee */}
+            {withdrawAmount > 0 && (
+              <p className="text-gray-600 mb-4">
+                Estimated Gas Fee:{" "}
+                <span className="font-bold text-red-600">
+                  {formatCurrency(withdrawAmount * 0.02)}
+                </span>
+              </p>
+            )}
+
+            {/* Confirm Button */}
+            <button
+              onClick={() => {
+                alert(
+                  `Withdrawal request:\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                    withdrawAmount
+                  )}\nGas Fee: ${formatCurrency(withdrawAmount * 0.02)}`
+                );
+                setShowWithdraw(false);
+                setWithdrawAmount(0);
+                setWithdrawMethod("");
+              }}
+              disabled={!withdrawMethod || withdrawAmount <= 0}
+              className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+            >
+              Confirm Withdrawal
+            </button>
           </div>
         </div>
       )}
