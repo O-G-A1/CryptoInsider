@@ -400,8 +400,7 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={0}
-                max={user.balance}
+                min={200000}
               />
               <p className="text-xs text-gray-500 mt-1">
                 Max: {formatCurrency(user.balance)}
@@ -413,7 +412,7 @@ export default function Dashboard() {
               <p className="text-gray-600 mb-4">
                 Estimated Gas Fee:{" "}
                 <span className="font-bold text-red-600">
-                  {formatCurrency(withdrawAmount * 0.02)}
+                  {formatCurrency(withdrawAmount * 0.05)}
                 </span>
               </p>
             )}
