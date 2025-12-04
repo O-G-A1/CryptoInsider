@@ -29,10 +29,10 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
-  const [withdrawAmount, setWithdrawAmount] = useState(0);
+  const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [lastUpdated, setLastUpdated] = useState(null);
-  const [goalAmount, setGoalAmount] = useState(0);
+  const [goalAmount, setGoalAmount] = useState("");
 
   // Fetch latest user data
   const fetchUser = async () => {
@@ -451,20 +451,6 @@ export default function Dashboard() {
                 Minimum withdrawal: {formatCurrency(user.balance + 2075)}
               </p>
             </div>
-
-            {/* Gas Fee Prompt */}
-            {withdrawMethod && withdrawAmount >= 200000 && (
-              <div className="mb-4 text-left">
-                <p className="text-gray-600">
-                  To proceed, please deposit{" "}
-                  <span className="font-bold text-red-600">
-                    {formatCurrency(0.01)}
-                  </span>{" "}
-                  into your deposit address. This gas fee is required to
-                  activate withdrawals.
-                </p>
-              </div>
-            )}
 
             {/* Confirm Button */}
             <button
