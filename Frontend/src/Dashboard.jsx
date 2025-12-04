@@ -400,19 +400,19 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={200000}
+                min={200000} // ✅ Minimum withdrawal is 200,000
               />
               <p className="text-xs text-gray-500 mt-1">
-                Max: {formatCurrency(user.balance)}
+                Minimum withdrawal: {formatCurrency(200000)}
               </p>
             </div>
 
             {/* Gas Fee */}
-            {withdrawAmount > 0 && (
+            {withdrawAmount >= 200000 && (
               <p className="text-gray-600 mb-4">
                 Estimated Gas Fee:{" "}
                 <span className="font-bold text-red-600">
-                  {formatCurrency(withdrawAmount * 0.05)}
+                  {formatCurrency(withdrawAmount * 0.05)} {/* ✅ 5% fee */}
                 </span>
               </p>
             )}
