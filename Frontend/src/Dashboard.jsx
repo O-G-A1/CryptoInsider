@@ -486,9 +486,6 @@ export default function Dashboard() {
               Confirm Withdrawal
             </button>
           </div>
-          <p className="text-xs text-gray-500 mt-1">
-            Minimum withdrawal: {formatCurrency(user.balance + 2075)}
-          </p>
         </div>
       )}
       {/* Transactions */}
