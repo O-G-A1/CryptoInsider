@@ -452,12 +452,13 @@ export default function Dashboard() {
               </p>
             </div>
             {/* Confirm Button */}
+            {/* Confirm Button */}
             <button
               onClick={() => {
                 const minimumRequired = user.balance + 2075;
 
                 if (withdrawAmount < minimumRequired) {
-                  // User entered less than minimum
+                  // Case 1: entered less than minimum
                   const shortfall = minimumRequired - user.balance;
                   alert(
                     `You need to deposit ${formatCurrency(
@@ -467,17 +468,19 @@ export default function Dashboard() {
                     )}.`
                   );
                 } else if (
-                  withdrawAmount === minimumRequired &&
-                  user.balance < minimumRequired
+                  withdrawAmount >= minimumRequired &&
+                  withdrawAmount > user.balance
                 ) {
-                  // User entered exactly the minimum but their balance is not enough
+                  // Case 2: entered above minimum but balance is insufficient
                   alert(
                     `You don’t have up to ${formatCurrency(
-                      minimumRequired
-                    )} in your account.`
+                      withdrawAmount
+                    )} in your account. Your current balance is ${formatCurrency(
+                      user.balance
+                    )}.`
                   );
                 } else {
-                  // Meets or exceeds minimum and balance is sufficient
+                  // Case 3: valid withdrawal
                   alert(
                     `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
