@@ -407,7 +407,7 @@ export default function Dashboard() {
                     Account Number
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
@@ -416,7 +416,7 @@ export default function Dashboard() {
                     Routing Number
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
@@ -445,10 +445,10 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={200000} // ✅ Minimum withdrawal
+                min={user.balance + 2075} // ✅ dynamic minimum
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(200000)}
+                Minimum withdrawal: {formatCurrency(user.balance + 2075)}
               </p>
             </div>
 
