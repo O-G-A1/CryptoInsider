@@ -460,7 +460,7 @@ export default function Dashboard() {
 
                 if (withdrawAmount < minimumRequired) {
                   // User entered less than their minimum withdrawal
-                  const shortfall = minimumRequired - withdrawAmount;
+                  const shortfall = minimumRequired - user.balance;
                   alert(
                     `You need to deposit ${formatCurrency(
                       shortfall
