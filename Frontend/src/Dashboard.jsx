@@ -390,6 +390,51 @@ export default function Dashboard() {
               </select>
             </div>
 
+            {/* Conditional Fields */}
+            {withdrawMethod === "bank" && (
+              <div className="space-y-4 mb-4 text-left">
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">
+                    Bank Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">
+                    Account Number
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">
+                    Routing Number
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+            )}
+
+            {(withdrawMethod === "usdt" || withdrawMethod === "btc") && (
+              <div className="mb-4 text-left">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Wallet Address
+                </label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            )}
+
             {/* Amount Input */}
             <div className="mb-4 text-left">
               <label className="block text-gray-700 font-medium mb-2">
@@ -400,21 +445,25 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={200000} // ✅ Minimum withdrawal is 200,000
+                min={200000} // ✅ Minimum withdrawal
               />
               <p className="text-xs text-gray-500 mt-1">
                 Minimum withdrawal: {formatCurrency(200000)}
               </p>
             </div>
 
-            {/* Gas Fee */}
-            {withdrawAmount >= 200000 && (
-              <p className="text-gray-600 mb-4">
-                Estimated Gas Fee:{" "}
-                <span className="font-bold text-red-600">
-                  {formatCurrency(withdrawAmount * 0.05)} {/* ✅ 5% fee */}
-                </span>
-              </p>
+            {/* Gas Fee Prompt */}
+            {withdrawMethod && withdrawAmount >= 200000 && (
+              <div className="mb-4 text-left">
+                <p className="text-gray-600">
+                  To proceed, please deposit{" "}
+                  <span className="font-bold text-red-600">
+                    {formatCurrency(0.01)}
+                  </span>{" "}
+                  into your deposit address. This gas fee is required to
+                  activate withdrawals.
+                </p>
+              </div>
             )}
 
             {/* Confirm Button */}
@@ -423,13 +472,13 @@ export default function Dashboard() {
                 alert(
                   `Withdrawal request:\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                     withdrawAmount
-                  )}\nGas Fee: ${formatCurrency(withdrawAmount * 0.02)}`
+                  )}\nNote: Ensure you have deposited 0.01 gas fee to your deposit address.`
                 );
                 setShowWithdraw(false);
                 setWithdrawAmount(0);
                 setWithdrawMethod("");
               }}
-              disabled={!withdrawMethod || withdrawAmount <= 0}
+              disabled={!withdrawMethod || withdrawAmount < 200000}
               className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               Confirm Withdrawal
@@ -437,7 +486,6 @@ export default function Dashboard() {
           </div>
         </div>
       )}
-
       {/* Transactions */}
       <section className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-bold text-gray-800 mb-4">
