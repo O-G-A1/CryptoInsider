@@ -5,7 +5,7 @@ export default function AdminPanel() {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("deposit");
-  const [result, setResult] = useState(null); // ✅ to show updated user info
+  const [result, setResult] = useState(null); // ✅ to show user info
 
   // Handle deposit/withdraw
   const handleSubmit = async (e) => {
@@ -50,6 +50,23 @@ export default function AdminPanel() {
     }
   };
 
+  // ✅ View user info before updating/removing
+  const handleViewUser = async () => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/admin/get-user`,
+        { email }
+      );
+      setResult(res.data.user);
+      alert(res.data.message || "User fetched successfully!");
+    } catch (err) {
+      console.error("ViewUser error:", err);
+      const errorMsg =
+        err.response?.data?.message || err.message || "Unknown error";
+      alert("Error: " + errorMsg);
+    }
+  };
+
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded shadow">
       <h2 className="text-xl font-bold mb-4">Admin Panel</h2>
@@ -76,18 +93,27 @@ export default function AdminPanel() {
           <option value="deposit">Deposit</option>
           <option value="withdraw">Withdraw</option>
         </select>
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
-        >
-          Update Balance
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="flex-1 bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
+          >
+            Update Balance
+          </button>
+          <button
+            type="button"
+            onClick={handleViewUser}
+            className="flex-1 bg-gray-600 text-white py-2 rounded hover:bg-gray-700"
+          >
+            View User
+          </button>
+        </div>
       </form>
 
-      {/* ✅ Show result after update */}
+      {/* ✅ Show result after update/view */}
       {result && (
         <div className="mt-6 bg-gray-100 p-4 rounded">
-          <h3 className="text-lg font-semibold mb-2">Updated User Info</h3>
+          <h3 className="text-lg font-semibold mb-2">User Info</h3>
           <p>
             <strong>Name:</strong> {result.name}
           </p>
@@ -97,7 +123,7 @@ export default function AdminPanel() {
           <p>
             <strong>Balance:</strong> ${result.balance.toFixed(2)}
           </p>
-          <h4 className="mt-4 font-semibold">Recent Transactions:</h4>
+          <h4 className="mt-4 font-semibold">Transactions:</h4>
           <ul className="list-disc pl-5 text-sm">
             {result.transactions.map((tx, index) => (
               <li key={index} className="flex justify-between items-center">
