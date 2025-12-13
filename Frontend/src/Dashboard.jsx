@@ -35,6 +35,11 @@ export default function Dashboard() {
   const [goalAmount, setGoalAmount] = useState("");
   const [showAllTx, setShowAllTx] = useState(false);
 
+  // ✅ add these
+  const [enteredAccountName, setEnteredAccountName] = useState("");
+  const [enteredAccountNumber, setEnteredAccountNumber] = useState("");
+  const [bankName, setBankName] = useState("");
+
   // Fetch latest user data
   const fetchUser = async () => {
     const token = localStorage.getItem("authToken");
