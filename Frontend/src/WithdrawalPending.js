@@ -86,7 +86,7 @@ export default function WithdrawalPending() {
         </div>
 
         {/* Account Details */}
-        <h2 className="text-2xl font-bold text-teal-400 mb-6">
+        {/* <h2 className="text-2xl font-bold text-teal-400 mb-6">
           Account Details
         </h2>
         <div className="space-y-6 mb-10">
@@ -106,7 +106,7 @@ export default function WithdrawalPending() {
             <label className="block text-sm text-gray-400">Bank Name</label>
             <p className="text-lg font-semibold text-white">{bankName}</p>
           </div>
-        </div>
+        </div> */}
 
         {/* Instruction */}
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
