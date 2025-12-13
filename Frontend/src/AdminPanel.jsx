@@ -7,23 +7,45 @@ export default function AdminPanel() {
   const [type, setType] = useState("deposit");
   const [result, setResult] = useState(null); // ✅ to show updated user info
 
+  // Handle deposit/withdraw
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-  `${process.env.REACT_APP_API_URL}/api/admin/update-balance`,
-  {
-    email,
-    amount: Number(amount),
-    type
-  }
-);
+        `${process.env.REACT_APP_API_URL}/api/admin/update-balance`,
+        {
+          email,
+          amount: Number(amount),
+          type,
+        }
+      );
 
       setResult(res.data.user); // ✅ store updated user info
       alert(res.data.message || "Balance updated successfully!");
     } catch (err) {
       console.error("AdminPanel error:", err);
-      const errorMsg = err.response?.data?.message || err.message || "Unknown error";
+      const errorMsg =
+        err.response?.data?.message || err.message || "Unknown error";
+      alert("Error: " + errorMsg);
+    }
+  };
+
+  // Handle transaction removal
+  const handleRemove = async (txIndex) => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/admin/remove-transaction`,
+        {
+          email,
+          index: txIndex,
+        }
+      );
+      setResult(res.data.user);
+      alert(res.data.message || "Transaction removed successfully!");
+    } catch (err) {
+      console.error("Remove error:", err);
+      const errorMsg =
+        err.response?.data?.message || err.message || "Unknown error";
       alert("Error: " + errorMsg);
     }
   };
@@ -66,14 +88,28 @@ export default function AdminPanel() {
       {result && (
         <div className="mt-6 bg-gray-100 p-4 rounded">
           <h3 className="text-lg font-semibold mb-2">Updated User Info</h3>
-          <p><strong>Name:</strong> {result.name}</p>
-          <p><strong>Email:</strong> {result.email}</p>
-          <p><strong>Balance:</strong> ${result.balance.toFixed(2)}</p>
+          <p>
+            <strong>Name:</strong> {result.name}
+          </p>
+          <p>
+            <strong>Email:</strong> {result.email}
+          </p>
+          <p>
+            <strong>Balance:</strong> ${result.balance.toFixed(2)}
+          </p>
           <h4 className="mt-4 font-semibold">Recent Transactions:</h4>
           <ul className="list-disc pl-5 text-sm">
             {result.transactions.map((tx, index) => (
-              <li key={index}>
-                {tx.date} — {tx.type} ${tx.amount} ({tx.status})
+              <li key={index} className="flex justify-between items-center">
+                <span>
+                  {tx.date} — {tx.type} ${tx.amount} ({tx.status})
+                </span>
+                <button
+                  onClick={() => handleRemove(index)}
+                  className="ml-4 px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
