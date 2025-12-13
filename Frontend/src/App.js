@@ -6,7 +6,7 @@ import LoginModal from "./LoginModal";
 import About from "./About";
 import Features from "./Features";
 import Dashboard from "./Dashboard";
-import WithdrawalPending from "./pages/WithdrawalPending";
+import WithdrawalPending from "./WithdrawalPending";
 import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
 
 function App() {
