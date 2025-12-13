@@ -352,9 +352,9 @@ function App() {
             {/* Other Pages */}
             <Route path="/about" element={<About />} />
             <Route path="/features" element={<Features />} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/withdrawal-pending" element={<WithdrawalPending />} />
-            ;
             <Route path="/admin" element={<AdminPanel />} />{" "}
             {/* ✅ new admin route */}
           </Routes>
