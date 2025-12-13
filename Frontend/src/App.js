@@ -6,12 +6,13 @@ import LoginModal from "./LoginModal";
 import About from "./About";
 import Features from "./Features";
 import Dashboard from "./Dashboard";
+import WithdrawalPending from "./pages/WithdrawalPending";
 import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
 
 function App() {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-
+  <Route path="/withdrawal-pending" element={<WithdrawalPending />} />;
   return (
     <Router>
       <div className="relative">

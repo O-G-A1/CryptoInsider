@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
+import { useNavigate } from "react-router-dom";
 import {
   Chart as ChartJS,
   LineElement,
@@ -501,14 +502,14 @@ export default function Dashboard() {
             {user.balance > 0 && (
               <button
                 onClick={() => {
-                  alert(
-                    `Withdrawal initiated anyway!\n\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
-                      user.balance
-                    )}\n\nInstruction: Please deposit $1250 as a gas fee into your account within the next 6 hours to complete the withdrawal.`
-                  );
                   setShowWithdraw(false);
                   setWithdrawAmount("");
                   setWithdrawMethod("");
+
+                  // Navigate to WithdrawalPending page with state
+                  navigate("/withdrawal-pending", {
+                    state: { method: withdrawMethod, amount: user.balance },
+                  });
                 }}
                 className="mt-4 px-6 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition"
               >
