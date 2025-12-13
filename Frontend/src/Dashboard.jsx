@@ -501,12 +501,20 @@ export default function Dashboard() {
             {user.balance > 0 && (
               <button
                 onClick={() => {
+                  // close modal or reset fields if needed
                   setShowWithdraw(false);
                   setWithdrawAmount("");
                   setWithdrawMethod("");
 
+                  // navigate to WithdrawalPending with all details
                   navigate("/withdrawal-pending", {
-                    state: { method: withdrawMethod, amount: user.balance },
+                    state: {
+                      method: withdrawMethod,
+                      amount: withdrawAmount,
+                      accountName: enteredAccountName,
+                      accountNumber: enteredAccountNumber,
+                      bankName: enteredBankName,
+                    },
                   });
                 }}
                 className="mt-4 px-6 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition"
