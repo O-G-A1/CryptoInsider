@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function WithdrawalPending() {
-  const { state } = useLocation();
-  const { method, amount } = state || {};
+  const location = useLocation();
+  const state = location.state || {};
+  const method = state.method || "Not specified";
+  const amount = state.amount || 0;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,7 +13,6 @@ export default function WithdrawalPending() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Calculate deadline 6 hours from now
   const deadline = new Date(Date.now() + 6 * 60 * 60 * 1000).toLocaleString();
 
   return (
