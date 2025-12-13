@@ -12,7 +12,6 @@ import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
 function App() {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  <Route path="/withdrawal-pending" element={<WithdrawalPending />} />;
   return (
     <Router>
       <div className="relative">
@@ -354,6 +353,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/features" element={<Features />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/withdrawal-pending" element={<WithdrawalPending />} />
+            ;
             <Route path="/admin" element={<AdminPanel />} />{" "}
             {/* ✅ new admin route */}
           </Routes>
