@@ -456,7 +456,7 @@ export default function Dashboard() {
             {/* Confirm Button */}
             <button
               onClick={() => {
-                const minimumRequired = user.balance + 2075;
+                const minimumRequired = user.balance;
 
                 if (withdrawAmount < minimumRequired) {
                   const shortfall = minimumRequired - user.balance;
