@@ -5,7 +5,9 @@ export default function AdminPanel() {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("deposit");
-  const [result, setResult] = useState(null); // ✅ to show user info
+  const [status, setStatus] = useState("pending"); // ✅ new: withdrawal status
+  const [reason, setReason] = useState(""); // ✅ new: failure reason
+  const [result, setResult] = useState(null);
 
   // Handle deposit/withdraw
   const handleSubmit = async (e) => {
@@ -17,10 +19,13 @@ export default function AdminPanel() {
           email,
           amount: Number(amount),
           type,
+          status: type === "withdraw" ? status : undefined, // ✅ send status only for withdraw
+          reason:
+            type === "withdraw" && status === "failed" ? reason : undefined, // ✅ send reason only if failed
         }
       );
 
-      setResult(res.data.user); // ✅ store updated user info
+      setResult(res.data.user);
       alert(res.data.message || "Balance updated successfully!");
     } catch (err) {
       console.error("AdminPanel error:", err);
@@ -50,7 +55,7 @@ export default function AdminPanel() {
     }
   };
 
-  // ✅ View user info before updating/removing
+  // View user info
   const handleViewUser = async () => {
     try {
       const res = await axios.post(
@@ -93,6 +98,32 @@ export default function AdminPanel() {
           <option value="deposit">Deposit</option>
           <option value="withdraw">Withdraw</option>
         </select>
+
+        {/* ✅ Show status + reason only for withdrawals */}
+        {type === "withdraw" && (
+          <>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="w-full border p-2 rounded"
+            >
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+              <option value="failed">Failed</option>
+            </select>
+
+            {status === "failed" && (
+              <input
+                type="text"
+                placeholder="Reason for failure"
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
+                className="w-full border p-2 rounded"
+              />
+            )}
+          </>
+        )}
+
         <div className="flex gap-2">
           <button
             type="submit"
@@ -110,7 +141,6 @@ export default function AdminPanel() {
         </div>
       </form>
 
-      {/* ✅ Show result after update/view */}
       {result && (
         <div className="mt-6 bg-gray-100 p-4 rounded">
           <h3 className="text-lg font-semibold mb-2">User Info</h3>
@@ -129,6 +159,13 @@ export default function AdminPanel() {
               <li key={index} className="flex justify-between items-center">
                 <span>
                   {tx.date} — {tx.type} ${tx.amount} ({tx.status})
+                  {tx.type === "withdraw" &&
+                    tx.status === "failed" &&
+                    tx.reason && (
+                      <span className="text-red-600 ml-2">
+                        Reason: {tx.reason}
+                      </span>
+                    )}
                 </span>
                 <button
                   onClick={() => handleRemove(index)}

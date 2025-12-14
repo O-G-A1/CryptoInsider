@@ -8,7 +8,7 @@ router.get("/test", (req, res) => {
 
 // ✅ Update balance route (deposit/withdraw)
 router.post("/update-balance", async (req, res) => {
-  const { email, amount, type } = req.body;
+  const { email, amount, type, status, reason } = req.body;
 
   if (!email || !amount || !type) {
     return res.status(400).json({ message: "Missing required fields" });
@@ -25,7 +25,7 @@ router.post("/update-balance", async (req, res) => {
         type: "Deposit",
         amount,
         date: new Date().toLocaleString(),
-        status: "Completed",
+        status: "Completed", // deposits are always completed
       });
     } else if (type === "withdraw") {
       user.balance -= amount;
@@ -33,7 +33,8 @@ router.post("/update-balance", async (req, res) => {
         type: "Withdraw",
         amount,
         date: new Date().toLocaleString(),
-        status: "Completed",
+        status: status || "Pending", // ✅ use admin-selected status
+        reason: status === "failed" ? reason : null, // ✅ save reason only if failed
       });
     } else {
       return res.status(400).json({ message: "Invalid transaction type" });
@@ -46,7 +47,7 @@ router.post("/update-balance", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
-        transactions: user.transactions.slice(-5),
+        transactions: user.transactions.slice(-5), // return last 5
       },
     });
   } catch (err) {
@@ -98,7 +99,7 @@ router.post("/remove-transaction", async (req, res) => {
   }
 });
 
-// ✅ View user info route (fetch transactions before removing)
+// ✅ View user info route
 router.post("/get-user", async (req, res) => {
   const { email } = req.body;
 

@@ -85,29 +85,6 @@ export default function WithdrawalPending() {
           </div>
         </div>
 
-        {/* Account Details */}
-        {/* <h2 className="text-2xl font-bold text-teal-400 mb-6">
-          Account Details
-        </h2>
-        <div className="space-y-6 mb-10">
-          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
-            <label className="block text-sm text-gray-400">Account Name</label>
-            <p className="text-lg font-semibold text-white">{accountName}</p>
-          </div>
-
-          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
-            <label className="block text-sm text-gray-400">
-              Account Number
-            </label>
-            <p className="text-lg font-semibold text-white">{accountNumber}</p>
-          </div>
-
-          <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
-            <label className="block text-sm text-gray-400">Bank Name</label>
-            <p className="text-lg font-semibold text-white">{bankName}</p>
-          </div>
-        </div> */}
-
         {/* Instruction */}
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
           <p className="text-xl font-semibold text-red-400">
