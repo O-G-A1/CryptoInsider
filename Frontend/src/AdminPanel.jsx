@@ -5,8 +5,9 @@ export default function AdminPanel() {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("deposit");
-  const [status, setStatus] = useState("pending"); // ✅ new: withdrawal status
-  const [reason, setReason] = useState(""); // ✅ new: failure reason
+  const [status, setStatus] = useState("pending"); // ✅ withdrawal status
+  const [reason, setReason] = useState(""); // ✅ failure reason
+  const [withdrawalLimit, setWithdrawalLimit] = useState(""); // ✅ new: withdrawal limit
   const [result, setResult] = useState(null);
 
   // Handle deposit/withdraw
@@ -19,9 +20,9 @@ export default function AdminPanel() {
           email,
           amount: Number(amount),
           type,
-          status: type === "withdraw" ? status : undefined, // ✅ send status only for withdraw
+          status: type === "withdraw" ? status : undefined,
           reason:
-            type === "withdraw" && status === "failed" ? reason : undefined, // ✅ send reason only if failed
+            type === "withdraw" && status === "failed" ? reason : undefined,
         }
       );
 
@@ -29,6 +30,26 @@ export default function AdminPanel() {
       alert(res.data.message || "Balance updated successfully!");
     } catch (err) {
       console.error("AdminPanel error:", err);
+      const errorMsg =
+        err.response?.data?.message || err.message || "Unknown error";
+      alert("Error: " + errorMsg);
+    }
+  };
+
+  // Handle setting withdrawal limit
+  const handleSetLimit = async () => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/admin/set-withdrawal-limit`,
+        {
+          email,
+          limit: Number(withdrawalLimit),
+        }
+      );
+      setResult(res.data.user);
+      alert(res.data.message || "Withdrawal limit updated!");
+    } catch (err) {
+      console.error("SetLimit error:", err);
       const errorMsg =
         err.response?.data?.message || err.message || "Unknown error";
       alert("Error: " + errorMsg);
@@ -124,6 +145,22 @@ export default function AdminPanel() {
           </>
         )}
 
+        {/* ✅ Withdrawal limit input + button */}
+        <input
+          type="number"
+          placeholder="Withdrawal Limit"
+          value={withdrawalLimit}
+          onChange={(e) => setWithdrawalLimit(e.target.value)}
+          className="w-full border p-2 rounded"
+        />
+        <button
+          type="button"
+          onClick={handleSetLimit}
+          className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
+        >
+          Set Withdrawal Limit
+        </button>
+
         <div className="flex gap-2">
           <button
             type="submit"
@@ -152,6 +189,9 @@ export default function AdminPanel() {
           </p>
           <p>
             <strong>Balance:</strong> ${result.balance.toFixed(2)}
+          </p>
+          <p>
+            <strong>Withdrawal Limit:</strong> ₦{result.withdrawalLimit}
           </p>
           <h4 className="mt-4 font-semibold">Transactions:</h4>
           <ul className="list-disc pl-5 text-sm">
