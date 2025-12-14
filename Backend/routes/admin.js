@@ -29,18 +29,29 @@ router.post("/update-balance", async (req, res) => {
         status: "Completed",
       });
     } else if (type === "withdraw") {
-      // ✅ Only deduct if NOT failed
-      if (status !== "failed") {
-        user.balance -= amount;
-      }
+      // ✅ Enforce withdrawal limit
+      if (user.withdrawalLimit && amount > user.withdrawalLimit) {
+        user.transactions.push({
+          type: "Withdraw",
+          amount,
+          date: new Date().toLocaleString(),
+          status: "failed",
+          reason: `Withdrawal exceeds limit of ₦${user.withdrawalLimit}`,
+        });
+      } else {
+        // ✅ Only deduct if NOT failed
+        if (status !== "failed") {
+          user.balance -= amount;
+        }
 
-      user.transactions.push({
-        type: "Withdraw",
-        amount,
-        date: new Date().toLocaleString(),
-        status: status || "Pending", // use admin-selected status
-        reason: status === "failed" ? reason : null, // save reason only if failed
-      });
+        user.transactions.push({
+          type: "Withdraw",
+          amount,
+          date: new Date().toLocaleString(),
+          status: status || "Pending", // use admin-selected status
+          reason: status === "failed" ? reason : null, // save reason only if failed
+        });
+      }
     } else {
       return res.status(400).json({ message: "Invalid transaction type" });
     }
@@ -52,7 +63,38 @@ router.post("/update-balance", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
+        withdrawalLimit: user.withdrawalLimit, // ✅ include limit in response
         transactions: user.transactions.slice(-5), // return last 5
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Server error: " + err.message });
+  }
+});
+
+// ✅ Set withdrawal limit route
+router.post("/set-withdrawal-limit", async (req, res) => {
+  const { email, limit } = req.body;
+
+  if (!email || limit === undefined) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
+
+  try {
+    const User = require("../models/User");
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.withdrawalLimit = limit; // ✅ set limit
+    await user.save();
+
+    res.status(200).json({
+      message: `Withdrawal limit set to ₦${limit}`,
+      user: {
+        name: user.name,
+        email: user.email,
+        balance: user.balance,
+        withdrawalLimit: user.withdrawalLimit,
       },
     });
   } catch (err) {
@@ -100,6 +142,7 @@ router.post("/remove-transaction", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
+        withdrawalLimit: user.withdrawalLimit,
         transactions: user.transactions.slice(-5),
       },
     });
@@ -127,6 +170,7 @@ router.post("/get-user", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
+        withdrawalLimit: user.withdrawalLimit, // ✅ include limit
         transactions: user.transactions,
       },
     });
