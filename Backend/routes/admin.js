@@ -20,21 +20,26 @@ router.post("/update-balance", async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
 
     if (type === "deposit") {
+      // ✅ Deposits always increase balance and are completed
       user.balance += amount;
       user.transactions.push({
         type: "Deposit",
         amount,
         date: new Date().toLocaleString(),
-        status: "Completed", // deposits are always completed
+        status: "Completed",
       });
     } else if (type === "withdraw") {
-      user.balance -= amount;
+      // ✅ Only deduct if NOT failed
+      if (status !== "failed") {
+        user.balance -= amount;
+      }
+
       user.transactions.push({
         type: "Withdraw",
         amount,
         date: new Date().toLocaleString(),
-        status: status || "Pending", // ✅ use admin-selected status
-        reason: status === "failed" ? reason : null, // ✅ save reason only if failed
+        status: status || "Pending", // use admin-selected status
+        reason: status === "failed" ? reason : null, // save reason only if failed
       });
     } else {
       return res.status(400).json({ message: "Invalid transaction type" });
@@ -76,7 +81,11 @@ router.post("/remove-transaction", async (req, res) => {
     // Roll back balance depending on type
     if (txToRemove.type === "Deposit") {
       user.balance -= txToRemove.amount;
-    } else if (txToRemove.type === "Withdraw") {
+    } else if (
+      txToRemove.type === "Withdraw" &&
+      txToRemove.status !== "failed"
+    ) {
+      // ✅ Only roll back if it was actually deducted
       user.balance += txToRemove.amount;
     }
 
