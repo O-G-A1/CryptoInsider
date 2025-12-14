@@ -459,10 +459,10 @@ export default function Dashboard() {
                 const minimumRequired = user.balance;
 
                 if (withdrawAmount < minimumRequired) {
-                  const shortfall = minimumRequired - user.balance;
+                  const shortfall = minimumRequired - user.balance + 305;
                   alert(
                     `You need to deposit ${formatCurrency(
-                      $2015
+                      shortfall
                     )} into your account so your balance reaches the minimum withdrawal amount of ${formatCurrency(
                       minimumRequired
                     )}.`
