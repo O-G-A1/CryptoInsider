@@ -560,7 +560,7 @@ export default function Dashboard() {
                     >
                       {tx.status}
                     </span>
-                    {tx.type === "withdraw" &&
+                    {tx.type.toLowerCase() === "withdraw" &&
                       tx.status === "failed" &&
                       tx.reason && (
                         <span className="text-red-500 italic">
