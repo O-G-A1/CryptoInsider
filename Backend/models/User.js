@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
       amount: { type: Number },
       date: { type: String },
       status: { type: String },
+      reason: { type: String, default: null }, // ✅ added reason field
     },
   ],
 });
