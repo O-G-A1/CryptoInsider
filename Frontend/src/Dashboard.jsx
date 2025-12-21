@@ -450,7 +450,7 @@ export default function Dashboard() {
                 min={user.balance + 1150} // ✅ dynamic minimum
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(user.balance)}
+                Minimum withdrawal: {formatCurrency(user.balance + 1150)}
               </p>
             </div>
 
