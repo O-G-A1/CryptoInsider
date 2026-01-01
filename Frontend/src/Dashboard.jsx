@@ -447,17 +447,17 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={user.balance + 125} // ✅ dynamic minimum
+                min={user.balance + 1750} // ✅ dynamic minimum
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(user.balance + 125)}
+                Minimum withdrawal: {formatCurrency(user.balance + 1750)}
               </p>
             </div>
 
             {/* Confirm Button */}
             <button
               onClick={() => {
-                const minimumRequired = user.balance + 125;
+                const minimumRequired = user.balance + 1750;
 
                 if (withdrawAmount < minimumRequired) {
                   const shortfall = minimumRequired - user.balance;
