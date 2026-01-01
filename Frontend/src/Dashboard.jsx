@@ -447,31 +447,25 @@ export default function Dashboard() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(Number(e.target.value))}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                min={user.balance + 1750} // ✅ dynamic minimum
+                min={200000} // ✅ fixed minimum withdrawal
               />
               <p className="text-xs text-gray-500 mt-1">
-                Minimum withdrawal: {formatCurrency(user.balance + 1750)}
+                Minimum withdrawal: {formatCurrency(200000)}
               </p>
             </div>
 
             {/* Confirm Button */}
             <button
               onClick={() => {
-                const minimumRequired = user.balance + 1750;
+                const minimumRequired = 200000; // ✅ fixed minimum
 
                 if (withdrawAmount < minimumRequired) {
-                  const shortfall = minimumRequired - user.balance;
                   alert(
-                    `You need to deposit ${formatCurrency(
-                      shortfall
-                    )} into your account so your balance reaches the minimum withdrawal amount of ${formatCurrency(
+                    `The minimum withdrawal amount is ${formatCurrency(
                       minimumRequired
-                    )}.`
+                    )}. Please enter at least this amount.`
                   );
-                } else if (
-                  withdrawAmount >= minimumRequired &&
-                  withdrawAmount > user.balance
-                ) {
+                } else if (withdrawAmount > user.balance) {
                   alert(
                     `You don’t have up to ${formatCurrency(
                       withdrawAmount
