@@ -23,7 +23,7 @@ export default function AdminPanel() {
           status: type === "withdraw" ? status : undefined,
           reason:
             type === "withdraw" && status === "failed" ? reason : undefined,
-        }
+        },
       );
 
       setResult(res.data.user);
@@ -44,7 +44,7 @@ export default function AdminPanel() {
         {
           email,
           limit: Number(withdrawalLimit),
-        }
+        },
       );
       setResult(res.data.user);
       alert(res.data.message || "Withdrawal limit updated!");
@@ -64,7 +64,7 @@ export default function AdminPanel() {
         {
           email,
           index: txIndex,
-        }
+        },
       );
       setResult(res.data.user);
       alert(res.data.message || "Transaction removed successfully!");
@@ -81,7 +81,7 @@ export default function AdminPanel() {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/admin/get-user`,
-        { email }
+        { email },
       );
       setResult(res.data.user);
       alert(res.data.message || "User fetched successfully!");
@@ -133,10 +133,15 @@ export default function AdminPanel() {
               <option value="failed">Failed</option>
             </select>
 
-            {status === "failed" && (
+            {/* ✅ Show reason input for both failed and pending */}
+            {(status === "failed" || status === "pending") && (
               <input
                 type="text"
-                placeholder="Reason for failure"
+                placeholder={
+                  status === "failed"
+                    ? "Reason for failure"
+                    : "Reason for pending"
+                }
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 className="w-full border p-2 rounded"
