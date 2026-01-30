@@ -6,8 +6,8 @@ export default function AdminPanel() {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("deposit");
   const [status, setStatus] = useState("pending"); // ✅ withdrawal status
-  const [reason, setReason] = useState(""); // ✅ failure reason
-  const [withdrawalLimit, setWithdrawalLimit] = useState(""); // ✅ new: withdrawal limit
+  const [reason, setReason] = useState(""); // ✅ reason (failed or pending)
+  const [withdrawalLimit, setWithdrawalLimit] = useState(""); // ✅ withdrawal limit
   const [result, setResult] = useState(null);
 
   // Handle deposit/withdraw
@@ -22,7 +22,9 @@ export default function AdminPanel() {
           type,
           status: type === "withdraw" ? status : undefined,
           reason:
-            type === "withdraw" && status === "failed" ? reason : undefined,
+            type === "withdraw" && (status === "failed" || status === "pending")
+              ? reason
+              : undefined,
         },
       );
 
@@ -205,9 +207,15 @@ export default function AdminPanel() {
                 <span>
                   {tx.date} — {tx.type} ${tx.amount} ({tx.status})
                   {tx.type === "withdraw" &&
-                    tx.status === "failed" &&
+                    (tx.status === "failed" || tx.status === "pending") &&
                     tx.reason && (
-                      <span className="text-red-600 ml-2">
+                      <span
+                        className={`ml-2 ${
+                          tx.status === "failed"
+                            ? "text-red-600"
+                            : "text-yellow-600"
+                        }`}
+                      >
                         Reason: {tx.reason}
                       </span>
                     )}
