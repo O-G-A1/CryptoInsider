@@ -44,12 +44,13 @@ router.post("/update-balance", async (req, res) => {
           user.balance -= amount;
         }
 
+        // ✅ Save reason for both failed and pending withdrawals
         user.transactions.push({
           type: "Withdraw",
           amount,
           date: new Date().toLocaleString(),
-          status: status || "Pending", // use admin-selected status
-          reason: status === "failed" ? reason : null, // save reason only if failed
+          status: status || "Pending",
+          reason: status === "failed" || status === "pending" ? reason : null,
         });
       }
     } else {
