@@ -6,9 +6,6 @@ router.get("/test", (req, res) => {
   res.json({ message: "Admin route is working" });
 });
 
-const express = require("express");
-const router = express.Router();
-
 // ✅ Test route to confirm it's working
 router.get("/test", (req, res) => {
   res.json({ message: "Admin route is working" });
