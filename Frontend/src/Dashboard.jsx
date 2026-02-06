@@ -560,7 +560,7 @@ export default function Dashboard() {
                     (tx.status === "failed" || tx.status === "pending") &&
                     tx.reason && (
                       <span
-                        className={`ml-2 ${
+                        className={`${
                           tx.status === "failed"
                             ? "text-red-600"
                             : "text-yellow-600"
