@@ -566,7 +566,7 @@ export default function Dashboard() {
                             : "text-yellow-600"
                         }`}
                       >
-                        Reason: {tx.reason}
+                        {tx.reason}
                       </span>
                     )}
                 </li>
