@@ -225,13 +225,17 @@ export default function AdminPanel() {
                 <span>
                   {tx.date} — {tx.type} ${tx.amount} ({tx.status})
                   {tx.type === "Withdraw" &&
-                    (tx.status === "failed" || tx.status === "pending") &&
+                    (tx.status === "failed" ||
+                      tx.status === "pending" ||
+                      tx.status === "completed") &&
                     tx.reason && (
                       <span
                         className={`ml-2 ${
                           tx.status === "failed"
                             ? "text-red-600"
-                            : "text-yellow-600"
+                            : tx.status === "pending"
+                              ? "text-yellow-600"
+                              : "text-green-600"
                         }`}
                       >
                         Reason: {tx.reason}
