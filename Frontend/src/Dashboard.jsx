@@ -533,59 +533,48 @@ export default function Dashboard() {
                     .slice()
                     .sort((a, b) => new Date(b.date) - new Date(a.date))
                     .slice(0, 5)
-              ) // show only first 5
-                .map((tx, idx) => (
-                  <li
-                    key={idx}
-                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm gap-2 sm:gap-4"
-                  >
-                    <span className="font-medium text-gray-700">{tx.type}</span>
-                    <span className="text-gray-600">
-                      {formatCurrency(tx.amount)}
-                    </span>
-                    <span className="text-gray-500">{tx.date}</span>
-                    <span
-                      className={`${
-                        tx.status === "completed"
-                          ? "text-green-600"
-                          : tx.status === "pending"
-                            ? "text-yellow-600"
-                            : "text-red-600"
-                      }`}
-                    >
-                      {tx.status}
-                    </span>
-                    {tx.type === "withdraw" &&
-                      (tx.status === "failed" || tx.status === "pending") &&
-                      tx.reason && (
-                        <span
-                          className={`ml-2 ${
-                            tx.status === "failed"
-                              ? "text-red-600"
-                              : "text-yellow-600"
-                          }`}
-                        >
-                          Reason: {tx.reason}
-                        </span>
-                      )}
-                  </li>
-                ))}
-            </ul>
-
-            {/* Load More / Show Less Button */}
-            {user.transactions.length > 5 && (
-              <div className="text-center mt-4">
-                <button
-                  onClick={() => setShowAllTx(!showAllTx)} // ✅ toggle instead of forcing true
-                  className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+              ).map((tx, idx) => (
+                <li
+                  key={idx}
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm gap-2 sm:gap-4"
                 >
-                  {showAllTx ? "Show Less" : "Load More"}
-                </button>
-              </div>
-            )}
+                  <span className="font-medium text-gray-700">{tx.type}</span>
+                  <span className="text-gray-600">
+                    {formatCurrency(tx.amount)}
+                  </span>
+                  <span className="text-gray-500">{tx.date}</span>
+                  <span
+                    className={`${
+                      tx.status === "completed"
+                        ? "text-green-600"
+                        : tx.status === "pending"
+                          ? "text-yellow-600"
+                          : "text-red-600"
+                    }`}
+                  >
+                    {tx.status}
+                  </span>
+
+                  {/* ✅ Show reason for failed or pending withdrawals */}
+                  {tx.type === "Withdraw" && // match backend capitalization
+                    (tx.status === "failed" || tx.status === "pending") &&
+                    tx.reason && (
+                      <span
+                        className={`ml-2 ${
+                          tx.status === "failed"
+                            ? "text-red-600"
+                            : "text-yellow-600"
+                        }`}
+                      >
+                        Reason: {tx.reason}
+                      </span>
+                    )}
+                </li>
+              ))}
+            </ul>
           </>
         ) : (
-          <p className="text-gray-500 text-sm">No transactions yet</p>
+          <p className="text-gray-500">No transactions found.</p>
         )}
       </section>
     </div>
