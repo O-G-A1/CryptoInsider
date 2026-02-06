@@ -5,31 +5,41 @@ export default function AdminPanel() {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("deposit");
-  const [status, setStatus] = useState("pending"); // ✅ withdrawal status
-  const [reason, setReason] = useState(""); // ✅ reason (failed or pending)
-  const [withdrawalLimit, setWithdrawalLimit] = useState(""); // ✅ withdrawal limit
+  const [status, setStatus] = useState("pending");
+  const [reason, setReason] = useState("");
+  const [withdrawalLimit, setWithdrawalLimit] = useState("");
   const [result, setResult] = useState(null);
 
   // Handle deposit/withdraw
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const payload = {
+        email,
+        amount: Number(amount),
+        type,
+      };
+
+      if (type === "withdraw") {
+        payload.status = status;
+        // ✅ Always send reason for failed or pending
+        if (status === "failed" || status === "pending") {
+          payload.reason = reason;
+        }
+      }
+
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/admin/update-balance`,
-        {
-          email,
-          amount: Number(amount),
-          type,
-          status: type === "withdraw" ? status : undefined,
-          reason:
-            type === "withdraw" && (status === "failed" || status === "pending")
-              ? reason
-              : undefined,
-        },
+        payload,
       );
 
       setResult(res.data.user);
       alert(res.data.message || "Balance updated successfully!");
+
+      // ✅ Reset form after submit
+      setAmount("");
+      setReason("");
+      setStatus("pending");
     } catch (err) {
       console.error("AdminPanel error:", err);
       const errorMsg =
@@ -50,6 +60,7 @@ export default function AdminPanel() {
       );
       setResult(res.data.user);
       alert(res.data.message || "Withdrawal limit updated!");
+      setWithdrawalLimit("");
     } catch (err) {
       console.error("SetLimit error:", err);
       const errorMsg =
@@ -58,7 +69,7 @@ export default function AdminPanel() {
     }
   };
 
-  // Handle transaction removal (auto-refreshes list)
+  // Handle transaction removal
   const handleRemove = async (txIndex) => {
     try {
       const res = await axios.post(
@@ -68,7 +79,7 @@ export default function AdminPanel() {
           index: txIndex,
         },
       );
-      setResult(res.data.user); // ✅ immediately refreshes with updated history
+      setResult(res.data.user);
       alert(res.data.message || "Transaction removed successfully!");
     } catch (err) {
       console.error("Remove error:", err);
@@ -122,7 +133,6 @@ export default function AdminPanel() {
           <option value="withdraw">Withdraw</option>
         </select>
 
-        {/* ✅ Show status + reason only for withdrawals */}
         {type === "withdraw" && (
           <>
             <select
@@ -135,7 +145,6 @@ export default function AdminPanel() {
               <option value="failed">Failed</option>
             </select>
 
-            {/* ✅ Show reason input for both failed and pending */}
             {(status === "failed" || status === "pending") && (
               <input
                 type="text"
@@ -152,7 +161,6 @@ export default function AdminPanel() {
           </>
         )}
 
-        {/* ✅ Withdrawal limit input + button */}
         <input
           type="number"
           placeholder="Withdrawal Limit"
@@ -195,7 +203,8 @@ export default function AdminPanel() {
             <strong>Email:</strong> {result.email}
           </p>
           <p>
-            <strong>Balance:</strong> ${Number(result.balance).toFixed(2)}
+            <strong>Balance:</strong> $
+            {result.balance ? Number(result.balance).toFixed(2) : "0.00"}
           </p>
           <p>
             <strong>Withdrawal Limit:</strong> ₦{result.withdrawalLimit}
@@ -206,7 +215,7 @@ export default function AdminPanel() {
               <li key={index} className="flex justify-between items-center">
                 <span>
                   {tx.date} — {tx.type} ${tx.amount} ({tx.status})
-                  {tx.type === "withdraw" &&
+                  {tx.type === "Withdraw" &&
                     (tx.status === "failed" || tx.status === "pending") &&
                     tx.reason && (
                       <span
