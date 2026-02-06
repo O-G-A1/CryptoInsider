@@ -58,7 +58,7 @@ export default function AdminPanel() {
     }
   };
 
-  // Handle transaction removal
+  // Handle transaction removal (auto-refreshes list)
   const handleRemove = async (txIndex) => {
     try {
       const res = await axios.post(
@@ -68,7 +68,7 @@ export default function AdminPanel() {
           index: txIndex,
         },
       );
-      setResult(res.data.user);
+      setResult(res.data.user); // ✅ immediately refreshes with updated history
       alert(res.data.message || "Transaction removed successfully!");
     } catch (err) {
       console.error("Remove error:", err);
@@ -195,7 +195,7 @@ export default function AdminPanel() {
             <strong>Email:</strong> {result.email}
           </p>
           <p>
-            <strong>Balance:</strong> ${result.balance.toFixed(2)}
+            <strong>Balance:</strong> ${Number(result.balance).toFixed(2)}
           </p>
           <p>
             <strong>Withdrawal Limit:</strong> ₦{result.withdrawalLimit}

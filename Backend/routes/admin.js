@@ -64,8 +64,8 @@ router.post("/update-balance", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
-        withdrawalLimit: user.withdrawalLimit, // ✅ include limit in response
-        transactions: user.transactions.slice(-5), // return last 5
+        withdrawalLimit: user.withdrawalLimit,
+        transactions: user.transactions, // ✅ return full history
       },
     });
   } catch (err) {
@@ -86,7 +86,7 @@ router.post("/set-withdrawal-limit", async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    user.withdrawalLimit = limit; // ✅ set limit
+    user.withdrawalLimit = limit;
     await user.save();
 
     res.status(200).json({
@@ -128,11 +128,10 @@ router.post("/remove-transaction", async (req, res) => {
       txToRemove.type === "Withdraw" &&
       txToRemove.status !== "failed"
     ) {
-      // ✅ Only roll back if it was actually deducted
       user.balance += txToRemove.amount;
     }
 
-    // Remove transaction
+    // ✅ Remove transaction from history
     user.transactions.splice(index, 1);
 
     await user.save();
@@ -144,7 +143,7 @@ router.post("/remove-transaction", async (req, res) => {
         email: user.email,
         balance: user.balance,
         withdrawalLimit: user.withdrawalLimit,
-        transactions: user.transactions.slice(-5),
+        transactions: user.transactions, // ✅ return full updated history
       },
     });
   } catch (err) {
@@ -171,8 +170,8 @@ router.post("/get-user", async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance,
-        withdrawalLimit: user.withdrawalLimit, // ✅ include limit
-        transactions: user.transactions,
+        withdrawalLimit: user.withdrawalLimit,
+        transactions: user.transactions, // ✅ full history
       },
     });
   } catch (err) {

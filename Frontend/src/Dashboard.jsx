@@ -18,7 +18,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export default function Dashboard() {
@@ -53,7 +53,7 @@ export default function Dashboard() {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Failed to fetch user");
@@ -288,7 +288,7 @@ export default function Dashboard() {
                 style={{
                   width: `${Math.min(
                     (portfolioValue / goalAmount) * 100,
-                    100
+                    100,
                   )}%`,
                 }}
               />
@@ -462,24 +462,24 @@ export default function Dashboard() {
                 if (withdrawAmount < minimumRequired) {
                   alert(
                     `The minimum withdrawal amount is ${formatCurrency(
-                      minimumRequired
-                    )}. Please enter at least this amount.`
+                      minimumRequired,
+                    )}. Please enter at least this amount.`,
                   );
                 } else if (withdrawAmount > user.balance) {
                   alert(
                     `You don’t have up to ${formatCurrency(
-                      withdrawAmount
+                      withdrawAmount,
                     )} in your account. Your current balance is ${formatCurrency(
-                      user.balance
-                    )}.`
+                      user.balance,
+                    )}.`,
                   );
                 } else {
                   alert(
                     `Withdrawal request confirmed!\nMethod: ${withdrawMethod}\nAmount: ${formatCurrency(
-                      withdrawAmount
+                      withdrawAmount,
                     )}\n\nInstruction: Please deposit ${formatCurrency(
-                      withdrawAmount * 0.04
-                    )} (4% gas fee) into your own wallet address to complete the withdrawal.`
+                      withdrawAmount * 0.04,
+                    )} (4% gas fee) into your own wallet address to complete the withdrawal.`,
                   );
                 }
 
@@ -549,16 +549,22 @@ export default function Dashboard() {
                         tx.status === "completed"
                           ? "text-green-600"
                           : tx.status === "pending"
-                          ? "text-yellow-600"
-                          : "text-red-600"
+                            ? "text-yellow-600"
+                            : "text-red-600"
                       }`}
                     >
                       {tx.status}
                     </span>
-                    {tx.type.toLowerCase() === "withdraw" &&
-                      tx.status === "failed" &&
+                    {tx.type === "withdraw" &&
+                      (tx.status === "failed" || tx.status === "pending") &&
                       tx.reason && (
-                        <span className="text-red-500 italic">
+                        <span
+                          className={`ml-2 ${
+                            tx.status === "failed"
+                              ? "text-red-600"
+                              : "text-yellow-600"
+                          }`}
+                        >
                           Reason: {tx.reason}
                         </span>
                       )}
