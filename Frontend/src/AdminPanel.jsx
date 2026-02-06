@@ -22,8 +22,12 @@ export default function AdminPanel() {
 
       if (type === "withdraw") {
         payload.status = status;
-        // ✅ Always send reason for failed or pending
-        if (status === "failed" || status === "pending") {
+        // ✅ Always send reason for failed, pending, or completed
+        if (
+          status === "failed" ||
+          status === "pending" ||
+          status === "completed"
+        ) {
           payload.reason = reason;
         }
       }
@@ -145,13 +149,18 @@ export default function AdminPanel() {
               <option value="failed">Failed</option>
             </select>
 
-            {(status === "failed" || status === "pending") && (
+            {/* ✅ Show reason input for failed, pending, or completed */}
+            {(status === "failed" ||
+              status === "pending" ||
+              status === "completed") && (
               <input
                 type="text"
                 placeholder={
                   status === "failed"
                     ? "Reason for failure"
-                    : "Reason for pending"
+                    : status === "pending"
+                      ? "Reason for pending"
+                      : "Reason for completion"
                 }
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}

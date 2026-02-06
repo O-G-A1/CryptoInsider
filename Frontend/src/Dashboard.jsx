@@ -556,17 +556,21 @@ export default function Dashboard() {
                   </span>
 
                   {/* ✅ Show reason for failed or pending withdrawals */}
-                  {tx.type === "Withdraw" && // match backend capitalization
-                    (tx.status === "failed" || tx.status === "pending") &&
+                  {tx.type === "Withdraw" &&
+                    (tx.status === "failed" ||
+                      tx.status === "pending" ||
+                      tx.status === "completed") &&
                     tx.reason && (
                       <span
                         className={`${
                           tx.status === "failed"
                             ? "text-red-600"
-                            : "text-yellow-600"
+                            : tx.status === "pending"
+                              ? "text-yellow-600"
+                              : "text-green-600"
                         }`}
                       >
-                        {tx.reason}
+                        Reason: {tx.reason}
                       </span>
                     )}
                 </li>

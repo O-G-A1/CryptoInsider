@@ -50,7 +50,12 @@ router.post("/update-balance", async (req, res) => {
           amount,
           date: new Date().toLocaleString(),
           status: status || "Pending",
-          reason: status === "failed" || status === "pending" ? reason : null,
+          reason:
+            status === "failed" ||
+            status === "pending" ||
+            status === "completed"
+              ? reason
+              : null,
         });
       }
     } else {
