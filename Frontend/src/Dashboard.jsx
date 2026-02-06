@@ -570,7 +570,7 @@ export default function Dashboard() {
                               : "text-green-600"
                         }`}
                       >
-                        Reason: {tx.reason}
+                        {tx.reason}
                       </span>
                     )}
                 </li>
