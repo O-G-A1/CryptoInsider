@@ -67,7 +67,7 @@ export default function Dashboard() {
       const data = await res.json();
       setUser(data.user);
     } catch (err) {
-      console.error("Dashboard fetch error:", err);
+      console.error("Dashboard fetch error, kindly reload the page:", err);
       setUser(null);
     } finally {
       setLoading(false);
