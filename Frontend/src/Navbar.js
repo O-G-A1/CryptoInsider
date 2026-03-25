@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar({ onSignupClick, onLoginClick }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,14 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
             className="h-10 w-10 text-indigo-600"
             fill="currentColor"
           >
-            <circle cx="32" cy="32" r="30" stroke="currentColor" strokeWidth="4" fill="white" />
+            <circle
+              cx="32"
+              cy="32"
+              r="30"
+              stroke="currentColor"
+              strokeWidth="4"
+              fill="white"
+            />
             <text
               x="32"
               y="38"
@@ -29,14 +36,22 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
             </text>
           </svg>
           <span className="text-2xl font-bold text-indigo-700 hover:text-indigo-900">
-            CryptoInsider
+            ChainHub
           </span>
         </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center space-x-6 font-medium text-gray-700">
-          <li><Link to="/about" className="hover:text-indigo-600">About Us</Link></li>
-          <li><Link to="/features" className="hover:text-indigo-600">Features</Link></li>
+          <li>
+            <Link to="/about" className="hover:text-indigo-600">
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link to="/features" className="hover:text-indigo-600">
+              Features
+            </Link>
+          </li>
           <li>
             <button onClick={onLoginClick} className="hover:text-indigo-600">
               Login
@@ -57,11 +72,26 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
           className="md:hidden text-indigo-700 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
@@ -70,8 +100,12 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-4 flex flex-col space-y-3 font-medium text-gray-700">
-          <Link to="/about" className="hover:text-indigo-600">About Us</Link>
-          <Link to="/features" className="hover:text-indigo-600">Features</Link>
+          <Link to="/about" className="hover:text-indigo-600">
+            About Us
+          </Link>
+          <Link to="/features" className="hover:text-indigo-600">
+            Features
+          </Link>
 
           <button
             onClick={onLoginClick}
