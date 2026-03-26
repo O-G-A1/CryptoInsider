@@ -102,6 +102,8 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
+  const [withdrawMethod, setWithdrawMethod] = useState("");
+  const [withdrawAmount, setWithdrawAmount] = useState("");
 
   const devMode = true; // 🔑 flip to false when backend is ready
 
@@ -193,7 +195,6 @@ export default function Dashboard() {
           Logout
         </button>
       </header>
-
       {/* Portfolio Summary */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-gray-300 font-medium">Portfolio Value</h2>
@@ -205,7 +206,6 @@ export default function Dashboard() {
           {daysSinceCreation === 1 ? "day" : "days"}
         </p>
       </section>
-
       {/* Wallet Section with Live Prices */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-bold mb-4">Cryptocurrency</h2>
@@ -234,7 +234,6 @@ export default function Dashboard() {
           {showExtended ? "Show less" : "Show more"}
         </button>
       </section>
-
       {/* Actions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md text-center">
         <h2 className="text-xl font-bold mb-4">Actions</h2>
@@ -294,10 +293,9 @@ export default function Dashboard() {
           </div>
         </div>
       )}
-
       {/* Deposit Modal */}
       {showDeposit && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
             <button
               onClick={() => setShowDeposit(false)}
@@ -308,12 +306,49 @@ export default function Dashboard() {
             <h2 className="text-2xl font-bold mb-6 text-indigo-400">
               Deposit Crypto
             </h2>
-            <p className="text-gray-300">Deposit addresses go here...</p>
+            <div className="space-y-4">
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">
+                  USDT (TRC20)
+                </h3>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">ETH(ERC20)</h3>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">
+                  USDT(ERC20)
+                </h3>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">SOL</h3>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">BTC</h3>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
+                </p>
+              </div>
+            </div>
+            <p className="mt-6 text-xs text-gray-400">
+              Please send only the correct coin to each address.
+            </p>
           </div>
         </div>
       )}
-
-      {/* Withdraw Modal */}
+      {/* // Withdraw Modal */}
       {showWithdraw && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
@@ -326,10 +361,93 @@ export default function Dashboard() {
             <h2 className="text-2xl font-bold mb-6 text-indigo-400">
               Withdraw Funds
             </h2>
-            <p className="text-gray-300">Withdrawal form goes here...</p>
+
+            <div className="mb-4 text-left">
+              <label className="block text-gray-300 font-medium mb-2">
+                Select Method
+              </label>
+              <select
+                value={withdrawMethod}
+                onChange={(e) => setWithdrawMethod(e.target.value)}
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+              >
+                <option value="">-- Choose --</option>
+                <option value="usdt">USDT (TRC20)</option>
+                <option value="btc">BTC</option>
+                <option value="bank">Bank Transfer</option>
+              </select>
+            </div>
+
+            <div className="mb-4 text-left">
+              <label className="block text-gray-300 font-medium mb-2">
+                Amount
+              </label>
+              <input
+                type="number"
+                value={withdrawAmount}
+                onChange={(e) => setWithdrawAmount(e.target.value)}
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+              />
+            </div>
+
+            <button
+              onClick={() => {
+                alert(
+                  `Withdrawal confirmed!\nMethod: ${withdrawMethod}\nAmount: ${withdrawAmount}`,
+                );
+                setShowWithdraw(false);
+                setWithdrawMethod("");
+                setWithdrawAmount("");
+              }}
+              className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+            >
+              Confirm Withdrawal
+            </button>
           </div>
         </div>
       )}
+      {/* Transactions */}
+      <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+        <h2 className="text-xl font-bold text-indigo-400 mb-4">
+          Recent Transactions
+        </h2>
+        {user.transactions && user.transactions.length > 0 ? (
+          <ul className="divide-y divide-gray-700">
+            {user.transactions.map((tx, idx) => (
+              <li
+                key={idx}
+                className="flex justify-between items-center py-3 text-sm"
+              >
+                {/* Transaction Type */}
+                <span className="font-semibold text-white">{tx.type}</span>
+
+                {/* Amount */}
+                <span className="text-indigo-400 font-medium">
+                  {formatCurrency(tx.amount)}
+                </span>
+
+                {/* Date */}
+                <span className="text-gray-400">{tx.date}</span>
+
+                {/* Status */}
+                <span
+                  className={`font-semibold ${
+                    tx.status === "completed"
+                      ? "text-green-400"
+                      : tx.status === "pending"
+                        ? "text-yellow-400"
+                        : "text-red-400"
+                  }`}
+                >
+                  {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-400 text-sm">No transactions yet</p>
+        )}
+      </section>
     </div>
   );
 }
