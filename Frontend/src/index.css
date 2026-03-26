@@ -46,3 +46,6 @@
     opacity: 1;
   }
 }
+.animate-underline {
+  animation: underlineGrow 1s ease forwards;
+}
