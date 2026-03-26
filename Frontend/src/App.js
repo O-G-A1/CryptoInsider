@@ -103,7 +103,7 @@ function App() {
                     Your Weekly Earnings Potential
                   </h2>
                   <p className="text-md mb-6">
-                    With CryptoInsider, investors typically earn
+                    With ChainHub, investors typically earn
                     <span className="font-semibold text-yellow-300">
                       {" "}
                       5–10% weekly returns
@@ -139,8 +139,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "CryptoInsider helped me grow my $1,000 investment
-                            into $5,000 in just a few months!"
+                            "ChainHub helped me grow my $1,000 investment into
+                            $5,000 in just a few months!"
                           </p>
                           <div className="text-yellow-400 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-300">
@@ -167,8 +167,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "I love the weekly returns. CryptoInsider has
-                            changed my financial future."
+                            "I love the weekly returns. ChainHub has changed my
+                            financial future."
                           </p>
                           <div className="text-yellow-400 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-300">
@@ -208,8 +208,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "CryptoInsider gave me confidence to invest in
-                            crypto for the first time."
+                            "ChainHub gave me confidence to invest in crypto for
+                            the first time."
                           </p>
                           <div className="text-yellow-400 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-300">
@@ -236,8 +236,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "Secure, transparent, and profitable — CryptoInsider
-                            is the real deal."
+                            "Secure, transparent, and profitable — ChainHub is
+                            the real deal."
                           </p>
                           <div className="text-yellow-400 mb-2">★★★★☆</div>
                           <span className="font-semibold text-yellow-300">
@@ -255,10 +255,10 @@ function App() {
                       Wealth Growth Made Simple
                     </h2>
                     <span className="animate-underline"></span>
-                    <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-2xl mx-auto">
-                      When you sign up, CryptoInsider takes care of the complex
-                      investing process for you. Here’s how we make wealth
-                      growth simple and stress‑free:
+                    <p className="text-xl leading-relaxed text-gray-200 mt-4mb-12 max-w-2xl mx-auto">
+                      When you sign up, ChainHub takes care of the complex
+                      trading process for you. Here’s how we make wealth growth
+                      simple and stress‑free:
                     </p>
 
                     {/* Practical Points */}
@@ -311,9 +311,8 @@ function App() {
                           🌍 Global Access
                         </h3>
                         <p className="text-sm leading-relaxed">
-                          CryptoInsider opens the door to profitable
-                          opportunities worldwide — all managed seamlessly on
-                          your behalf.
+                          ChainHub opens the door to profitable opportunities
+                          worldwide — all managed seamlessly on your behalf.
                         </p>
                       </div>
 
@@ -342,7 +341,7 @@ function App() {
                 {
                   <div className="mt-8 text-center max-w-3xl mx-auto">
                     <h2 className="text-1xl font-bold mb-4 inline-block relative">
-                      Why Choose CryptoInsider?
+                      Why Choose ChainHub?
                       <span className="animate-underline"></span>
                     </h2>
 
