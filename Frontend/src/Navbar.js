@@ -41,7 +41,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-6 font-medium text-gray-200">
+        <ul className="hidden md:flex items-center space-x-6 font-medium text-white">
           <li>
             <Link to="/about" className="hover:text-indigo-400">
               About Us
