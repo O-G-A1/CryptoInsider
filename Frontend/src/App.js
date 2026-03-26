@@ -250,10 +250,10 @@ function App() {
                 {/* Wealth Growth Section */}
                 <div className="text-gray-200 py-16 px-6 mt-20">
                   <div className="max-w-5xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-6 text-yellow-300">
+                    <h2 className="text-2xl font-bold mb-6 text-yellow-300">
                       How CryptoInsider Helps You Grow Your Wealth
                     </h2>
-                    <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-3xl mx-auto">
+                    <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-2xl mx-auto">
                       When you sign up, CryptoInsider takes care of the complex
                       investing process for you. Here’s how we make wealth
                       growth simple and stress‑free:
@@ -338,7 +338,7 @@ function App() {
                 </div>{" "}
                 {/* Why CryptoInsider Section */}
                 {
-                  <div className="mt-20 text-center max-w-4xl mx-auto">
+                  <div className="mt-20 text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl font-bold mb-4">
                       Why Choose CryptoInsider?
                     </h2>
