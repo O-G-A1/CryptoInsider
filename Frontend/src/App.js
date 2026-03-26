@@ -132,7 +132,6 @@ function App() {
                 {/* Testimonials Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-3xl font-bold mb-4">Reviews</h2>
-                  <span className="animate-underline"></span>
 
                   {/* Carousel container */}
                   <div className="overflow-hidden relative">
@@ -253,7 +252,7 @@ function App() {
                 {/* Wealth Growth Section */}
                 <div className="text-gray-200 py-16 px-6 mt-20">
                   <div className="max-w-5xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold mb-4 text-yellow-300">
+                    <h2 className="text-2xl font-bold mb-2 text-yellow-300">
                       Wealth Growth Made Simple
                     </h2>
                     <span className="animate-underline"></span>
