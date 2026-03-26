@@ -249,7 +249,7 @@ function App() {
                   </div>
                 </div>
                 {/* Wealth Growth Section */}
-                <div className="text-gray-200 py-16 px-6 mt-10">
+                <div className="text-gray-200 py-16 px-6 mt-8">
                   <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-2xl font-bold mb-2 text-yellow-300">
                       Wealth Growth Made Simple
@@ -340,7 +340,7 @@ function App() {
                 </div>{" "}
                 {/* Why CryptoInsider Section */}
                 {
-                  <div className="mt-20 text-center max-w-3xl mx-auto">
+                  <div className="mt-8 text-center max-w-3xl mx-auto">
                     <h2 className="text-1xl font-bold mb-4 inline-block relative">
                       Why Choose CryptoInsider?
                       <span className="animate-underline"></span>
