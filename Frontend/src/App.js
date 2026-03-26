@@ -381,7 +381,7 @@ function App() {
       )}
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
 
-      <footer className="bg-gradient-to-br from-purple-900 to-indigo-900 text-center text-sm text-yellow-300 font-bold py-8">
+      <footer className="bg-gray-900 text-center text-sm text-yellow-300 font-bold py-8">
         <p>© 2026 ChainHub Technologies Ltd</p>
       </footer>
     </div>
