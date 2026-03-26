@@ -330,7 +330,7 @@ function App() {
                     {/* Call to Action */}
                     <button
                       onClick={() => setShowSignup(true)}
-                      className="mt-12 bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                      className="mt-12 bg-indigo-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition"
                     >
                       Start Growing Your Wealth Today
                     </button>
