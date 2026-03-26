@@ -5,7 +5,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="px-6 py-4 bg-white shadow">
+    <nav className="px-6 py-4 bg-gray-900 shadow">
       <div className="flex justify-between items-center">
         {/* Brand with SVG Logo */}
         <Link to="/" className="flex items-center space-x-2">
@@ -35,25 +35,25 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
               ₿
             </text>
           </svg>
-          <span className="text-2xl font-bold text-indigo-700 hover:text-indigo-900">
+          <span className="text-2xl font-bold text-white hover:text-indigo-400">
             ChainHub
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-6 font-medium text-gray-700">
+        <ul className="hidden md:flex items-center space-x-6 font-medium text-gray-200">
           <li>
-            <Link to="/about" className="hover:text-indigo-600">
+            <Link to="/about" className="hover:text-indigo-400">
               About Us
             </Link>
           </li>
           <li>
-            <Link to="/features" className="hover:text-indigo-600">
+            <Link to="/features" className="hover:text-indigo-400">
               Features
             </Link>
           </li>
           <li>
-            <button onClick={onLoginClick} className="hover:text-indigo-600">
+            <button onClick={onLoginClick} className="hover:text-indigo-400">
               Login
             </button>
           </li>
