@@ -343,6 +343,7 @@ function App() {
                       Why Choose CryptoInsider?
                       <span className="block h-1 bg-indigo-500 mt-2 animate-[underlineGrow_1s_ease_forwards]"></span>
                     </h2>
+
                     <p className="text-md mb-6">
                       We believe crypto should be accessible to everyone. Our
                       platform combines cutting-edge technology with
