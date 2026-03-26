@@ -335,23 +335,23 @@
 {
   /* Why CryptoInsider Section */
 }
-//       <div className="mt-20 text-center max-w-4xl mx-auto">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Why Choose CryptoInsider?
-//         </h2>
-//         <p className="text-md mb-6">
-//           We believe crypto should be accessible to everyone. Our
-//           platform combines cutting-edge technology with
-//           human-centered design to help you invest smarter, faster,
-//           and safer.
-//         </p>
-//         <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
-//           <li>✅ Zero hidden fees</li>
-//           <li>✅ 24/7 customer support</li>
-//           <li>✅ Instant deposits and withdrawals</li>
-//           <li>✅ Trusted by thousands of investors worldwide</li>
-//         </ul>
-//       </div>
+// <div className="mt-20 text-center max-w-4xl mx-auto">
+//   <h2 className="text-3xl font-bold mb-4">
+//     Why Choose CryptoInsider?
+//   </h2>
+//   <p className="text-md mb-6">
+//     We believe crypto should be accessible to everyone. Our
+//     platform combines cutting-edge technology with
+//     human-centered design to help you invest smarter, faster,
+//     and safer.
+//   </p>
+//   <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
+//     <li>✅ Zero hidden fees</li>
+//     <li>✅ 24/7 customer support</li>
+//     <li>✅ Instant deposits and withdrawals</li>
+//     <li>✅ Trusted by thousands of investors worldwide</li>
+//   </ul>
+// </div>
 //     </section>
 //   }
 // />
@@ -636,7 +636,6 @@ function App() {
                   </div>
                 </div>
                 {/* Wealth Growth Section */}
-                {/* Wealth Growth Section */}
                 <div className="text-gray-200 py-16 px-6 mt-20">
                   <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl font-bold mb-6 text-yellow-300">
@@ -726,7 +725,25 @@ function App() {
                   </div>
                 </div>{" "}
                 {/* Why CryptoInsider Section */}
-                {/* ... unchanged ... */}
+                {
+                  <div className="mt-20 text-center max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-4">
+                      Why Choose CryptoInsider?
+                    </h2>
+                    <p className="text-md mb-6">
+                      We believe crypto should be accessible to everyone. Our
+                      platform combines cutting-edge technology with
+                      human-centered design to help you invest smarter, faster,
+                      and safer.
+                    </p>
+                    <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
+                      <li>✅ Zero hidden fees</li>
+                      <li>✅ 24/7 customer support</li>
+                      <li>✅ Instant deposits and withdrawals</li>
+                      <li>✅ Trusted by thousands of investors worldwide</li>
+                    </ul>
+                  </div>
+                }
               </section>
             }
           />
