@@ -69,7 +69,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
 
         {/* Hamburger Icon */}
         <button
-          className="md:hidden text-indigo-700 focus:outline-none"
+          className="md:hidden text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -99,7 +99,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden mt-4 flex flex-col space-y-3 font-medium text-gray-700">
+        <div className="md:hidden mt-4 flex flex-col space-y-3 font-medium text-white">
           <Link to="/about" className="hover:text-indigo-600">
             About Us
           </Link>
@@ -109,7 +109,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
 
           <button
             onClick={onLoginClick}
-            className="px-4 py-2 border border-indigo-600 text-indigo-700 rounded hover:bg-indigo-50 transition"
+            className="px-4 py-2 border border-indigo-600 text-white rounded hover:bg-indigo-50 transition"
           >
             Login
           </button>
