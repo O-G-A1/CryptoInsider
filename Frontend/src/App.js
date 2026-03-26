@@ -33,7 +33,7 @@ function App() {
 
       {/* Main Content */}
       <main
-        className={`transition duration-300 ${
+        className={`pt-20 transition duration-300 ${
           showSignup || showLogin ? "blur-sm" : ""
         }`}
       >
