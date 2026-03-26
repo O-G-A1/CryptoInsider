@@ -132,7 +132,6 @@ function App() {
                 {/* Testimonials Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-3xl font-bold mb-4">Reviews</h2>
-
                   {/* Carousel container */}
                   <div className="overflow-hidden relative">
                     <div className="flex animate-slide">
