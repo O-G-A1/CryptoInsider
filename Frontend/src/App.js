@@ -255,7 +255,7 @@ function App() {
                       Wealth Growth Made Simple
                     </h2>
                     <span className="animate-underline"></span>
-                    <p className="text-xl leading-relaxed text-gray-200 mt-4mb-12 max-w-2xl mx-auto">
+                    <p className="text-xl leading-relaxed text-gray-200 mt-4 mb-12 max-w-2xl mx-auto">
                       When you sign up, ChainHub takes care of the complex
                       trading process for you. Here’s how we make wealth growth
                       simple and stress‑free:
