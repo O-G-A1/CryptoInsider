@@ -58,13 +58,13 @@ function App() {
                 </div>
                 {/* 🎁 Promo Badge */}
                 <div className="flex flex-col items-center space-y-4 mt-8">
-                  <p className="inline-block bg-yellow-200 text-purple-600 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
+                  <p className="inline-block bg-yellow-200 text-gray-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
                     🎁 Sign up and get up to $500 in Crypto
                   </p>
 
                   <button
                     onClick={() => setShowSignup(true)}
-                    className="bg-white text-purple-700 font-semibold px-6 py-3 rounded hover:bg-gray-100 transition"
+                    className="bg-white text-gray-900 font-semibold px-6 py-3 rounded hover:bg-gray-100 transition"
                   >
                     Get Started
                   </button>
@@ -251,7 +251,7 @@ function App() {
                 {/* Wealth Growth Section */}
                 <div className="text-gray-200 py-16 px-6 mt-8">
                   <div className="max-w-5xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold mb-2 text-yellow-300">
+                    <h2 className="text-2xl font-bold mb-2 text-yellow-200">
                       Wealth Growth Made Simple
                     </h2>
                     <span className="animate-underline"></span>
