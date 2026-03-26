@@ -119,126 +119,128 @@
 //                       </div>
 //                     </div>
 //                   </div>
-//                   {/* Testimonials Section */}
-//                   <div className="mt-20 text-center max-w-4xl mx-auto">
-//                     <h2 className="text-3xl font-bold mb-8">User's Review</h2>
+{
+  /* Testimonials Section */
+}
+// <div className="mt-20 text-center max-w-4xl mx-auto">
+//   <h2 className="text-3xl font-bold mb-8">User's Review</h2>
 
-//                     {/* Carousel container */}
-//                     <div className="overflow-hidden relative">
-//                       <div className="flex animate-slide">
-//                         {/* Testimonial 1 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "CryptoInsider helped me grow my $1,000 investment
-//                               into $5,000 in just a few months!"
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★★</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Sarah K.
-//                             </span>
-//                           </div>
-//                         </div>
+//   {/* Carousel container */}
+//   <div className="overflow-hidden relative">
+//     <div className="flex animate-slide">
+//       {/* Testimonial 1 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "CryptoInsider helped me grow my $1,000 investment
+//             into $5,000 in just a few months!"
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★★</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Sarah K.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 2 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "The platform is beginner-friendly. I finally feel
-//                               confident investing in crypto."
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★☆</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — David O.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 2 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "The platform is beginner-friendly. I finally feel
+//             confident investing in crypto."
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★☆</div>
+//           <span className="font-semibold text-yellow-300">
+//             — David O.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 3 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "I love the weekly returns. CryptoInsider has
-//                               changed my financial future."
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★★</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Maria L.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 3 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "I love the weekly returns. CryptoInsider has
+//             changed my financial future."
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★★</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Maria L.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 4 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "Customer support is amazing — they helped me
-//                               every step of the way."
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★★</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — James T.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 4 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "Customer support is amazing — they helped me
+//             every step of the way."
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★★</div>
+//           <span className="font-semibold text-yellow-300">
+//             — James T.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 5 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "I withdrew profits instantly. No hidden fees!"
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★☆</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Anita R.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 5 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "I withdrew profits instantly. No hidden fees!"
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★☆</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Anita R.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 6 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "CryptoInsider gave me confidence to invest in
-//                               crypto for the first time."
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★★</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Kelvin M.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 6 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "CryptoInsider gave me confidence to invest in
+//             crypto for the first time."
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★★</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Kelvin M.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 7 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "My portfolio grew faster than I expected. Highly
-//                               recommend!"
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★★</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Lola S.
-//                             </span>
-//                           </div>
-//                         </div>
+//       {/* Testimonial 7 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "My portfolio grew faster than I expected. Highly
+//             recommend!"
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★★</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Lola S.
+//           </span>
+//         </div>
+//       </div>
 
-//                         {/* Testimonial 8 */}
-//                         <div className="min-w-full px-6">
-//                           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-//                             <p className="text-lg italic mb-4">
-//                               "Secure, transparent, and profitable —
-//                               CryptoInsider is the real deal."
-//                             </p>
-//                             <div className="text-yellow-400 mb-2">★★★★☆</div>
-//                             <span className="font-semibold text-yellow-300">
-//                               — Ahmed B.
-//                             </span>
-//                           </div>
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </div>
+//       {/* Testimonial 8 */}
+//       <div className="min-w-full px-6">
+//         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+//           <p className="text-lg italic mb-4">
+//             "Secure, transparent, and profitable —
+//             CryptoInsider is the real deal."
+//           </p>
+//           <div className="text-yellow-400 mb-2">★★★★☆</div>
+//           <span className="font-semibold text-yellow-300">
+//             — Ahmed B.
+//           </span>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>
 //                   {/* Wealth Growth Section */}
 //                   <div className="text-gray-200 py-16 px-6 mt-20">
 //                     <div className="max-w-5xl mx-auto text-center">
@@ -521,7 +523,115 @@ function App() {
                   <div className="overflow-hidden relative">
                     <div className="flex animate-slide">
                       {/* Testimonial 1 */}
-                      {/* ... all your testimonial blocks remain unchanged ... */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "CryptoInsider helped me grow my $1,000 investment
+                            into $5,000 in just a few months!"
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Sarah K.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 2 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "The platform is beginner-friendly. I finally feel
+                            confident investing in crypto."
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-300">
+                            — David O.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 3 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "I love the weekly returns. CryptoInsider has
+                            changed my financial future."
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Maria L.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 4 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "Customer support is amazing — they helped me every
+                            step of the way."
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-300">
+                            — James T.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 5 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "I withdrew profits instantly. No hidden fees!"
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Anita R.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 6 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "CryptoInsider gave me confidence to invest in
+                            crypto for the first time."
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Kelvin M.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 7 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "My portfolio grew faster than I expected. Highly
+                            recommend!"
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Lola S.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Testimonial 8 */}
+                      <div className="min-w-full px-6">
+                        <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                          <p className="text-lg italic mb-4">
+                            "Secure, transparent, and profitable — CryptoInsider
+                            is the real deal."
+                          </p>
+                          <div className="text-yellow-400 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-300">
+                            — Ahmed B.
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
