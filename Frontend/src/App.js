@@ -33,7 +33,7 @@ function App() {
 
       {/* Main Content */}
       <main
-        className={`transition duration-300 ${
+        className={`pt-16 transition duration-300 ${
           showSignup || showLogin ? "blur-sm" : ""
         }`}
       >
@@ -99,7 +99,7 @@ function App() {
                 </div>
                 {/* ✅ Weekly Earnings Potential Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
-                  <h2 className="text-3xl font-bold mb-4">
+                  <h2 className="text-2xl font-bold mb-4">
                     Your Weekly Earnings Potential
                   </h2>
                   <p className="text-md mb-6">
@@ -331,7 +331,7 @@ function App() {
                     {/* Call to Action */}
                     <button
                       onClick={() => setShowSignup(true)}
-                      className="mt-12 bg-indigo-400 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition"
+                      className="mt-12 bg-indigo-400 text-white text-base px-5 py-5 rounded-lg font-medium hover:bg-indigo-700 transition"
                     >
                       Start Growing Your Wealth Today
                     </button>
@@ -390,7 +390,6 @@ function App() {
     </div>
   );
 }
-
 export default function RootApp() {
   return (
     <Router>

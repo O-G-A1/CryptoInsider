@@ -10,45 +10,40 @@ export default function LoginModal({ onClose }) {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    // ✅ Call backend login route using env variable
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/auth/login`,
-      form
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        form,
+      );
 
-    // ✅ Extract token + user object
-    const { token, user } = res.data;
+      const { token, user } = res.data;
+      localStorage.setItem("authToken", token);
 
-    // ✅ Store token for route protection later
-    localStorage.setItem("authToken", token);
-
-    // ✅ Close modal and navigate to dashboard with user info
-    onClose();
-    navigate("/dashboard", { state: { user } });
-  } catch (err) {
-    alert("Login failed: " + (err.response?.data?.message || err.message));
-  } finally {
-    setLoading(false);
-  }
-};
+      onClose();
+      navigate("/dashboard", { state: { user } });
+    } catch (err) {
+      alert("Login failed: " + (err.response?.data?.message || err.message));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative">
+      <div className="bg-gray-900 rounded-lg shadow-lg p-8 w-full max-w-md relative border border-gray-700">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-3xl font-bold"
         >
           ✕
         </button>
 
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-3xl font-bold text-center text-white mb-6">
           Welcome Back
         </h2>
 
@@ -61,7 +56,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             placeholder="Email"
             required
-            className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
           <input
             type="password"
@@ -70,7 +65,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             placeholder="Password"
             required
-            className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
           <button
             type="submit"

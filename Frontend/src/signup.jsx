@@ -7,79 +7,81 @@ export default function Signup({ onClose }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle input changes
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
     setLoading(true);
     try {
-      console.log("Submitting signup form:", form);
-await axios.post(
-  `${process.env.REACT_APP_API_URL}/api/auth/signup`,
-  form
-);
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/signup`,
+        form,
+      );
 
-      // ✅ Redirect to login with success flag
       navigate("/login", {
-        state: { signupSuccess: true }
+        state: { signupSuccess: true },
       });
 
-      // ✅ Close modal if provided
       if (onClose) {
         onClose();
       }
     } catch (err) {
-      alert("Error signing up: " + (err.response?.data?.message || err.message));
+      alert(
+        "Error signing up: " + (err.response?.data?.message || err.message),
+      );
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="space-y-6 flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md border border-gray-700">
+        <h2 className="text-3xl font-bold text-center text-white mb-6">
           Create Your Account
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label className="block text-sm font-medium text-gray-300">
+              Full Name
+            </label>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="Gbenga Ade"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-white placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-300">
+              Email
+            </label>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-white placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-gray-300">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               value={form.password}
               onChange={handleChange}
               placeholder="••••••••"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-white placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500"
               required
             />
           </div>
@@ -91,9 +93,9 @@ await axios.post(
             {loading ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-gray-400">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-500 hover:underline">
+          <a href="/login" className="text-indigo-400 hover:underline">
             Log in
           </a>
         </p>
