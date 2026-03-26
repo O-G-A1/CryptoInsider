@@ -241,116 +241,120 @@
 //     </div>
 //   </div>
 // </div>
-//                   {/* Wealth Growth Section */}
-//                   <div className="text-gray-200 py-16 px-6 mt-20">
-//                     <div className="max-w-5xl mx-auto text-center">
-//                       <h2 className="text-3xl font-bold mb-6 text-yellow-300">
-//                         How CryptoInsider Helps You Grow Your Wealth
-//                       </h2>
-//                       <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-3xl mx-auto">
-//                         When you sign up, CryptoInsider takes care of the
-//                         complex investing process for you. Here’s how we make
-//                         wealth growth simple and stress‑free:
-//                       </p>
+{
+  /* Wealth Growth Section */
+}
+// <div className="text-gray-200 py-16 px-6 mt-20">
+//   <div className="max-w-5xl mx-auto text-center">
+//     <h2 className="text-3xl font-bold mb-6 text-yellow-300">
+//       How CryptoInsider Helps You Grow Your Wealth
+//     </h2>
+//     <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-3xl mx-auto">
+//       When you sign up, CryptoInsider takes care of the
+//       complex investing process for you. Here’s how we make
+//       wealth growth simple and stress‑free:
+//     </p>
 
-//                       {/* Practical Points */}
-//                       <div className="grid md:grid-cols-3 gap-8 text-left">
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             🤖 Automated Strategies
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             Our smart algorithms monitor the market 24/7 and
-//                             automatically adjust your portfolio to maximize
-//                             growth without you lifting a finger.
-//                           </p>
-//                         </div>
+//     {/* Practical Points */}
+//     <div className="grid md:grid-cols-3 gap-8 text-left">
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           🤖 Automated Strategies
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           Our smart algorithms monitor the market 24/7 and
+//           automatically adjust your portfolio to maximize
+//           growth without you lifting a finger.
+//         </p>
+//       </div>
 
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             📊 Transparent Growth Tracking
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             See your wealth increase in real time with clear
-//                             dashboards that show exactly how your money is
-//                             working for you.
-//                           </p>
-//                         </div>
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           📊 Transparent Growth Tracking
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           See your wealth increase in real time with clear
+//           dashboards that show exactly how your money is
+//           working for you.
+//         </p>
+//       </div>
 
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             🎁 Sign‑Up Bonuses
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             Get instant rewards when you join, giving you a head
-//                             start on your wealth‑building journey.
-//                           </p>
-//                         </div>
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           🎁 Sign‑Up Bonuses
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           Get instant rewards when you join, giving you a head
+//           start on your wealth‑building journey.
+//         </p>
+//       </div>
 
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             🛡️ Built‑In Protection
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             Your funds are safeguarded with industry‑grade
-//                             security and automatic risk controls, so you can
-//                             grow wealth with peace of mind.
-//                           </p>
-//                         </div>
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           🛡️ Built‑In Protection
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           Your funds are safeguarded with industry‑grade
+//           security and automatic risk controls, so you can
+//           grow wealth with peace of mind.
+//         </p>
+//       </div>
 
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             🌍 Global Access
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             CryptoInsider opens the door to profitable
-//                             opportunities worldwide — all managed seamlessly on
-//                             your behalf.
-//                           </p>
-//                         </div>
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           🌍 Global Access
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           CryptoInsider opens the door to profitable
+//           opportunities worldwide — all managed seamlessly on
+//           your behalf.
+//         </p>
+//       </div>
 
-//                         <div>
-//                           <h3 className="text-xl font-bold mb-2 text-yellow-300">
-//                             🤝 Guided Support
-//                           </h3>
-//                           <p className="text-sm leading-relaxed">
-//                             Our team and community provide ongoing guidance, so
-//                             you always know your wealth is being handled by
-//                             experts.
-//                           </p>
-//                         </div>
-//                       </div>
+//       <div>
+//         <h3 className="text-xl font-bold mb-2 text-yellow-300">
+//           🤝 Guided Support
+//         </h3>
+//         <p className="text-sm leading-relaxed">
+//           Our team and community provide ongoing guidance, so
+//           you always know your wealth is being handled by
+//           experts.
+//         </p>
+//       </div>
+//     </div>
 
-//                       {/* Call to Action */}
-//                       <button
-//                         onClick={() => setShowSignup(true)}
-//                         className="mt-12 bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition"
-//                       >
-//                         Start Growing Your Wealth Today
-//                       </button>
-//                     </div>
-//                   </div>{" "}
-//                   {/* Why CryptoInsider Section */}
-//                   <div className="mt-20 text-center max-w-4xl mx-auto">
-//                     <h2 className="text-3xl font-bold mb-4">
-//                       Why Choose CryptoInsider?
-//                     </h2>
-//                     <p className="text-md mb-6">
-//                       We believe crypto should be accessible to everyone. Our
-//                       platform combines cutting-edge technology with
-//                       human-centered design to help you invest smarter, faster,
-//                       and safer.
-//                     </p>
-//                     <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
-//                       <li>✅ Zero hidden fees</li>
-//                       <li>✅ 24/7 customer support</li>
-//                       <li>✅ Instant deposits and withdrawals</li>
-//                       <li>✅ Trusted by thousands of investors worldwide</li>
-//                     </ul>
-//                   </div>
-//                 </section>
-//               }
-//             />
+//     {/* Call to Action */}
+//     <button
+//       onClick={() => setShowSignup(true)}
+//       className="mt-12 bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition"
+//     >
+//       Start Growing Your Wealth Today
+//     </button>
+//   </div>
+// </div>{" "}
+{
+  /* Why CryptoInsider Section */
+}
+//       <div className="mt-20 text-center max-w-4xl mx-auto">
+//         <h2 className="text-3xl font-bold mb-4">
+//           Why Choose CryptoInsider?
+//         </h2>
+//         <p className="text-md mb-6">
+//           We believe crypto should be accessible to everyone. Our
+//           platform combines cutting-edge technology with
+//           human-centered design to help you invest smarter, faster,
+//           and safer.
+//         </p>
+//         <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
+//           <li>✅ Zero hidden fees</li>
+//           <li>✅ 24/7 customer support</li>
+//           <li>✅ Instant deposits and withdrawals</li>
+//           <li>✅ Trusted by thousands of investors worldwide</li>
+//         </ul>
+//       </div>
+//     </section>
+//   }
+// />
 //             {/* Other Pages */}
 //             <Route path="/about" element={<About />} />
 //             <Route path="/features" element={<Features />} />
@@ -438,7 +442,6 @@ function App() {
                     your digital wealth.
                   </p>
                 </div>
-
                 {/* 🎁 Promo Badge */}
                 <div className="flex flex-col items-center space-y-4 mt-8">
                   <p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
@@ -452,7 +455,6 @@ function App() {
                     Get Started
                   </button>
                 </div>
-
                 {/* Features Section */}
                 <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
                   <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
@@ -481,7 +483,6 @@ function App() {
                     </p>
                   </div>
                 </div>
-
                 {/* ✅ Weekly Earnings Potential Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-3xl font-bold mb-4">
@@ -514,7 +515,6 @@ function App() {
                     </div>
                   </div>
                 </div>
-
                 {/* Testimonials Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-3xl font-bold mb-8">User's Review</h2>
@@ -635,10 +635,96 @@ function App() {
                     </div>
                   </div>
                 </div>
-
                 {/* Wealth Growth Section */}
-                {/* ... unchanged ... */}
+                {/* Wealth Growth Section */}
+                <div className="text-gray-200 py-16 px-6 mt-20">
+                  <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl font-bold mb-6 text-yellow-300">
+                      How CryptoInsider Helps You Grow Your Wealth
+                    </h2>
+                    <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-3xl mx-auto">
+                      When you sign up, CryptoInsider takes care of the complex
+                      investing process for you. Here’s how we make wealth
+                      growth simple and stress‑free:
+                    </p>
 
+                    {/* Practical Points */}
+                    <div className="grid md:grid-cols-3 gap-8 text-left">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          🤖 Automated Strategies
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          Our smart algorithms monitor the market 24/7 and
+                          automatically adjust your portfolio to maximize growth
+                          without you lifting a finger.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          📊 Transparent Growth Tracking
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          See your wealth increase in real time with clear
+                          dashboards that show exactly how your money is working
+                          for you.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          🎁 Sign‑Up Bonuses
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          Get instant rewards when you join, giving you a head
+                          start on your wealth‑building journey.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          🛡️ Built‑In Protection
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          Your funds are safeguarded with industry‑grade
+                          security and automatic risk controls, so you can grow
+                          wealth with peace of mind.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          🌍 Global Access
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          CryptoInsider opens the door to profitable
+                          opportunities worldwide — all managed seamlessly on
+                          your behalf.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                          🤝 Guided Support
+                        </h3>
+                        <p className="text-sm leading-relaxed">
+                          Our team and community provide ongoing guidance, so
+                          you always know your wealth is being handled by
+                          experts.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Call to Action */}
+                    <button
+                      onClick={() => setShowSignup(true)}
+                      className="mt-12 bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                    >
+                      Start Growing Your Wealth Today
+                    </button>
+                  </div>
+                </div>{" "}
                 {/* Why CryptoInsider Section */}
                 {/* ... unchanged ... */}
               </section>
