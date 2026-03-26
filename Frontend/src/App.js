@@ -44,14 +44,16 @@ function App() {
             element={
               <section className="min-h-screen bg-gray-900 text-white px-6 py-12">
                 <div className="max-w-5xl mx-auto text-center">
-                  <h1 className="text-4xl font-bold mb-4 text-yellow-400">
-                    Invest in Crypto with Confidence
+                  <h1 className="text-3xl font-bold mb-4 text-yellow-400">
+                    Copytrade & Reclaim Assets with Ease
                   </h1>
                   <p className="text-lg mb-8 max-w-3xl mx-auto">
-                    ChainHub is your gateway to the future of finance. Whether
-                    you're new to crypto or a seasoned investor, our platform
-                    offers secure, profitable, and user-friendly tools to grow
-                    your digital wealth.
+                    ChainHub is your gateway to modern investing. Whether you’re
+                    exploring copytrading for the first time or seeking to
+                    recover lost assets, our platform delivers secure,
+                    intuitive, and profitable tools to help you grow and protect
+                    your wealth. With ChainHub, confidence isn’t just a promise
+                    — it’s built into every trade and recovery step.
                   </p>
                 </div>
                 {/* 🎁 Promo Badge */}
@@ -130,6 +132,7 @@ function App() {
                 {/* Testimonials Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-3xl font-bold mb-8">User's Review</h2>
+                  <span className="animate-underline"></span>
 
                   {/* Carousel container */}
                   <div className="overflow-hidden relative">
@@ -253,6 +256,7 @@ function App() {
                     <h2 className="text-2xl font-bold mb-6 text-yellow-300">
                       How CryptoInsider Helps You Grow Your Wealth
                     </h2>
+                    <span className="animate-underline"></span>
                     <p className="text-xl leading-relaxed text-gray-200 mb-12 max-w-2xl mx-auto">
                       When you sign up, CryptoInsider takes care of the complex
                       investing process for you. Here’s how we make wealth
