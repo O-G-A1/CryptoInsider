@@ -1,32 +1,5 @@
-// import React, { useState } from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Navbar from "./Navbar";
-// import SignupModal from "./SignupModal";
-// import LoginModal from "./LoginModal";
-// import About from "./About";
-// import Features from "./Features";
-// import Dashboard from "./Dashboard";
-// import WithdrawalPending from "./WithdrawalPending";
-// import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
-
-// function App() {
-//   const [showSignup, setShowSignup] = useState(false);
-//   const [showLogin, setShowLogin] = useState(false);
-//   return (
-//     <Router>
-//       <div className="relative">
-//         {/* Navbar always visible */}
-//         <Navbar
-//           onSignupClick={() => setShowSignup(true)}
-//           onLoginClick={() => setShowLogin(true)}
-//         />
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
@@ -36,22 +9,17 @@ import Dashboard from "./Dashboard";
 import WithdrawalPending from "./WithdrawalPending";
 import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
 
-function Layout() {
+function App() {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const location = useLocation();
-
-  // ✅ Only show navbar if NOT on dashboard
-  const showNavbar = location.pathname !== "/dashboard";
-
   return (
-    <div className="relative">
-      {showNavbar && (
+    <Router>
+      <div className="relative">
+        {/* Navbar always visible */}
         <Navbar
           onSignupClick={() => setShowSignup(true)}
           onLoginClick={() => setShowLogin(true)}
         />
-      )}
 
         {/* Main Content */}
         <main
