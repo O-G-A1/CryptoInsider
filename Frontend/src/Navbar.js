@@ -5,7 +5,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="px-6 py-4 bg-gray-900 shadow">
+    <nav className="px-6 py-4 bg-gray-900  border-b border-white shadow">
       <div className="flex justify-between items-center">
         {/* Brand with SVG Logo */}
         <Link to="/" className="flex items-center space-x-2">
