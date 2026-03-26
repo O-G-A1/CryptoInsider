@@ -1,5 +1,32 @@
+// import React, { useState } from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Navbar from "./Navbar";
+// import SignupModal from "./SignupModal";
+// import LoginModal from "./LoginModal";
+// import About from "./About";
+// import Features from "./Features";
+// import Dashboard from "./Dashboard";
+// import WithdrawalPending from "./WithdrawalPending";
+// import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
+
+// function App() {
+//   const [showSignup, setShowSignup] = useState(false);
+//   const [showLogin, setShowLogin] = useState(false);
+//   return (
+//     <Router>
+//       <div className="relative">
+//         {/* Navbar always visible */}
+//         <Navbar
+//           onSignupClick={() => setShowSignup(true)}
+//           onLoginClick={() => setShowLogin(true)}
+//         />
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./Navbar";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
@@ -9,17 +36,22 @@ import Dashboard from "./Dashboard";
 import WithdrawalPending from "./WithdrawalPending";
 import AdminPanel from "./AdminPanel"; // ✅ import AdminPanel
 
-function App() {
+function Layout() {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const location = useLocation();
+
+  // ✅ Only show navbar if NOT on dashboard
+  const showNavbar = location.pathname !== "/dashboard";
+
   return (
-    <Router>
-      <div className="relative">
-        {/* Navbar always visible */}
+    <div className="relative">
+      {showNavbar && (
         <Navbar
           onSignupClick={() => setShowSignup(true)}
           onLoginClick={() => setShowLogin(true)}
         />
+      )}
 
         {/* Main Content */}
         <main
@@ -38,16 +70,16 @@ function App() {
                       Invest in Crypto with Confidence
                     </h1>
                     <p className="text-lg mb-8 max-w-3xl mx-auto">
-                      CryptoInsider is your gateway to the future of finance.
-                      Whether you're new to crypto or a seasoned investor, our
-                      platform offers secure, profitable, and user-friendly
-                      tools to grow your digital wealth.
+                      ChainHub is your gateway to the future of finance. Whether
+                      you're new to crypto or a seasoned investor, our platform
+                      offers secure, profitable, and user-friendly tools to grow
+                      your digital wealth.
                     </p>
                   </div>
                   {/* 🎁 Promo Badge */}
                   <div className="flex flex-col items-center space-y-4 mt-8">
                     <p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
-                      🎁 Sign up and get $500 in Crypto
+                      🎁 Sign up and get up to $500 in Crypto
                     </p>
 
                     <button
@@ -372,7 +404,7 @@ function App() {
         )}
         {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
         <footer className="bg-gradient-to-br from-purple-900 to-indigo-900 text-center text-sm text-yellow-300 font-bold py-8">
-          <p>© 2025 CryptoInsider Technologies Ltd</p>
+          <p>© 2026 ChainHub Technologies Ltd</p>
         </footer>
       </div>
     </Router>
