@@ -23,7 +23,7 @@ function App() {
   const showNavbar = location.pathname !== "/dashboard";
 
   return (
-    <div className="relative">
+    <div className={showNavbar ? "relative pt-16" : "relative"}>
       {showNavbar && (
         <Navbar
           onSignupClick={() => setShowSignup(true)}
@@ -33,7 +33,7 @@ function App() {
 
       {/* Main Content */}
       <main
-        className={`pt-16 transition duration-300 ${
+        className={`transition duration-300 ${
           showSignup || showLogin ? "blur-sm" : ""
         }`}
       >
@@ -390,6 +390,7 @@ function App() {
     </div>
   );
 }
+
 export default function RootApp() {
   return (
     <Router>
