@@ -339,7 +339,7 @@ function App() {
                 {/* Why CryptoInsider Section */}
                 {
                   <div className="mt-20 text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-4">
+                    <h2 className="text-1xl font-bold mb-4">
                       Why Choose CryptoInsider?
                     </h2>
                     <p className="text-md mb-6">
