@@ -44,7 +44,7 @@ function App() {
             element={
               <section className="min-h-screen bg-gray-900 text-white px-6 py-12">
                 <div className="max-w-5xl mx-auto text-center">
-                  <h1 className="text-3xl font-bold mb-4 text-yellow-400">
+                  <h1 className="text-3xl font-bold mb-4 text-yellow-200">
                     Copytrade & Reclaim Assets with Ease
                   </h1>
                   <p className="text-lg mb-8 max-w-3xl mx-auto">
@@ -58,7 +58,7 @@ function App() {
                 </div>
                 {/* 🎁 Promo Badge */}
                 <div className="flex flex-col items-center space-y-4 mt-8">
-                  <p className="inline-block bg-yellow-400 text-purple-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
+                  <p className="inline-block bg-yellow-200 text-purple-600 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
                     🎁 Sign up and get up to $500 in Crypto
                   </p>
 
@@ -104,7 +104,7 @@ function App() {
                   </h2>
                   <p className="text-md mb-6">
                     With ChainHub, investors typically earn
-                    <span className="font-semibold text-yellow-300">
+                    <span className="font-semibold text-yellow-200">
                       {" "}
                       5–10% weekly returns
                     </span>{" "}
@@ -142,8 +142,8 @@ function App() {
                             "ChainHub helped me grow my $1,000 investment into
                             $5,000 in just a few months!"
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★★</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-200">
                             — Sarah K.
                           </span>
                         </div>
@@ -156,8 +156,8 @@ function App() {
                             "The platform is beginner-friendly. I finally feel
                             confident investing in crypto."
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★☆</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-200">
                             — David O.
                           </span>
                         </div>
@@ -170,8 +170,8 @@ function App() {
                             "I love the weekly returns. ChainHub has changed my
                             financial future."
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★★</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-200">
                             — Maria L.
                           </span>
                         </div>
@@ -184,8 +184,8 @@ function App() {
                             "Customer support is amazing — they helped me every
                             step of the way."
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★★</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-200">
                             — James T.
                           </span>
                         </div>
@@ -197,8 +197,8 @@ function App() {
                           <p className="text-lg italic mb-4">
                             "I withdrew profits instantly. No hidden fees!"
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★☆</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-200">
                             — Anita R.
                           </span>
                         </div>
@@ -211,8 +211,8 @@ function App() {
                             "ChainHub gave me confidence to invest in crypto for
                             the first time."
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★★</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-200">
                             — Kelvin M.
                           </span>
                         </div>
@@ -225,8 +225,8 @@ function App() {
                             "My portfolio grew faster than I expected. Highly
                             recommend!"
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★★</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★★</div>
+                          <span className="font-semibold text-yellow-200">
                             — Lola S.
                           </span>
                         </div>
@@ -239,8 +239,8 @@ function App() {
                             "Secure, transparent, and profitable — ChainHub is
                             the real deal."
                           </p>
-                          <div className="text-yellow-400 mb-2">★★★★☆</div>
-                          <span className="font-semibold text-yellow-300">
+                          <div className="text-yellow-200 mb-2">★★★★☆</div>
+                          <span className="font-semibold text-yellow-200">
                             — Ahmed B.
                           </span>
                         </div>
@@ -255,7 +255,7 @@ function App() {
                       Wealth Growth Made Simple
                     </h2>
                     <span className="animate-underline"></span>
-                    <p className="text-xl leading-relaxed text-gray-200 mt-4 mb-12 max-w-2xl mx-auto">
+                    <p className="text-xl leading-relaxed text-gray-200 mt-6 mb-12 max-w-2xl mx-auto">
                       When you sign up, ChainHub takes care of the complex
                       trading process for you. Here’s how we make wealth growth
                       simple and stress‑free:
@@ -264,7 +264,7 @@ function App() {
                     {/* Practical Points */}
                     <div className="grid md:grid-cols-3 gap-8 text-left">
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           🤖 Automated Strategies
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -275,7 +275,7 @@ function App() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           📊 Transparent Growth Tracking
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -286,7 +286,7 @@ function App() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           🎁 Sign‑Up Bonuses
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -296,7 +296,7 @@ function App() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           🛡️ Built‑In Protection
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -307,7 +307,7 @@ function App() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           🌍 Global Access
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -317,7 +317,7 @@ function App() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold mb-2 text-yellow-300">
+                        <h3 className="text-xl font-bold mb-2 text-yellow-200">
                           🤝 Guided Support
                         </h3>
                         <p className="text-sm leading-relaxed">
@@ -384,7 +384,7 @@ function App() {
       )}
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
 
-      <footer className="bg-gray-900 text-center text-sm text-yellow-300 font-bold py-8">
+      <footer className="bg-gray-900 text-center text-sm text-yellow-200 font-bold py-8">
         <p>© 2026 ChainHub Technologies Ltd</p>
       </footer>
     </div>
