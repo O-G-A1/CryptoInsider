@@ -341,7 +341,7 @@ function App() {
                   <div className="mt-20 text-center max-w-3xl mx-auto">
                     <h2 className="text-1xl font-bold mb-4 inline-block relative">
                       Why Choose CryptoInsider?
-                      <span className="block h-1 bg-indigo-500 mt-2 animate-underline"></span>
+                      <span className="animate-underline"></span>
                     </h2>
 
                     <p className="text-md mb-6">

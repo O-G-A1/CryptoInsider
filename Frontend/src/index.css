@@ -47,5 +47,9 @@
   }
 }
 .animate-underline {
+  display: block;
+  height: 3px;
+  background-color: #6366f1; /* Tailwind indigo-500 */
+  margin-top: 0.5rem;
   animation: underlineGrow 1s ease forwards;
 }
