@@ -3,17 +3,53 @@
 @tailwind utilities;
 
 @keyframes slide {
-  0% { transform: translateX(0%); }
-  12.5% { transform: translateX(-100%); }
-  25% { transform: translateX(-200%); }
-  37.5% { transform: translateX(-300%); }
-  50% { transform: translateX(-400%); }
-  62.5% { transform: translateX(-500%); }
-  75% { transform: translateX(-600%); }
-  87.5% { transform: translateX(-700%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(0%);
+  }
+  12.5% {
+    transform: translateX(-100%);
+  }
+  25% {
+    transform: translateX(-200%);
+  }
+  37.5% {
+    transform: translateX(-300%);
+  }
+  50% {
+    transform: translateX(-400%);
+  }
+  62.5% {
+    transform: translateX(-500%);
+  }
+  75% {
+    transform: translateX(-600%);
+  }
+  87.5% {
+    transform: translateX(-700%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .animate-slide {
   animation: slide 40s infinite;
+}
+@keyframes underlineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.animate-underline {
+  display: block;
+  height: 3px; /* thickness of the line */
+  background-color: #6366f1; /* indigo-500 */
+  margin-top: 0.5rem; /* spacing below text */
+  animation: underlineGrow 1s ease forwards;
 }
