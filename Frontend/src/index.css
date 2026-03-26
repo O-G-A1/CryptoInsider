@@ -35,6 +35,7 @@
 .animate-slide {
   animation: slide 40s infinite;
 }
+
 @keyframes underlineGrow {
   from {
     width: 0;
