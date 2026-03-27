@@ -256,12 +256,19 @@ export default function Dashboard() {
           >
             Deposit
           </button>
+
           <button
             onClick={() => setShowCopytradeModal(true)}
-            className="px-6 py-2 bg-blue-600 rounded hover:bg-green-700"
+            disabled={!user || user.balance <= 0}
+            className={`x-6 py-2 bg-blue-600 rounded hover:bg-green-700 ${
+              user && user.balance > 0
+                ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-gray-600 text-gray-400 cursor-not-allowed"
+            }`}
           >
-            Copytrade
+            Start Copytrade
           </button>
+
           <button
             onClick={() => setShowWithdraw(true)}
             disabled={user.balance <= 0}
