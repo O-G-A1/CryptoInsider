@@ -105,11 +105,11 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
 
-  const devMode = false; // 🔑 flip to false when backend is ready
+  const devMode = true; // 🔑 flip to false when backend is ready
 
   const fetchUser = async () => {
     if (devMode) {
-      setUser({ name: "Dev User", balance: 1200, createdAt: "2026-03-10" });
+      setUser({ name: "Dev User", balance: 1200, createdAt: "2026-01-5" });
       setLoading(false);
       return;
     }
@@ -424,28 +424,33 @@ export default function Dashboard() {
                 key={idx}
                 className="flex justify-between items-center py-3 text-sm"
               >
-                {/* Transaction Type */}
-                <span className="font-semibold text-white">{tx.type}</span>
+                {/* Transaction Direction */}
+                <div className="flex flex-col">
+                  <span
+                    className={`font-semibold ${
+                      tx.type === "send" ? "text-red-400" : "text-green-400"
+                    }`}
+                  >
+                    {tx.type === "send" ? "Send" : "Receive"}
+                  </span>
+                  {/* Address */}
+                  <span className="text-gray-400 text-xs">
+                    {tx.type === "send" ? `To: ${tx.to}` : `From: ${tx.from}`}
+                  </span>
+                </div>
 
                 {/* Amount */}
-                <span className="text-indigo-400 font-medium">
-                  {formatCurrency(tx.amount)}
+                <span
+                  className={`font-medium ${
+                    tx.type === "send" ? "text-red-400" : "text-green-400"
+                  }`}
+                >
+                  {tx.type === "send" ? `-${tx.amount}` : `+${tx.amount}`}
                 </span>
 
                 {/* Date */}
-                <span className="text-gray-400">{tx.date}</span>
-
-                {/* Status */}
-                <span
-                  className={`font-semibold ${
-                    tx.status === "completed"
-                      ? "text-green-400"
-                      : tx.status === "pending"
-                        ? "text-yellow-400"
-                        : "text-red-400"
-                  }`}
-                >
-                  {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
+                <span className="text-gray-400 text-xs">
+                  {new Date(tx.date).toLocaleDateString()}
                 </span>
               </li>
             ))}
