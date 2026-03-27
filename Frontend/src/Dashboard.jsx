@@ -105,7 +105,7 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
 
-  const devMode = true; // 🔑 flip to false when backend is ready
+  const devMode = false; // 🔑 flip to false when backend is ready
 
   const fetchUser = async () => {
     if (devMode) {
