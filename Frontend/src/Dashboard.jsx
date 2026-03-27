@@ -174,14 +174,14 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = Math.floor(
-    (new Date() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-  );
+  // const daysSinceCreation = Math.floor(
+  //   (new Date() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+  // );
 
-  const portfolioValueWithGrowth =
-    user.balance * Math.pow(1.04, daysSinceCreation);
+  // const portfolioValueWithGrowth =
+  //   user.balance * Math.pow(1.04, daysSinceCreation);
 
-  const portfolioValue = user.balance;
+  // const portfolioValue = user.balance;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6">
