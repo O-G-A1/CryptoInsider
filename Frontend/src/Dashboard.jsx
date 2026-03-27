@@ -175,10 +175,13 @@ export default function Dashboard() {
     );
   }
   const daysSinceCreation = user?.createdAt
-    ? Math.floor(
-        (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+    ? Math.max(
+        1,
+        Math.floor(
+          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+        ),
       )
-    : 0;
+    : 1;
 
   const balance = typeof user?.balance === "number" ? user.balance : 0;
 
@@ -199,8 +202,8 @@ export default function Dashboard() {
 
       {/* Portfolio Summary */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-        <h2 className="text-gray-300 font-medium">Portfolio Value</h2>
-        <p className="text-3xl font-bold text-indigo-400 mt-1">
+        <h2 className="text-gray-300 font-medium">Balance</h2>
+        <p className="text-3xl font-bold text-white mt-1">
           {formatCurrency(portfolioValueWithGrowth || 0)}
         </p>
         <p className="text-green-400 mt-1">
