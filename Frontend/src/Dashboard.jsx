@@ -104,8 +104,10 @@ export default function Dashboard() {
   const [showWithdraw, setShowWithdraw] = useState(false);
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
+  const [showCopytradeModal, setShowCopytradeModal] = useState(false);
+  const [copytradeActive, setCopytradeActive] = useState(false);
 
-  const devMode = false; // 🔑 flip to false when backend is ready
+  const devMode = true; // 🔑 flip to false when backend is ready
 
   const fetchUser = async () => {
     if (devMode) {
@@ -206,6 +208,10 @@ export default function Dashboard() {
         <p className="text-3xl font-bold text-white mt-1">
           {formatCurrency(portfolioValueWithGrowth || 0)}
         </p>
+        {copytradeActive && (
+          <p className="text-yellow-400 mt-2">Copytrade in progress</p>
+        )}
+
         <p className="text-green-400 mt-1">
           +4.00% daily · {daysSinceCreation}{" "}
           {daysSinceCreation === 1 ? "day" : "days"}
@@ -249,6 +255,12 @@ export default function Dashboard() {
             className="px-6 py-2 bg-green-600 rounded hover:bg-green-700"
           >
             Deposit
+          </button>
+          <button
+            onClick={() => setShowCopytradeModal(true)}
+            className="px-6 py-2 bg-blue-600 rounded hover:bg-green-700"
+          >
+            Copytrade
           </button>
           <button
             onClick={() => setShowWithdraw(true)}
@@ -299,6 +311,31 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+      {showCopytradeModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <p className="text-white mb-4">Start Copytrade?</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => {
+                  setCopytradeActive(true);
+                  setShowCopytradeModal(false);
+                }}
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowCopytradeModal(false)}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Deposit Modal */}
       {showDeposit && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -414,7 +451,7 @@ export default function Dashboard() {
       )}
       {/* Transactions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-        <h2 className="text-xl font-bold text-indigo-400 mb-4">
+        <h2 className="text-xl font-bold text-white mb-4">
           Recent Transactions
         </h2>
         {user.transactions && user.transactions.length > 0 ? (
@@ -438,8 +475,8 @@ export default function Dashboard() {
                     {/* Address (static fallback if missing) */}
                     <span className="text-gray-400 text-xs">
                       {tx.type === "send"
-                        ? `To: ${tx.to || "0xAbC123...EthAddr"}`
-                        : `From: ${tx.from || "0xDeF456...EthAddr"}`}
+                        ? `To: ${tx.to || "0xAbC123..."}`
+                        : `From: ${tx.from || "0xDeF456..."}`}
                     </span>
                   </div>
 
