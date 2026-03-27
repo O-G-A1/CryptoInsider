@@ -419,41 +419,45 @@ export default function Dashboard() {
         </h2>
         {user.transactions && user.transactions.length > 0 ? (
           <ul className="divide-y divide-gray-700">
-            {user.transactions.map((tx, idx) => (
-              <li
-                key={idx}
-                className="flex justify-between items-center py-3 text-sm"
-              >
-                {/* Transaction Direction */}
-                <div className="flex flex-col">
+            {[...user.transactions] // clone array
+              .sort((a, b) => new Date(b.date) - new Date(a.date)) // sort newest first
+              .map((tx, idx) => (
+                <li
+                  key={idx}
+                  className="flex justify-between items-center py-3 text-sm"
+                >
+                  {/* Transaction Direction */}
+                  <div className="flex flex-col">
+                    <span
+                      className={`font-semibold ${
+                        tx.type === "send" ? "text-red-400" : "text-green-400"
+                      }`}
+                    >
+                      {tx.type === "send" ? "Send" : "Receive"}
+                    </span>
+                    {/* Address (static fallback if missing) */}
+                    <span className="text-gray-400 text-xs">
+                      {tx.type === "send"
+                        ? `To: ${tx.to || "0xAbC123...EthAddr"}`
+                        : `From: ${tx.from || "0xDeF456...EthAddr"}`}
+                    </span>
+                  </div>
+
+                  {/* Amount */}
                   <span
-                    className={`font-semibold ${
+                    className={`font-medium ${
                       tx.type === "send" ? "text-red-400" : "text-green-400"
                     }`}
                   >
-                    {tx.type === "send" ? "Send" : "Receive"}
+                    {tx.type === "send" ? `-${tx.amount}` : `+${tx.amount}`}
                   </span>
-                  {/* Address */}
+
+                  {/* Date */}
                   <span className="text-gray-400 text-xs">
-                    {tx.type === "send" ? `To: ${tx.to}` : `From: ${tx.from}`}
+                    {new Date(tx.date).toLocaleDateString()}
                   </span>
-                </div>
-
-                {/* Amount */}
-                <span
-                  className={`font-medium ${
-                    tx.type === "send" ? "text-red-400" : "text-green-400"
-                  }`}
-                >
-                  {tx.type === "send" ? `-${tx.amount}` : `+${tx.amount}`}
-                </span>
-
-                {/* Date */}
-                <span className="text-gray-400 text-xs">
-                  {new Date(tx.date).toLocaleDateString()}
-                </span>
-              </li>
-            ))}
+                </li>
+              ))}
           </ul>
         ) : (
           <p className="text-gray-400 text-sm">No transactions yet</p>
