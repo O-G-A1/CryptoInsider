@@ -174,14 +174,15 @@ export default function Dashboard() {
       </div>
     );
   }
-  // const daysSinceCreation = Math.floor(
-  //   (new Date() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-  // );
+  const daysSinceCreation = user?.createdAt
+    ? Math.floor(
+        (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+      )
+    : 0;
 
-  // const portfolioValueWithGrowth =
-  //   user.balance * Math.pow(1.04, daysSinceCreation);
+  const balance = typeof user?.balance === "number" ? user.balance : 0;
 
-  // const portfolioValue = user.balance;
+  const portfolioValueWithGrowth = balance * Math.pow(1.04, daysSinceCreation);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6">
@@ -195,17 +196,19 @@ export default function Dashboard() {
           Logout
         </button>
       </header>
+
       {/* Portfolio Summary */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-gray-300 font-medium">Portfolio Value</h2>
         <p className="text-3xl font-bold text-indigo-400 mt-1">
-          {formatCurrency(portfolioValueWithGrowth)}
+          {formatCurrency(portfolioValueWithGrowth || 0)}
         </p>
         <p className="text-green-400 mt-1">
           +4.00% daily · {daysSinceCreation}{" "}
           {daysSinceCreation === 1 ? "day" : "days"}
         </p>
       </section>
+
       {/* Wallet Section with Live Prices */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-bold mb-4">Cryptocurrency</h2>
