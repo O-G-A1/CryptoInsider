@@ -107,7 +107,7 @@ export default function Dashboard() {
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(false);
 
-  const devMode = true; // 🔑 flip to false when backend is ready
+  const devMode = false; // 🔑 flip to false when backend is ready
 
   const fetchUser = async () => {
     if (devMode) {
@@ -316,6 +316,7 @@ export default function Dashboard() {
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
             <p className="text-white mb-4">Start Copytrade?</p>
             <div className="flex justify-center gap-4">
+              {/* Yes button */}
               <button
                 onClick={() => {
                   setCopytradeActive(true);
@@ -325,8 +326,16 @@ export default function Dashboard() {
               >
                 Yes
               </button>
+
+              {/* No button */}
               <button
-                onClick={() => setShowCopytradeModal(false)}
+                onClick={() => {
+                  if (copytradeActive) {
+                    // If already active, disable it
+                    setCopytradeActive(false);
+                  }
+                  setShowCopytradeModal(false);
+                }}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
               >
                 No
