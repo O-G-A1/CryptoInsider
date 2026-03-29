@@ -597,44 +597,56 @@ export default function Dashboard() {
           <ul className="divide-y divide-gray-700">
             {[...user.transactions]
               .sort((a, b) => new Date(b.date) - new Date(a.date)) // newest first
-              .map((tx, idx) => (
-                <li
-                  key={idx}
-                  className="flex justify-between items-center py-3 text-sm"
-                >
-                  {/* Transaction Direction */}
-                  <div className="flex flex-col">
+              .map((tx, idx) => {
+                const type = tx.type?.toLowerCase(); // normalize string
+                const isWithdraw = type === "withdraw" || type === "send";
+                const isDeposit = type === "deposit" || type === "receive";
+
+                return (
+                  <li
+                    key={idx}
+                    className="flex justify-between items-center py-3 text-sm"
+                  >
+                    {/* Transaction Direction */}
+                    <div className="flex flex-col">
+                      <span
+                        className={`font-semibold ${
+                          isWithdraw
+                            ? "text-red-400"
+                            : isDeposit
+                              ? "text-green-400"
+                              : "text-gray-400"
+                        }`}
+                      >
+                        {isWithdraw
+                          ? "Withdrawn"
+                          : isDeposit
+                            ? "Received"
+                            : tx.type}
+                      </span>
+                      <span className="text-gray-400 text-xs">
+                        {isWithdraw
+                          ? `To: ${tx.to || "0xAbC123..."}`
+                          : `From: ${tx.from || "0xDeF456..."}`}
+                      </span>
+                    </div>
+
+                    {/* Amount */}
                     <span
-                      className={`font-semibold ${
-                        tx.type === "withdraw"
-                          ? "text-red-400"
-                          : "text-green-400"
+                      className={`font-medium ${
+                        isWithdraw ? "text-red-400" : "text-green-400"
                       }`}
                     >
-                      {tx.type === "withdraw" ? "Withdrawn" : "Received"}
+                      {isWithdraw ? `-${tx.amount}` : `+${tx.amount}`}
                     </span>
+
+                    {/* Date */}
                     <span className="text-gray-400 text-xs">
-                      {tx.type === "withdraw"
-                        ? `To: ${tx.to || "0xAbC123..."}`
-                        : `From: ${tx.from || "0xDeF456..."}`}
+                      {new Date(tx.date).toLocaleDateString()}
                     </span>
-                  </div>
-
-                  {/* Amount */}
-                  <span
-                    className={`font-medium ${
-                      tx.type === "withdraw" ? "text-red-400" : "text-green-400"
-                    }`}
-                  >
-                    {tx.type === "withdraw" ? `-${tx.amount}` : `+${tx.amount}`}
-                  </span>
-
-                  {/* Date */}
-                  <span className="text-gray-400 text-xs">
-                    {new Date(tx.date).toLocaleDateString()}
-                  </span>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
           </ul>
         ) : (
           <p className="text-gray-400 text-sm">No transactions yet</p>
