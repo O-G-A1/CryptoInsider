@@ -337,28 +337,63 @@ function App() {
                     </button>
                   </div>
                 </div>{" "}
-                {/* Why CryptoInsider Section */}
-                {
-                  <div className="mt-8 text-center max-w-3xl mx-auto">
-                    <h2 className="text-1xl font-bold mb-4 inline-block relative">
-                      Why Choose ChainHub?
-                      <span className="animate-underline"></span>
-                    </h2>
+                {/* Why Choose ChainHub Section */}
+                <div className="mt-16 max-w-5xl mx-auto px-6">
+                  <h2 className="text-3xl font-extrabold text-center text-indigo-400 mb-6 relative inline-block">
+                    Why Choose ChainHub?
+                    <span className="absolute left-0 bottom-0 w-full h-1 bg-indigo-500 rounded animate-pulse"></span>
+                  </h2>
 
-                    <p className="text-md mb-6">
-                      We believe crypto should be accessible to everyone. Our
-                      platform combines cutting-edge technology with
-                      human-centered design to help you invest smarter, faster,
-                      and safer.
-                    </p>
-                    <ul className="space-y-2 text-left text-sm max-w-xl mx-auto">
-                      <li>✅ Zero hidden fees</li>
-                      <li>✅ 24/7 customer support</li>
-                      <li>✅ Instant deposits and withdrawals</li>
-                      <li>✅ Trusted by thousands of investors worldwide</li>
-                    </ul>
+                  <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12">
+                    We believe crypto should be accessible to everyone. Our
+                    platform combines cutting-edge technology with
+                    human-centered design to help you invest smarter, faster,
+                    and safer.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Feature Card */}
+                    <div className="bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        ✅ Zero Hidden Fees
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Transparent pricing so you always know what you’re
+                        paying.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        ✅ 24/7 Support
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Our team is available anytime to help you with your
+                        investments.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        ✅ Instant Transactions
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Fast deposits and withdrawals so your money is always in
+                        motion.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        ✅ Trusted Worldwide
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Thousands of investors rely on ChainHub for secure
+                        crypto trading.
+                      </p>
+                    </div>
                   </div>
-                }
+                </div>
               </section>
             }
           />
