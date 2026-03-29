@@ -358,7 +358,7 @@ export default function Dashboard() {
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
             <button
               onClick={() => setShowDeposit(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-2xl font-bold"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-xl font-bold p-1 rounded-full hover:bg-gray-700"
             >
               ✕
             </button>
