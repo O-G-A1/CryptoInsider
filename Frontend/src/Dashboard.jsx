@@ -268,7 +268,7 @@ export default function Dashboard() {
           <button
             onClick={() => {
               if (balance < 500) {
-                alert("You don't have the required funds yet (minimum $30).");
+                alert("You don't have the required funds yet (minimum $500).");
                 return;
               }
               setShowCopytradeModal(true);
