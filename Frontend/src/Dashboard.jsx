@@ -606,27 +606,15 @@ export default function Dashboard() {
                   <div className="flex flex-col">
                     <span
                       className={`font-semibold ${
-                        tx.type === "withdraw" ||
-                        tx.type === "withdrawal" ||
-                        tx.type === "send"
+                        tx.type === "withdraw"
                           ? "text-red-400"
-                          : tx.type === "deposit" || tx.type === "receive"
-                            ? "text-green-400"
-                            : "text-gray-400"
+                          : "text-green-400"
                       }`}
                     >
-                      {tx.type === "withdraw" ||
-                      tx.type === "withdrawal" ||
-                      tx.type === "send"
-                        ? "Withdrawn"
-                        : tx.type === "deposit" || tx.type === "receive"
-                          ? "Received"
-                          : tx.type}
+                      {tx.type === "withdraw" ? "Withdrawn" : "Received"}
                     </span>
                     <span className="text-gray-400 text-xs">
-                      {tx.type === "withdraw" ||
-                      tx.type === "withdrawal" ||
-                      tx.type === "send"
+                      {tx.type === "withdraw"
                         ? `To: ${tx.to || "0xAbC123..."}`
                         : `From: ${tx.from || "0xDeF456..."}`}
                     </span>
@@ -635,18 +623,10 @@ export default function Dashboard() {
                   {/* Amount */}
                   <span
                     className={`font-medium ${
-                      tx.type === "withdraw" ||
-                      tx.type === "withdrawal" ||
-                      tx.type === "send"
-                        ? "text-red-400"
-                        : "text-green-400"
+                      tx.type === "withdraw" ? "text-red-400" : "text-green-400"
                     }`}
                   >
-                    {tx.type === "withdraw" ||
-                    tx.type === "withdrawal" ||
-                    tx.type === "send"
-                      ? `-${tx.amount}`
-                      : `+${tx.amount}`}
+                    {tx.type === "withdraw" ? `-${tx.amount}` : `+${tx.amount}`}
                   </span>
 
                   {/* Date */}
