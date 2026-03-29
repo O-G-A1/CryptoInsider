@@ -595,8 +595,8 @@ export default function Dashboard() {
         </h2>
         {user.transactions && user.transactions.length > 0 ? (
           <ul className="divide-y divide-gray-700">
-            {[...user.transactions] // clone array
-              .sort((a, b) => new Date(b.date) - new Date(a.date)) // sort newest first
+            {[...user.transactions]
+              .sort((a, b) => new Date(b.date) - new Date(a.date)) // newest first
               .map((tx, idx) => (
                 <li
                   key={idx}
@@ -619,7 +619,6 @@ export default function Dashboard() {
                           ? "Received"
                           : tx.type}
                     </span>
-                    {/* Address (static fallback if missing) */}
                     <span className="text-gray-400 text-xs">
                       {tx.type === "withdrawal"
                         ? `To: ${tx.to || "0xAbC123..."}`
