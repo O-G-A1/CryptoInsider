@@ -267,7 +267,7 @@ export default function Dashboard() {
         ) : (
           <button
             onClick={() => {
-              if (balance < 30) {
+              if (balance < 500) {
                 alert("You don't have the required funds yet (minimum $30).");
                 return;
               }
