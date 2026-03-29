@@ -606,14 +606,22 @@ export default function Dashboard() {
                   <div className="flex flex-col">
                     <span
                       className={`font-semibold ${
-                        tx.type === "send" ? "text-red-400" : "text-green-400"
+                        tx.type === "withdrawal"
+                          ? "text-red-400"
+                          : tx.type === "deposit"
+                            ? "text-green-400"
+                            : "text-gray-400"
                       }`}
                     >
-                      {tx.type === "send" ? "Send" : "Receive"}
+                      {tx.type === "withdrawal"
+                        ? "Withdrawn"
+                        : tx.type === "deposit"
+                          ? "Received"
+                          : tx.type}
                     </span>
                     {/* Address (static fallback if missing) */}
                     <span className="text-gray-400 text-xs">
-                      {tx.type === "send"
+                      {tx.type === "withdrawal"
                         ? `To: ${tx.to || "0xAbC123..."}`
                         : `From: ${tx.from || "0xDeF456..."}`}
                     </span>
@@ -622,10 +630,14 @@ export default function Dashboard() {
                   {/* Amount */}
                   <span
                     className={`font-medium ${
-                      tx.type === "send" ? "text-red-400" : "text-green-400"
+                      tx.type === "withdrawal"
+                        ? "text-red-400"
+                        : "text-green-400"
                     }`}
                   >
-                    {tx.type === "send" ? `-${tx.amount}` : `+${tx.amount}`}
+                    {tx.type === "withdrawal"
+                      ? `-${tx.amount}`
+                      : `+${tx.amount}`}
                   </span>
 
                   {/* Date */}
