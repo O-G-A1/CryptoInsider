@@ -338,10 +338,10 @@ function App() {
                   </div>
                 </div>{" "}
                 {/* Why Choose ChainHub Section */}
-                <div className="mt-16 max-w-5xl mx-auto px-6">
-                  <h2 className="text-3xl font-extrabold text-center text-indigo-400 mb-6 relative inline-block">
+                <div className="mt-8 max-w-5xl mx-auto px-6">
+                  <h2 className="text-2xl text-center text-indigo-400 mb-6 relative inline-block">
                     Why Choose ChainHub?
-                    <span className="absolute left-0 bottom-0 w-full h-1 bg-indigo-500 rounded animate-pulse"></span>
+                    <span className="animate-underline"></span>
                   </h2>
 
                   <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12">
