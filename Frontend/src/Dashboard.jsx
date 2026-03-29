@@ -105,9 +105,6 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
-  // const [copytradeActive, setCopytradeActive] = useState(false);
-  // State for copytrade
-  // ✅ Copytrade state (persisted)
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
   );
@@ -248,13 +245,13 @@ export default function Dashboard() {
         </p>
 
         {copytradeActive && (
-          <p className="text-yellow-400 mt-2">
-            Copytrade in progress — Day {daysSinceStart} @ 4% daily
+          <p className="text-green-400 mt-2">
+            Copytrade in progress — Day {daysSinceStart} : +4% daily
           </p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
-          <p className="text-yellow-400 mt-2">
+          <p className="text-blue-400 mt-2">
             Copytrade paused — Day {daysSinceStart}
           </p>
         )}
@@ -269,7 +266,13 @@ export default function Dashboard() {
           </button>
         ) : (
           <button
-            onClick={() => setShowCopytradeModal(true)}
+            onClick={() => {
+              if (balance < 30) {
+                alert("You don't have the required funds yet (minimum $30).");
+                return;
+              }
+              setShowCopytradeModal(true);
+            }}
             className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
           >
             Start Copytrade
@@ -315,18 +318,6 @@ export default function Dashboard() {
           >
             Deposit
           </button>
-
-          {/* <button
-            onClick={() => setShowCopytradeModal(true)}
-            disabled={!user || user.balance <= 0}
-            className={`x-6 py-2 bg-blue-600 rounded hover:bg-green-700 ${
-              user && user.balance > 0
-                ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                : "bg-gray-600 text-gray-400 cursor-not-allowed"
-            }`}
-          >
-            Start Copytrade
-          </button> */}
 
           <button
             onClick={() => setShowWithdraw(true)}
