@@ -366,39 +366,115 @@ export default function Dashboard() {
               Deposit Crypto
             </h2>
             <div className="space-y-4">
+              {/* USDT (TRC20) */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">
                   USDT (TRC20)
                 </h3>
-                <p className="text-sm text-gray-300 break-all mt-2">
-                  TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
-                </p>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-sm text-gray-300 break-all">
+                    TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        "TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a",
+                      );
+                      alert("Address copied!");
+                    }}
+                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
+                  >
+                    Copy
+                  </button>
+                </div>
               </div>
-              <div className="p-4 rounded-lg bg-gray-700">
-                <h3 className="text-lg font-semibold text-white">ETH(ERC20)</h3>
-                <p className="text-sm text-gray-300 break-all mt-2">
-                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
-                </p>
-              </div>
+
+              {/* ETH (ERC20) */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">
-                  USDT(ERC20)
+                  ETH (ERC20)
                 </h3>
-                <p className="text-sm text-gray-300 break-all mt-2">
-                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
-                </p>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-sm text-gray-300 break-all">
+                    0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
+                      );
+                      alert("Address copied!");
+                    }}
+                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
+                  >
+                    Copy
+                  </button>
+                </div>
               </div>
+
+              {/* USDT (ERC20) */}
+              <div className="p-4 rounded-lg bg-gray-700">
+                <h3 className="text-lg font-semibold text-white">
+                  USDT (ERC20)
+                </h3>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-sm text-gray-300 break-all">
+                    0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
+                      );
+                      alert("Address copied!");
+                    }}
+                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              {/* SOL */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">SOL</h3>
-                <p className="text-sm text-gray-300 break-all mt-2">
-                  JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc
-                </p>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-sm text-gray-300 break-all">
+                    JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        "JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc",
+                      );
+                      alert("Address copied!");
+                    }}
+                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
+                  >
+                    Copy
+                  </button>
+                </div>
               </div>
+
+              {/* BTC */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">BTC</h3>
-                <p className="text-sm text-gray-300 break-all mt-2">
-                  bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
-                </p>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-sm text-gray-300 break-all">
+                    bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        "bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r",
+                      );
+                      alert("Address copied!");
+                    }}
+                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
+                  >
+                    Copy
+                  </button>
+                </div>
               </div>
             </div>
             <p className="mt-6 text-xs text-gray-400">
@@ -407,6 +483,7 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+
       {/* // Withdraw Modal */}
       {showWithdraw && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
