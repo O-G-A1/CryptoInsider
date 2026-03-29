@@ -245,13 +245,13 @@ export default function Dashboard() {
         </p>
 
         {copytradeActive && (
-          <p className="text-green-400 mt-2">
+          <p className="text-green-400 text-xs mt-2">
             Copytrade in progress — Day {daysSinceStart} : +4% daily
           </p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
-          <p className="text-blue-400 mt-2">
+          <p className="text-blue-400 text-xs mt-2">
             Copytrade paused — Day {daysSinceStart}
           </p>
         )}
