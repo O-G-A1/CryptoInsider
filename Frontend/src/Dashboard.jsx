@@ -355,17 +355,24 @@ export default function Dashboard() {
       {/* Deposit Modal */}
       {showDeposit && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
+          <div
+            className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative 
+                    max-h-[90vh] overflow-y-auto"
+          >
+            {/* Close button */}
             <button
               onClick={() => setShowDeposit(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-xl font-bold p-1 rounded-full hover:bg-gray-700"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-xl font-bold p-2 rounded-full hover:bg-gray-700"
             >
               ✕
             </button>
 
+            {/* Title */}
             <h2 className="text-2xl font-bold mb-6 text-indigo-400">
               Deposit Crypto
             </h2>
+
+            {/* Addresses */}
             <div className="space-y-4">
               {/* USDT (TRC20) */}
               <div className="p-4 rounded-lg bg-gray-700">
@@ -468,6 +475,8 @@ export default function Dashboard() {
                 </button>
               </div>
             </div>
+
+            {/* Footer */}
             <p className="mt-6 text-xs text-gray-400">
               Please send only the correct coin to each address.
             </p>
