@@ -358,10 +358,11 @@ export default function Dashboard() {
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
             <button
               onClick={() => setShowDeposit(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-2xl font-bold"
             >
               ✕
             </button>
+
             <h2 className="text-2xl font-bold mb-6 text-indigo-400">
               Deposit Crypto
             </h2>
@@ -371,22 +372,20 @@ export default function Dashboard() {
                 <h3 className="text-lg font-semibold text-white">
                   USDT (TRC20)
                 </h3>
-                <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm text-gray-300 break-all">
-                    TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
-                  </p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        "TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a",
-                      );
-                      alert("Address copied!");
-                    }}
-                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
-                  >
-                    Copy
-                  </button>
-                </div>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a
+                </p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "TS93LbTrDjVSB2i13DnAnr4VSx87cQVa6a",
+                    );
+                    alert("Address copied!");
+                  }}
+                  className="mt-2 w-full px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-500"
+                >
+                  Copy
+                </button>
               </div>
 
               {/* ETH (ERC20) */}
@@ -394,22 +393,20 @@ export default function Dashboard() {
                 <h3 className="text-lg font-semibold text-white">
                   ETH (ERC20)
                 </h3>
-                <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm text-gray-300 break-all">
-                    0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
-                  </p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
-                      );
-                      alert("Address copied!");
-                    }}
-                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
-                  >
-                    Copy
-                  </button>
-                </div>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                </p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
+                    );
+                    alert("Address copied!");
+                  }}
+                  className="mt-2 w-full px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-500"
+                >
+                  Copy
+                </button>
               </div>
 
               {/* USDT (ERC20) */}
@@ -417,64 +414,58 @@ export default function Dashboard() {
                 <h3 className="text-lg font-semibold text-white">
                   USDT (ERC20)
                 </h3>
-                <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm text-gray-300 break-all">
-                    0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
-                  </p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
-                      );
-                      alert("Address copied!");
-                    }}
-                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
-                  >
-                    Copy
-                  </button>
-                </div>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE
+                </p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "0x7a220042a8b1E30A9CE4f8ec61c410Eb757881fE",
+                    );
+                    alert("Address copied!");
+                  }}
+                  className="mt-2 w-full px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-500"
+                >
+                  Copy
+                </button>
               </div>
 
               {/* SOL */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">SOL</h3>
-                <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm text-gray-300 break-all">
-                    JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc
-                  </p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        "JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc",
-                      );
-                      alert("Address copied!");
-                    }}
-                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
-                  >
-                    Copy
-                  </button>
-                </div>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc
+                </p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "JCfWUhzHu4XjXzTBdmnvsNsf1o7XJrdnxHQc1pyBsrtc",
+                    );
+                    alert("Address copied!");
+                  }}
+                  className="mt-2 w-full px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-500"
+                >
+                  Copy
+                </button>
               </div>
 
               {/* BTC */}
               <div className="p-4 rounded-lg bg-gray-700">
                 <h3 className="text-lg font-semibold text-white">BTC</h3>
-                <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm text-gray-300 break-all">
-                    bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
-                  </p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        "bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r",
-                      );
-                      alert("Address copied!");
-                    }}
-                    className="ml-2 px-2 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700"
-                  >
-                    Copy
-                  </button>
-                </div>
+                <p className="text-sm text-gray-300 break-all mt-2">
+                  bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r
+                </p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "bc1qfavp9r7xu8xccp6jwqwdf3t3cw9m404yp2mv4r",
+                    );
+                    alert("Address copied!");
+                  }}
+                  className="mt-2 w-full px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-500"
+                >
+                  Copy
+                </button>
               </div>
             </div>
             <p className="mt-6 text-xs text-gray-400">
