@@ -105,13 +105,51 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
-  const [copytradeActive, setCopytradeActive] = useState(false);
+  // const [copytradeActive, setCopytradeActive] = useState(false);
+  // State for copytrade
+  // ✅ Copytrade state (persisted)
+  const [copytradeActive, setCopytradeActive] = useState(
+    localStorage.getItem("copytradeActive") === "true",
+  );
+  const [copytradeStartDate, setCopytradeStartDate] = useState(
+    localStorage.getItem("copytradeStartDate")
+      ? new Date(localStorage.getItem("copytradeStartDate"))
+      : null,
+  );
+
+  // ✅ Start copytrade (resume if already has a start date)
+  const startCopytrade = () => {
+    setCopytradeActive(true);
+    if (!copytradeStartDate) {
+      const today = new Date();
+      setCopytradeStartDate(today);
+      localStorage.setItem("copytradeStartDate", today.toISOString());
+    }
+    localStorage.setItem("copytradeActive", "true");
+  };
+
+  // ✅ Stop copytrade (pause only, keep start date)
+  const stopCopytrade = () => {
+    setCopytradeActive(false);
+    localStorage.setItem("copytradeActive", "false");
+    // Notice: we do NOT clear copytradeStartDate here
+  };
+
+  // ✅ Calculate days since start
+  const daysSinceStart = copytradeStartDate
+    ? Math.max(
+        1,
+        Math.floor(
+          (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
+        ),
+      )
+    : 0;
 
   const devMode = false; // 🔑 flip to false when backend is ready
 
   const fetchUser = async () => {
     if (devMode) {
-      setUser({ name: "Dev User", balance: 1200, createdAt: "2026-01-5" });
+      setUser({ name: "Dev User", balance: 1200, createdAt: "2026-01-3" });
       setLoading(false);
       return;
     }
@@ -208,14 +246,35 @@ export default function Dashboard() {
         <p className="text-3xl font-bold text-white mt-1">
           {formatCurrency(portfolioValueWithGrowth || 0)}
         </p>
+
         {copytradeActive && (
-          <p className="text-yellow-400 mt-2">Copytrade in progress</p>
+          <p className="text-yellow-400 mt-2">
+            Copytrade in progress — Day {daysSinceStart} @ 4% daily
+          </p>
         )}
 
-        <p className="text-green-400 mt-1">
-          +4.00% daily · {daysSinceCreation}{" "}
-          {daysSinceCreation === 1 ? "day" : "days"}
-        </p>
+        {!copytradeActive && copytradeStartDate && (
+          <p className="text-yellow-400 mt-2">
+            Copytrade paused — Day {daysSinceStart}
+          </p>
+        )}
+
+        {/* Toggle button */}
+        {copytradeActive ? (
+          <button
+            onClick={() => setShowCopytradeModal(true)}
+            className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Stop Copytrade
+          </button>
+        ) : (
+          <button
+            onClick={() => setShowCopytradeModal(true)}
+            className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          >
+            Start Copytrade
+          </button>
+        )}
       </section>
 
       {/* Wallet Section with Live Prices */}
@@ -257,7 +316,7 @@ export default function Dashboard() {
             Deposit
           </button>
 
-          <button
+          {/* <button
             onClick={() => setShowCopytradeModal(true)}
             disabled={!user || user.balance <= 0}
             className={`x-6 py-2 bg-blue-600 rounded hover:bg-green-700 ${
@@ -267,7 +326,7 @@ export default function Dashboard() {
             }`}
           >
             Start Copytrade
-          </button>
+          </button> */}
 
           <button
             onClick={() => setShowWithdraw(true)}
@@ -321,12 +380,14 @@ export default function Dashboard() {
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <p className="text-white mb-4">Start Copytrade?</p>
+            <p className="text-white mb-4">
+              {copytradeActive ? "Stop Copytrade?" : "Start Copytrade?"}
+            </p>
             <div className="flex justify-center gap-4">
               {/* Yes button */}
               <button
                 onClick={() => {
-                  setCopytradeActive(true);
+                  copytradeActive ? stopCopytrade() : startCopytrade();
                   setShowCopytradeModal(false);
                 }}
                 className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
@@ -336,13 +397,7 @@ export default function Dashboard() {
 
               {/* No button */}
               <button
-                onClick={() => {
-                  if (copytradeActive) {
-                    // If already active, disable it
-                    setCopytradeActive(false);
-                  }
-                  setShowCopytradeModal(false);
-                }}
+                onClick={() => setShowCopytradeModal(false)}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
               >
                 No
