@@ -116,7 +116,7 @@ function App() {
                         Example: $1,000 Investment
                       </h3>
                       <p className="text-sm">
-                        Potential weekly earnings: $50 – $100
+                        Potential weekly earnings: $150 – $280
                       </p>
                     </div>
                     <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
@@ -124,7 +124,7 @@ function App() {
                         Example: $100,000 Investment
                       </h3>
                       <p className="text-sm">
-                        Potential weekly earnings: $5,000 – $10,000
+                        Potential weekly earnings: $3500 – $28,000
                       </p>
                     </div>
                   </div>
