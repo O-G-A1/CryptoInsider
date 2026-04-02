@@ -105,7 +105,6 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 5000;
-
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
@@ -213,18 +212,32 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = user?.createdAt
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 1;
+  // 1. Base balance from transactions
+  const baseBalance =
+    user?.transactions?.reduce((acc, tx) => {
+      const type = tx.type?.toLowerCase();
+      if (type === "withdraw" || type === "send") {
+        return acc - tx.amount;
+      } else if (type === "deposit" || type === "receive") {
+        return acc + tx.amount;
+      }
+      return acc;
+    }, 0) || 0;
 
-  const balance = typeof user?.balance === "number" ? user.balance : 0;
+  // 2. Days since copytrade started
+  // const daysSinceStart = copytradeStartDate
+  //   ? Math.max(
+  //       1,
+  //       Math.floor(
+  //         (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
+  //       ),
+  //     )
+  //   : 0;
 
-  const portfolioValueWithGrowth = balance * Math.pow(1.04, daysSinceCreation);
+  // 3. Final balance with growth
+  const balance = copytradeActive
+    ? baseBalance * Math.pow(1.04, daysSinceStart)
+    : baseBalance;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6">
