@@ -133,17 +133,6 @@ export default function Dashboard() {
     // Notice: we do NOT clear copytradeStartDate here
   };
 
-  // ✅ Calculate days since start
-  // const daysSinceStart = copytradeStartDate
-  //   ? Math.max(
-  //       1,
-  //       Math.floor(
-  //         (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
-  //       ),
-  //     )
-  //   : 0;
-  // Base balance from transactions
-  // Base balance from transactions
   const baseBalance =
     user?.transactions?.reduce((acc, tx) => {
       const type = tx.type?.toLowerCase();
@@ -236,18 +225,6 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = user?.createdAt
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 0;
-
-  // const balance = typeof user?.balance === "number" ? user.balance : 0;
-
-  const portfolioValueWithGrowth = balance * Math.pow(1.04, daysSinceCreation);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6">
@@ -266,7 +243,7 @@ export default function Dashboard() {
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-gray-300 font-medium">Total Assets</h2>
         <p className="text-3xl font-bold text-white mt-1">
-          {formatCurrency(portfolioValueWithGrowth || 0)}
+          {formatCurrency(balance || 0)}
         </p>
 
         {copytradeActive && (
