@@ -143,6 +143,22 @@ export default function Dashboard() {
         ),
       )
     : 0;
+  // Base balance from transactions
+  const baseBalance =
+    user?.transactions?.reduce((acc, tx) => {
+      const type = tx.type?.toLowerCase();
+      if (type === "withdraw" || type === "send") {
+        return acc - tx.amount;
+      } else if (type === "deposit" || type === "receive") {
+        return acc + tx.amount;
+      }
+      return acc;
+    }, 0) || 0;
+
+  // Final balance with growth
+  const balance = copytradeActive
+    ? baseBalance * Math.pow(1.04, daysSinceStart)
+    : baseBalance;
 
   const devMode = false; // 🔑 flip to false when backend is ready
 
@@ -222,7 +238,7 @@ export default function Dashboard() {
       )
     : 1;
 
-  const balance = typeof user?.balance === "number" ? user.balance : 0;
+  // const balance = typeof user?.balance === "number" ? user.balance : 0;
 
   const portfolioValueWithGrowth = balance * Math.pow(1.04, daysSinceCreation);
 
