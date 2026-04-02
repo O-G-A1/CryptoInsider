@@ -136,13 +136,11 @@ export default function Dashboard() {
 
   // ✅ Calculate days since start
   const daysSinceStart = copytradeStartDate
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
-        ),
+    ? Math.floor(
+        (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
       )
     : 0;
+
   // Base balance from transactions
   const baseBalance =
     user?.transactions?.reduce((acc, tx) => {
@@ -262,10 +260,10 @@ export default function Dashboard() {
           {formatCurrency(portfolioValueWithGrowth || 0)}
         </p>
 
-        {copytradeActive && (
-          <p className="text-green-400 text-xs mt-2">
-            Copytrade in progress — Day {daysSinceStart} : +4% daily
-          </p>
+        {copytradeActive ? (
+          <p>Copytrade in progress – Day {daysSinceStart}: +4% daily</p>
+        ) : (
+          <p>Copytrade not active</p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
