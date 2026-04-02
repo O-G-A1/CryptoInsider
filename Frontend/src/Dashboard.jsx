@@ -235,14 +235,14 @@ export default function Dashboard() {
       </div>
     );
   }
-  // const daysSinceCreation = user?.createdAt
-  //   ? Math.max(
-  //       1,
-  //       Math.floor(
-  //         (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-  //       ),
-  //     )
-  //   : 0;
+  const daysSinceCreation = user?.createdAt
+    ? Math.max(
+        1,
+        Math.floor(
+          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+        ),
+      )
+    : 0;
 
   // const balance = typeof user?.balance === "number" ? user.balance : 0;
 
