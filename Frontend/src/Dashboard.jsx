@@ -104,6 +104,8 @@ export default function Dashboard() {
   const [showWithdraw, setShowWithdraw] = useState(false);
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
+  const requiredBalance = 5000;
+
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
@@ -146,7 +148,7 @@ export default function Dashboard() {
 
   const fetchUser = async () => {
     if (devMode) {
-      setUser({ name: "Dev User", balance: 1200, createdAt: "2026-01-3" });
+      setUser({ name: "Dev User", balance: 5000, createdAt: "2026-04-2" });
       setLoading(false);
       return;
     }
@@ -544,50 +546,61 @@ export default function Dashboard() {
               Withdraw Funds
             </h2>
 
-            <div className="mb-4 text-left">
-              <label className="block text-gray-300 font-medium mb-2">
-                Select Method
-              </label>
-              <select
-                value={withdrawMethod}
-                onChange={(e) => setWithdrawMethod(e.target.value)}
-                className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-              >
-                <option value="">-- Choose --</option>
-                <option value="usdt">USDT (TRC20)</option>
-                <option value="btc">BTC</option>
-                <option value="bank">Bank Transfer</option>
-              </select>
-            </div>
+            {/* Balance Check */}
+            {balance < requiredBalance ? (
+              <p className="text-red-400 mb-6 text-sm">
+                You must have at least ${requiredBalance} to withdraw. Current
+                balance: ${balance}
+              </p>
+            ) : (
+              <>
+                <div className="mb-4 text-left">
+                  <label className="block text-gray-300 font-medium mb-2">
+                    Select Method
+                  </label>
+                  <select
+                    value={withdrawMethod}
+                    onChange={(e) => setWithdrawMethod(e.target.value)}
+                    className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                  >
+                    <option value="">-- Choose --</option>
+                    <option value="usdt">USDT (TRC20)</option>
+                    <option value="btc">BTC</option>
+                    <option value="bank">Bank Transfer</option>
+                  </select>
+                </div>
 
-            <div className="mb-4 text-left">
-              <label className="block text-gray-300 font-medium mb-2">
-                Amount
-              </label>
-              <input
-                type="number"
-                value={withdrawAmount}
-                onChange={(e) => setWithdrawAmount(e.target.value)}
-                className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-              />
-            </div>
+                <div className="mb-4 text-left">
+                  <label className="block text-gray-300 font-medium mb-2">
+                    Amount
+                  </label>
+                  <input
+                    type="number"
+                    value={withdrawAmount}
+                    onChange={(e) => setWithdrawAmount(e.target.value)}
+                    className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                  />
+                </div>
 
-            <button
-              onClick={() => {
-                alert(
-                  `Withdrawal confirmed!\nMethod: ${withdrawMethod}\nAmount: ${withdrawAmount}`,
-                );
-                setShowWithdraw(false);
-                setWithdrawMethod("");
-                setWithdrawAmount("");
-              }}
-              className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-            >
-              Confirm Withdrawal
-            </button>
+                <button
+                  onClick={() => {
+                    alert(
+                      `Withdrawal confirmed!\nMethod: ${withdrawMethod}\nAmount: ${withdrawAmount}`,
+                    );
+                    setShowWithdraw(false);
+                    setWithdrawMethod("");
+                    setWithdrawAmount("");
+                  }}
+                  className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                >
+                  Confirm Withdrawal
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}
+
       {/* Transactions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-bold text-white mb-4">
