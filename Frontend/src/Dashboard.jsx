@@ -134,14 +134,14 @@ export default function Dashboard() {
   };
 
   // ✅ Calculate days since start
-  const daysSinceStart = copytradeStartDate
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 0;
+  // const daysSinceStart = copytradeStartDate
+  //   ? Math.max(
+  //       1,
+  //       Math.floor(
+  //         (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
+  //       ),
+  //     )
+  //   : 0;
   // Base balance from transactions
   const baseBalance =
     user?.transactions?.reduce((acc, tx) => {
@@ -153,6 +153,13 @@ export default function Dashboard() {
       }
       return acc;
     }, 0) || 0;
+
+  // Days since copytrade started
+  const daysSinceStart = copytradeStartDate
+    ? Math.floor(
+        (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
+      )
+    : 0;
 
   // Final balance with growth
   const balance = copytradeActive
@@ -228,14 +235,14 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = user?.createdAt
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 0;
+  // const daysSinceCreation = user?.createdAt
+  //   ? Math.max(
+  //       1,
+  //       Math.floor(
+  //         (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+  //       ),
+  //     )
+  //   : 0;
 
   // const balance = typeof user?.balance === "number" ? user.balance : 0;
 
