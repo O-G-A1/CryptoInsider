@@ -557,9 +557,11 @@ export default function Dashboard() {
 
             {/* Balance Check */}
             {balance < requiredBalance ? (
-              <p className="text-red-400 mb-6 text-sm">
-                You must have at least ${requiredBalance} to withdraw. Current
-                balance: ${balance}
+              <p className="mb-6 text-sm">
+                <span className="text-red-400">
+                  You must have at least ${requiredBalance} to withdraw.
+                </span>{" "}
+                <span className="text-white">Current balance: ${balance}</span>
               </p>
             ) : (
               <>
