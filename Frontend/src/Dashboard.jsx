@@ -143,6 +143,7 @@ export default function Dashboard() {
   //     )
   //   : 0;
   // Base balance from transactions
+  // Base balance from transactions
   const baseBalance =
     user?.transactions?.reduce((acc, tx) => {
       const type = tx.type?.toLowerCase();
@@ -235,14 +236,14 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = user?.createdAt
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 0;
+  // const daysSinceCreation = user?.createdAt
+  //   ? Math.max(
+  //       1,
+  //       Math.floor(
+  //         (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+  //       ),
+  //     )
+  //   : 0;
 
   // const balance = typeof user?.balance === "number" ? user.balance : 0;
 
