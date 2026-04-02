@@ -105,7 +105,6 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 5000;
-
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
@@ -229,14 +228,14 @@ export default function Dashboard() {
       </div>
     );
   }
-  const daysSinceCreation = user?.createdAt
-    ? Math.max(
-        1,
-        Math.floor(
-          (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
-        ),
-      )
-    : 1;
+  // const daysSinceCreation = user?.createdAt
+  //   ? Math.max(
+  //       1,
+  //       Math.floor(
+  //         (Date.now() - new Date(user.createdAt)) / (1000 * 60 * 60 * 24),
+  //       ),
+  //     )
+  //   : 1;
 
   // const balance = typeof user?.balance === "number" ? user.balance : 0;
 
