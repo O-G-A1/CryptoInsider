@@ -197,6 +197,15 @@ export default function Dashboard() {
   useEffect(() => {
     fetchUser();
   }, []);
+  // ✅ Reset copytrade for brand new users
+  useEffect(() => {
+    if (user && !user.transactions?.length) {
+      setCopytradeActive(false);
+      setCopytradeStartDate(null);
+      localStorage.removeItem("copytradeActive");
+      localStorage.removeItem("copytradeStartDate");
+    }
+  }, [user]);
 
   const formatCurrency = (v) =>
     new Intl.NumberFormat("en-US", {
