@@ -654,18 +654,27 @@ export default function Dashboard() {
                     </div>
 
                     {/* Amount */}
-                    <span
-                      className={`font-medium ${
-                        isWithdraw ? "text-red-400" : "text-green-400"
-                      }`}
-                    >
-                      {isWithdraw ? `-${tx.amount}` : `+${tx.amount}`}
-                    </span>
+                    <div className="w-24 text-right">
+                      <span
+                        className={`font-medium ${
+                          isWithdraw ? "text-red-400" : "text-green-400"
+                        }`}
+                      >
+                        {isWithdraw ? `-${tx.amount}` : `+${tx.amount}`}
+                      </span>
+                    </div>
 
-                    {/* Date */}
-                    <span className="text-gray-400 text-xs">
-                      {new Date(tx.date).toLocaleDateString()}
-                    </span>
+                    {/* Date + Time */}
+                    <div className="flex flex-col text-right">
+                      <span className="text-gray-400 text-xs">
+                        {new Date(tx.date).toLocaleDateString()}
+                      </span>
+                      <span className="text-gray-500 text-xs">
+                        {new Date(tx.date).toLocaleTimeString([], {
+                          hour12: false,
+                        })}
+                      </span>
+                    </div>
                   </li>
                 );
               })}
