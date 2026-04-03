@@ -104,7 +104,7 @@ export default function Dashboard() {
   const [showWithdraw, setShowWithdraw] = useState(false);
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
-  const requiredBalance = 5000;
+  const requiredBalance = 799;
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
@@ -299,8 +299,15 @@ export default function Dashboard() {
             key={coin}
             className="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-2"
           >
+            {/* Coin name */}
             <span className="font-semibold">{coin.toUpperCase()}</span>
-            <span>${data.usd.toFixed(2)}</span>
+
+            {/* Price aligned right */}
+            <div className="w-32 text-right">
+              <span>${data.usd.toFixed(2)}</span>
+            </div>
+
+            {/* 24h change */}
             <span
               className={
                 data.usd_24h_change >= 0 ? "text-green-400" : "text-red-400"
@@ -319,6 +326,7 @@ export default function Dashboard() {
           {showExtended ? "Show less" : "Show more"}
         </button>
       </section>
+
       {/* Actions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md text-center">
         <h2 className="text-xl font-bold mb-4">Actions</h2>
@@ -425,7 +433,7 @@ export default function Dashboard() {
             </button>
 
             {/* Title */}
-            <h2 className="text-2xl font-bold mb-6 text-indigo-400">
+            <h2 className="text-1xl font-bold mb-6 text-indigo-200">
               Deposit Crypto
             </h2>
 
@@ -551,7 +559,7 @@ export default function Dashboard() {
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-6 text-indigo-400">
+            <h2 className="text-1xl font-bold mb-6 text-indigo-200">
               Withdraw Funds
             </h2>
 
