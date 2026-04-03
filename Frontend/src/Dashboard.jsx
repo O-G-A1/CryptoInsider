@@ -303,7 +303,7 @@ export default function Dashboard() {
             <span className="font-semibold">{coin.toUpperCase()}</span>
 
             {/* Price aligned right */}
-            <div className="w-32 text-right">
+            <div className="w-32 text-center">
               <span>${data.usd.toFixed(2)}</span>
             </div>
 
@@ -433,7 +433,7 @@ export default function Dashboard() {
             </button>
 
             {/* Title */}
-            <h2 className="text-1xl font-bold mb-6 text-indigo-200">
+            <h2 className="text-1.5xl font-bold mb-6 text-indigo-200">
               Deposit Crypto
             </h2>
 
@@ -559,7 +559,7 @@ export default function Dashboard() {
             >
               ✕
             </button>
-            <h2 className="text-1xl font-bold mb-6 text-indigo-200">
+            <h2 className="text-1.5xl font-bold mb-6 text-indigo-200">
               Withdraw Funds
             </h2>
 
