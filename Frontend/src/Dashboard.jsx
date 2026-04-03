@@ -297,21 +297,21 @@ export default function Dashboard() {
         {Object.entries(prices).map(([coin, data]) => (
           <div
             key={coin}
-            className="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-2"
+            className="grid grid-cols-3 bg-gray-700 p-4 rounded-lg mb-2"
           >
             {/* Coin name */}
             <span className="font-semibold">{coin.toUpperCase()}</span>
 
             {/* Price aligned right */}
-            <span className="w-32 text-right block">
+            <span className="text-right font-medium">
               ${data.usd.toFixed(2)}
             </span>
 
             {/* 24h change */}
             <span
-              className={
+              className={`text-right ${
                 data.usd_24h_change >= 0 ? "text-green-400" : "text-red-400"
-              }
+              }`}
             >
               {data.usd_24h_change.toFixed(2)}%
             </span>
