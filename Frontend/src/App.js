@@ -59,7 +59,7 @@ function App() {
                 {/* 🎁 Promo Badge */}
                 <div className="flex flex-col items-center space-y-4 mt-8">
                   <p className="inline-block bg-yellow-200 text-gray-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
-                    🎁 Sign up and get up to $400 in Crypto
+                    🎁 Get up to $400 in crypto on your first deposit
                   </p>
 
                   <button
