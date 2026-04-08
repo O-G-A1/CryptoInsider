@@ -45,15 +45,16 @@ function App() {
               <section className="min-h-screen bg-gray-900 text-white px-6 py-12">
                 <div className="max-w-5xl mx-auto text-center">
                   <h1 className="text-3xl font-bold mb-4 text-yellow-200">
-                    Copytrade & Reclaim Assets with Ease
+                    Effortless Crypto Mining & Asset Growth
                   </h1>
                   <p className="text-lg mb-8 max-w-3xl mx-auto">
-                    ChainHub is your gateway to modern investing. Whether you’re
-                    exploring copytrading for the first time or seeking to
-                    recover lost assets, our platform delivers secure,
-                    intuitive, and profitable tools to help you grow and protect
-                    your wealth. With ChainHub, confidence isn’t just a promise
-                    — it’s built into every trade and recovery step.
+                    ChainHub is your gateway to modern crypto mining and asset
+                    recovery. Whether you’re starting your mining journey,
+                    scaling up to maximize returns, or reclaiming lost assets,
+                    our platform delivers secure, intuitive, and profitable
+                    tools to help you generate and protect your digital wealth.
+                    With ChainHub, confidence isn’t just a promise — it’s built
+                    into every block you mine and every asset you recover.
                   </p>
                 </div>
                 {/* 🎁 Promo Badge */}
@@ -94,7 +95,7 @@ function App() {
                     </h3>
                     <p className="text-sm">
                       Simple onboarding, educational resources, and intuitive
-                      tools designed for first-time investors.
+                      tools designed for first-time miners.
                     </p>
                   </div>
                 </div>
@@ -104,7 +105,7 @@ function App() {
                     Your Weekly Earnings Potential
                   </h2>
                   <p className="text-md mb-6">
-                    With ChainHub, investors typically earn
+                    With ChainHub, Miners typically earn
                     <span className="font-semibold text-yellow-200">
                       {" "}
                       5–10% weekly returns
@@ -209,8 +210,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub gave me confidence to invest in crypto for
-                            the first time."
+                            "ChainHub gave me confidence to mine for the first
+                            time."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -258,7 +259,7 @@ function App() {
                     <span className="animate-underline"></span>
                     <p className="text-xl leading-relaxed text-gray-200 mt-6 mb-12 max-w-2xl mx-auto">
                       When you sign up, ChainHub takes care of the complex
-                      trading process for you. Here’s how we make wealth growth
+                      mining process for you. Here’s how we make wealth growth
                       simple and stress‑free:
                     </p>
 
@@ -348,8 +349,8 @@ function App() {
                   <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12">
                     We believe crypto should be accessible to everyone. Our
                     platform combines cutting-edge technology with
-                    human-centered design to help you invest smarter, faster,
-                    and safer.
+                    human-centered design to help you mine smarter, faster, and
+                    safer.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -370,7 +371,7 @@ function App() {
                       </h3>
                       <p className="text-gray-400 text-sm">
                         Our team is available anytime to help you with your
-                        investments.
+                        mining.
                       </p>
                     </div>
 
@@ -390,7 +391,7 @@ function App() {
                       </h3>
                       <p className="text-gray-400 text-sm">
                         Thousands of investors rely on ChainHub for secure
-                        crypto trading.
+                        crypto mining.
                       </p>
                     </div>
                   </div>

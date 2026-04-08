@@ -257,13 +257,13 @@ export default function Dashboard() {
 
         {copytradeActive && (
           <p className="text-green-400 text-xs mt-2">
-            Copytrade in progress — Day {daysSinceStart} : +4% daily
+            Mining in progress — Day {daysSinceStart} : +4% daily
           </p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
           <p className="text-blue-400 text-xs mt-2">
-            Copytrade paused — Day {daysSinceStart}
+            Mining paused — Day {daysSinceStart}
           </p>
         )}
 
@@ -273,7 +273,7 @@ export default function Dashboard() {
             onClick={() => setShowCopytradeModal(true)}
             className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
-            Stop Copytrade
+            Stop Mining
           </button>
         ) : (
           <button
@@ -286,7 +286,7 @@ export default function Dashboard() {
             }}
             className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
           >
-            Start Copytrade
+            Start Mining
           </button>
         )}
       </section>
