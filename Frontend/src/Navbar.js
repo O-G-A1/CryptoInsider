@@ -13,14 +13,14 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 64 64"
-            className="h-10 w-10 text-indigo-600"
+            className="h-10 w-10"
             fill="currentColor"
           >
             <circle
               cx="32"
               cy="32"
               r="30"
-              stroke="currentColor"
+              className="stroke-indigo-600"
               strokeWidth="4"
               fill="white"
             />
@@ -35,6 +35,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
               ₿
             </text>
           </svg>
+
           <span className="text-2xl font-bold text-white hover:text-indigo-400">
             ChainHub
           </span>
