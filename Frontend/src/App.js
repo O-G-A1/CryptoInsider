@@ -81,9 +81,7 @@ function App() {
                     </p>
                   </div>
                   <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2">
-                      📈 Smart Investing
-                    </h3>
+                    <h3 className="text-xl font-bold mb-2">📈 Smart Mining</h3>
                     <p className="text-sm">
                       Access real-time market data, automated strategies, and
                       expert insights to maximize returns.
@@ -102,7 +100,7 @@ function App() {
                 {/* ✅ Weekly Earnings Potential Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-2xl font-bold mb-4">
-                    Your Weekly Earnings Potential
+                    Your Weekly Mining Potential
                   </h2>
                   <p className="text-md mb-6">
                     With ChainHub, Miners typically earn
@@ -115,7 +113,7 @@ function App() {
                   <div className="grid md:grid-cols-2 gap-6 mt-8">
                     <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                       <h3 className="text-xl font-bold mb-2">
-                        Example: $1,000 Investment
+                        Example: $1,000 Mining Portfolio
                       </h3>
                       <p className="text-sm">
                         Potential weekly earnings: $150 – $280
@@ -123,7 +121,7 @@ function App() {
                     </div>
                     <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                       <h3 className="text-xl font-bold mb-2">
-                        Example: $100,000 Investment
+                        Example: $100,000 Mining Portfolio
                       </h3>
                       <p className="text-sm">
                         Potential weekly earnings: $3500 – $28,000
@@ -141,7 +139,7 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub helped me grow my $1,000 investment into
+                            "ChainHub helped me grow my $1,000 Portfolio into
                             $5,000 in just a few months!"
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
@@ -156,7 +154,7 @@ function App() {
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
                             "The platform is beginner-friendly. I finally feel
-                            confident investing in crypto."
+                            confident in mining crypto."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★☆</div>
                           <span className="font-semibold text-yellow-200">
