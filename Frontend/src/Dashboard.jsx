@@ -402,24 +402,60 @@ export default function Dashboard() {
       )}
       {/* ✅ Warning Popup */}
       {showFundsWarning && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
-            <h2 className="text-lg font-semibold mb-4">Insufficient Funds</h2>
-            <p className="mb-6">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-200">
+            {/* Header */}
+            <div className="flex items-center mb-4">
+              <div className="flex-shrink-0 bg-red-100 text-red-600 rounded-full p-2">
+                {/* ⚠️ Icon */}
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01M12 5a7 7 0 100 14a7 7 0 000-14z"
+                  />
+                </svg>
+              </div>
+              <h2 className="ml-3 text-lg font-semibold text-red-700">
+                Insufficient Funds
+              </h2>
+            </div>
+
+            {/* Message */}
+            <p className="text-gray-700 mb-6">
               You don't have the required funds yet (minimum $200).
             </p>
-            <button
-              onClick={() => setShowFundsWarning(false)}
-              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-            >
-              Close
-            </button>
+
+            {/* Actions */}
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowFundsWarning(false)}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
+
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center relative">
+            {/* ✅ Close button */}
+            <button
+              onClick={() => setShowCopytradeModal(false)}
+              className="absolute top-2 right-2 text-white hover:text-gray-300"
+            >
+              ✕
+            </button>
+
             {/* Header */}
             <p className="text-white mb-4">
               {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
