@@ -401,7 +401,15 @@ export default function Dashboard() {
       )}
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center relative">
+            {/* Exit X button */}
+            <button
+              onClick={() => setShowCopytradeModal(false)}
+              className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl font-bold"
+            >
+              ×
+            </button>
+
             {/* Header */}
             <p className="text-white mb-4">
               {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
