@@ -192,13 +192,20 @@ export default function Dashboard() {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/user/profile`,
         {
-          headers: {
-            Authorization: `Bearer ${token}`, // ✅ consistent usage
-          },
+          headers: { Authorization: `Bearer ${token}` },
         },
       );
       const data = await res.json();
-      setUser(data);
+
+      // 🔑 Normalize backend fields to frontend expectations
+      setUser({
+        id: data._id,
+        name: data.username,
+        createdAt: data.createdAt,
+        transactions: data.transactions || data.history || [], // ✅ map whichever exists
+        balance: data.balance || data.walletBalance || 0, // ✅ fallback
+      });
+
       setLoading(false);
     } catch (err) {
       console.error("Error fetching user:", err);
