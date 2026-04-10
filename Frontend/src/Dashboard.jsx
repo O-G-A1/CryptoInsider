@@ -429,7 +429,7 @@ export default function Dashboard() {
 
             {/* Message */}
             <p className="text-gray-700 mb-6">
-              You don't have the required funds yet (minimum $200).
+              You don't have the required funds yet.
             </p>
 
             {/* Actions */}
