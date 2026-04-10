@@ -121,35 +121,27 @@ export default function Dashboard() {
     if (!copytradeStartDate) {
       const today = new Date();
       setCopytradeStartDate(today);
-      localStorage.setItem(
-        `${user.id}_copytradeStartDate`,
-        today.toISOString(),
-      );
+      localStorage.setItem("copytradeStartDate", today.toISOString());
     }
-    localStorage.setItem(`${user.id}_copytradeActive`, "true");
+    localStorage.setItem("copytradeActive", "true");
   };
 
   // Track final balance when copytrade stops
-  const [finalBalance, setFinalBalance] = useState(() => {
-    if (user?.id) {
-      return Number(localStorage.getItem(`${user.id}_finalBalance`)) || null;
-    }
-    return null;
-  });
+  const [finalBalance, setFinalBalance] = useState(
+    Number(localStorage.getItem("finalBalance")) || null,
+  );
 
   // ✅ Stop copytrade (pause only, keep accrued profits)
   const stopCopytrade = () => {
-    if (!user?.id) return; // safeguard
-
     // Calculate balance at stop time
     const stoppedBalance = baseBalance * Math.pow(1.04, daysSinceStart);
 
     // Save it in state + localStorage
     setFinalBalance(stoppedBalance);
-    localStorage.setItem(`${user.id}_finalBalance`, stoppedBalance);
+    localStorage.setItem("finalBalance", stoppedBalance);
 
     setCopytradeActive(false);
-    localStorage.setItem(`${user.id}_copytradeActive`, "false");
+    localStorage.setItem("copytradeActive", "false");
     // Notice: we do NOT clear copytradeStartDate here
   };
 
@@ -409,15 +401,7 @@ export default function Dashboard() {
       )}
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center relative">
-            {/* Exit X button */}
-            <button
-              onClick={() => setShowCopytradeModal(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl font-bold"
-            >
-              ×
-            </button>
-
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
             {/* Header */}
             <p className="text-white mb-4">
               {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
