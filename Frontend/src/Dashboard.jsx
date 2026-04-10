@@ -127,8 +127,6 @@ export default function Dashboard() {
     localStorage.setItem(`${user.id}_copytradeActive`, "true");
   };
 
-  // Track final balance when copytrade stops
-
   // ✅ Stop copytrade (pause only, keep accrued profits)
   const stopCopytrade = () => {
     if (!user?.id) return;
@@ -220,6 +218,13 @@ export default function Dashboard() {
       if (savedFinalBalance) setFinalBalance(Number(savedFinalBalance));
     }
   }, [user?.id]);
+
+  useEffect(() => {
+    if (user?.transactions?.length) {
+      setFinalBalance(null);
+      localStorage.removeItem(`${user.id}_finalBalance`);
+    }
+  }, [user?.transactions]);
 
   const formatCurrency = (v) =>
     new Intl.NumberFormat("en-US", {
