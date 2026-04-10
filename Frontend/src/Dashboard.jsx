@@ -126,8 +126,20 @@ export default function Dashboard() {
     localStorage.setItem("copytradeActive", "true");
   };
 
-  // ✅ Stop copytrade (pause only, keep start date)
+  // Track final balance when copytrade stops
+  const [finalBalance, setFinalBalance] = useState(
+    Number(localStorage.getItem("finalBalance")) || null,
+  );
+
+  // ✅ Stop copytrade (pause only, keep accrued profits)
   const stopCopytrade = () => {
+    // Calculate balance at stop time
+    const stoppedBalance = baseBalance * Math.pow(1.04, daysSinceStart);
+
+    // Save it in state + localStorage
+    setFinalBalance(stoppedBalance);
+    localStorage.setItem("finalBalance", stoppedBalance);
+
     setCopytradeActive(false);
     localStorage.setItem("copytradeActive", "false");
     // Notice: we do NOT clear copytradeStartDate here
@@ -154,7 +166,7 @@ export default function Dashboard() {
   // Final balance with growth
   const balance = copytradeActive
     ? baseBalance * Math.pow(1.04, daysSinceStart)
-    : baseBalance;
+    : (finalBalance ?? baseBalance);
 
   const devMode = false; // 🔑 flip to false when backend is ready
 
@@ -392,7 +404,7 @@ export default function Dashboard() {
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
             {/* Header */}
             <p className="text-white mb-4">
-              {copytradeActive ? "Stop Copytrade?" : "Select Crypto to Mine"}
+              {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
             </p>
 
             {!copytradeActive ? (
