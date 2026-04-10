@@ -130,12 +130,17 @@ export default function Dashboard() {
   };
 
   // Track final balance when copytrade stops
-  const [finalBalance, setFinalBalance] = useState(
-    Number(localStorage.getItem(`${user.id}_finalBalance`)) || null,
-  );
+  const [finalBalance, setFinalBalance] = useState(() => {
+    if (user?.id) {
+      return Number(localStorage.getItem(`${user.id}_finalBalance`)) || null;
+    }
+    return null;
+  });
 
   // ✅ Stop copytrade (pause only, keep accrued profits)
   const stopCopytrade = () => {
+    if (!user?.id) return; // safeguard
+
     // Calculate balance at stop time
     const stoppedBalance = baseBalance * Math.pow(1.04, daysSinceStart);
 
