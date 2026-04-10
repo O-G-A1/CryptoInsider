@@ -180,7 +180,7 @@ export default function Dashboard() {
     }
   }, []); // ✅ runs only once on mount
 
-  const token = localStorage.getItem("authToken");
+  const token = localStorage.getItem("authToken"); // ✅ consistent key
   if (!token) {
     setUser(null);
     setLoading(false);
@@ -193,7 +193,7 @@ export default function Dashboard() {
         `${process.env.REACT_APP_API_URL}/api/user/profile`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`, // ✅ consistent usage
           },
         },
       );
@@ -213,17 +213,6 @@ export default function Dashboard() {
         localStorage.getItem(`${user.id}_copytradeActive`) === "true";
       setCopytradeActive(active);
 
-      // new one
-      useEffect(() => {
-        if (user?.transactions?.length) {
-          setFinalBalance(null);
-          localStorage.removeItem(`${user.id}_finalBalance`);
-        }
-      }, [user?.transactions]);
-
-      console.log("Transactions:", user?.transactions);
-      console.log("FinalBalance:", finalBalance);
-
       const savedDate = localStorage.getItem(`${user.id}_copytradeStartDate`);
       if (savedDate) setCopytradeStartDate(new Date(savedDate));
 
@@ -232,6 +221,7 @@ export default function Dashboard() {
     }
   }, [user?.id]);
 
+  // ✅ Clear frozen balance if new transactions arrive
   useEffect(() => {
     if (user?.transactions?.length) {
       setFinalBalance(null);
