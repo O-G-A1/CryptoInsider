@@ -105,6 +105,7 @@ export default function Dashboard() {
   const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 799;
+  const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
     localStorage.getItem("copytradeActive") === "true",
@@ -269,7 +270,7 @@ export default function Dashboard() {
 
         {copytradeActive && (
           <p className="text-green-400 text-xs mt-2">
-            Mining in progress — Day {daysSinceStart} : +4% daily
+            Mining in progress — Day {daysSinceStart} : +4%-+15% daily
           </p>
         )}
 
@@ -290,8 +291,8 @@ export default function Dashboard() {
         ) : (
           <button
             onClick={() => {
-              if (balance < 500) {
-                alert("You don't have the required funds yet (minimum $500).");
+              if (balance < 200) {
+                setShowFundsWarning(true); // ✅ show popup instead of alert
                 return;
               }
               setShowCopytradeModal(true);
@@ -396,6 +397,23 @@ export default function Dashboard() {
                 Cancel
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {/* ✅ Warning Popup */}
+      {showFundsWarning && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+            <h2 className="text-lg font-semibold mb-4">Insufficient Funds</h2>
+            <p className="mb-6">
+              You don't have the required funds yet (minimum $200).
+            </p>
+            <button
+              onClick={() => setShowFundsWarning(false)}
+              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
