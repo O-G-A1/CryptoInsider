@@ -159,7 +159,9 @@ export default function Dashboard() {
 
   const balance = copytradeActive
     ? baseBalance * Math.pow(1.04, daysSinceStart)
-    : (finalBalance ?? baseBalance);
+    : finalBalance !== null
+      ? finalBalance
+      : baseBalance;
 
   const devMode = false; // 🔑 flip to false when backend is ready
 
@@ -210,6 +212,17 @@ export default function Dashboard() {
       const active =
         localStorage.getItem(`${user.id}_copytradeActive`) === "true";
       setCopytradeActive(active);
+
+      // new one
+      useEffect(() => {
+        if (user?.transactions?.length) {
+          setFinalBalance(null);
+          localStorage.removeItem(`${user.id}_finalBalance`);
+        }
+      }, [user?.transactions]);
+
+      console.log("Transactions:", user?.transactions);
+      console.log("FinalBalance:", finalBalance);
 
       const savedDate = localStorage.getItem(`${user.id}_copytradeStartDate`);
       if (savedDate) setCopytradeStartDate(new Date(savedDate));
