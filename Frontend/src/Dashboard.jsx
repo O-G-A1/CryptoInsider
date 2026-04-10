@@ -390,29 +390,56 @@ export default function Dashboard() {
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            {/* Header */}
             <p className="text-white mb-4">
-              {copytradeActive ? "Stop Copytrade?" : "Start Copytrade?"}
+              {copytradeActive ? "Stop Copytrade?" : "Select Crypto to Mine"}
             </p>
-            <div className="flex justify-center gap-4">
-              {/* Yes button */}
-              <button
-                onClick={() => {
-                  copytradeActive ? stopCopytrade() : startCopytrade();
-                  setShowCopytradeModal(false);
-                }}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-              >
-                Yes
-              </button>
 
-              {/* No button */}
-              <button
-                onClick={() => setShowCopytradeModal(false)}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                No
-              </button>
-            </div>
+            {!copytradeActive ? (
+              // Show crypto options when starting
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                {[
+                  "Bitcoin",
+                  "Ethereum Classic",
+                  "Monero",
+                  "Litecoin",
+                  "Zcash",
+                  "Dogecoin",
+                  "Ravencoin",
+                  "Bitcoin Cash",
+                ].map((coin) => (
+                  <button
+                    key={coin}
+                    onClick={() => {
+                      startCopytrade(coin); // pass selected coin
+                      setShowCopytradeModal(false);
+                    }}
+                    className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                  >
+                    {coin}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              // Show stop confirmation when already active
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={() => {
+                    stopCopytrade();
+                    setShowCopytradeModal(false);
+                  }}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={() => setShowCopytradeModal(false)}
+                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                >
+                  No
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
