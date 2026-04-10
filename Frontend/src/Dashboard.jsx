@@ -121,14 +121,17 @@ export default function Dashboard() {
     if (!copytradeStartDate) {
       const today = new Date();
       setCopytradeStartDate(today);
-      localStorage.setItem("copytradeStartDate", today.toISOString());
+      localStorage.setItem(
+        `${user.id}_copytradeStartDate`,
+        today.toISOString(),
+      );
     }
-    localStorage.setItem("copytradeActive", "true");
+    localStorage.setItem(`${user.id}_copytradeActive`, "true");
   };
 
   // Track final balance when copytrade stops
   const [finalBalance, setFinalBalance] = useState(
-    Number(localStorage.getItem("finalBalance")) || null,
+    Number(localStorage.getItem(`${user.id}_finalBalance`)) || null,
   );
 
   // ✅ Stop copytrade (pause only, keep accrued profits)
@@ -138,10 +141,10 @@ export default function Dashboard() {
 
     // Save it in state + localStorage
     setFinalBalance(stoppedBalance);
-    localStorage.setItem("finalBalance", stoppedBalance);
+    localStorage.setItem(`${user.id}_finalBalance`, stoppedBalance);
 
     setCopytradeActive(false);
-    localStorage.setItem("copytradeActive", "false");
+    localStorage.setItem(`${user.id}_copytradeActive`, "false");
     // Notice: we do NOT clear copytradeStartDate here
   };
 
