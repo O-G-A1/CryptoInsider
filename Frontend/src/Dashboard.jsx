@@ -106,43 +106,40 @@ export default function Dashboard() {
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 799;
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
-  const [copytradeActive, setCopytradeActive] = useState(
-    localStorage.getItem("copytradeActive") === "true",
-  );
-  const [copytradeStartDate, setCopytradeStartDate] = useState(
-    localStorage.getItem("copytradeStartDate")
-      ? new Date(localStorage.getItem("copytradeStartDate"))
-      : null,
-  );
+
+  // ✅ New states for copytrade
+  const [finalBalance, setFinalBalance] = useState(null);
+  const [copytradeActive, setCopytradeActive] = useState(false);
+  const [copytradeStartDate, setCopytradeStartDate] = useState(null);
 
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
+    if (!user?.id) return;
     setCopytradeActive(true);
     if (!copytradeStartDate) {
       const today = new Date();
       setCopytradeStartDate(today);
-      localStorage.setItem("copytradeStartDate", today.toISOString());
+      localStorage.setItem(
+        `${user.id}_copytradeStartDate`,
+        today.toISOString(),
+      );
     }
-    localStorage.setItem("copytradeActive", "true");
+    localStorage.setItem(`${user.id}_copytradeActive`, "true");
   };
 
   // Track final balance when copytrade stops
-  const [finalBalance, setFinalBalance] = useState(
-    Number(localStorage.getItem("finalBalance")) || null,
-  );
 
   // ✅ Stop copytrade (pause only, keep accrued profits)
   const stopCopytrade = () => {
-    // Calculate balance at stop time
+    if (!user?.id) return;
+
     const stoppedBalance = baseBalance * Math.pow(1.04, daysSinceStart);
 
-    // Save it in state + localStorage
     setFinalBalance(stoppedBalance);
-    localStorage.setItem("finalBalance", stoppedBalance);
+    localStorage.setItem(`${user.id}_finalBalance`, stoppedBalance);
 
     setCopytradeActive(false);
-    localStorage.setItem("copytradeActive", "false");
-    // Notice: we do NOT clear copytradeStartDate here
+    localStorage.setItem(`${user.id}_copytradeActive`, "false");
   };
 
   const baseBalance =
@@ -156,68 +153,73 @@ export default function Dashboard() {
       return acc;
     }, 0) || 0;
 
-  // Days since copytrade started
   const daysSinceStart = copytradeStartDate
     ? Math.floor(
         (Date.now() - copytradeStartDate.getTime()) / (1000 * 60 * 60 * 24),
       )
     : 0;
 
-  // Final balance with growth
   const balance = copytradeActive
     ? baseBalance * Math.pow(1.04, daysSinceStart)
     : (finalBalance ?? baseBalance);
 
   const devMode = false; // 🔑 flip to false when backend is ready
 
-  const fetchUser = async () => {
+  useEffect(() => {
     if (devMode) {
-      setUser({ name: "Dev User", balance: 5000, createdAt: "2026-04-2" });
-      setLoading(false);
-      return;
-    }
+      setUser({
+        id: "dev123",
+        name: "Dev User",
+        createdAt: "2026-04-02",
+        transactions: [{ type: "deposit", amount: 5000 }],
+      });
 
-    const token = localStorage.getItem("authToken");
-    if (!token) {
-      setUser(null);
       setLoading(false);
-      return;
+    } else {
+      fetchUser();
     }
+  }, []); // ✅ runs only once on mount
 
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    setUser(null);
+    setLoading(false);
+    return;
+  }
+
+  const fetchUser = async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/user/profile`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         },
       );
-
-      if (!res.ok) throw new Error("Failed to fetch user");
       const data = await res.json();
-      setUser(data.user);
+      setUser(data);
+      setLoading(false);
     } catch (err) {
-      console.error("Dashboard fetch error, kindly reload the page:", err);
-      setUser(null);
-    } finally {
+      console.error("Error fetching user:", err);
       setLoading(false);
     }
   };
 
+  // --- Restore state from localStorage when user loads ---
   useEffect(() => {
-    fetchUser();
-  }, []);
-  // ✅ Reset copytrade for brand new users
-  useEffect(() => {
-    if (user && !user.transactions?.length) {
-      setCopytradeActive(false);
-      setCopytradeStartDate(null);
-      localStorage.removeItem("copytradeActive");
-      localStorage.removeItem("copytradeStartDate");
+    if (user?.id) {
+      const active =
+        localStorage.getItem(`${user.id}_copytradeActive`) === "true";
+      setCopytradeActive(active);
+
+      const savedDate = localStorage.getItem(`${user.id}_copytradeStartDate`);
+      if (savedDate) setCopytradeStartDate(new Date(savedDate));
+
+      const savedFinalBalance = localStorage.getItem(`${user.id}_finalBalance`);
+      if (savedFinalBalance) setFinalBalance(Number(savedFinalBalance));
     }
-  }, [user]);
+  }, [user?.id]);
 
   const formatCurrency = (v) =>
     new Intl.NumberFormat("en-US", {
@@ -401,7 +403,15 @@ export default function Dashboard() {
       )}
       {showCopytradeModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center relative">
+            {/* Cancel X button */}
+            <button
+              onClick={() => setShowCopytradeModal(false)}
+              className="absolute top-2 right-2 text-white hover:text-gray-400"
+            >
+              ✕
+            </button>
+
             {/* Header */}
             <p className="text-white mb-4">
               {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
