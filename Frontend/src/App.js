@@ -45,22 +45,22 @@ function App() {
               <section className="min-h-screen bg-gray-900 text-white px-6 py-12">
                 <div className="max-w-5xl mx-auto text-center">
                   <h1 className="text-3xl font-bold mb-4 text-yellow-200">
-                    Effortless Crypto Mining & Asset Growth
+                    Reclaim What’s Yours — Securely Stored
                   </h1>
                   <p className="text-lg mb-8 max-w-3xl mx-auto">
-                    ChainHub is your gateway to modern crypto mining and asset
-                    recovery. Whether you’re starting your mining journey,
-                    scaling up to maximize returns, or reclaiming lost assets,
-                    our platform delivers secure, intuitive, and profitable
-                    tools to help you generate and protect your digital wealth.
-                    With ChainHub, confidence isn’t just a promise — it’s built
-                    into every block you mine and every asset you recover.
+                    ChainHub is your gateway to modern crypto asset recovery and
+                    secure wallet management. Whether you’re reclaiming lost
+                    assets, safeguarding your holdings, or managing transactions
+                    with ease, our platform delivers intuitive, trusted tools to
+                    help you protect and grow your digital wealth. With
+                    ChainHub, confidence isn’t just a promise — it’s built into
+                    every asset you recover and every transaction you make.
                   </p>
                 </div>
                 {/* 🎁 Promo Badge */}
                 <div className="flex flex-col items-center space-y-4 mt-8">
                   <p className="inline-block bg-yellow-200 text-center text-gray-900 font-bold px-4 py-2 rounded-full mb-6 animate-pulse">
-                    🎁 Earn up to $149 on first deposit.
+                    Restore Control of Your Assets
                   </p>
 
                   <button
@@ -92,38 +92,38 @@ function App() {
                     </h3>
                     <p className="text-sm">
                       Simple onboarding, educational resources, and intuitive
-                      tools designed for first-time miners.
+                      tools designed for everyone.
                     </p>
                   </div>
                 </div>
                 {/* ✅ Weekly Earnings Potential Section */}
                 <div className="mt-20 text-center max-w-4xl mx-auto">
                   <h2 className="text-2xl font-bold mb-4">
-                    Your Weekly Mining Potential
+                    Your Weekly Asset Recovery Potential
                   </h2>
                   <p className="text-md mb-6">
-                    With ChainHub, Miners typically earn
+                    With ChainHub, Users typically recover
                     <span className="font-semibold text-yellow-200">
                       {" "}
-                      5–10% weekly returns
+                      1–10% weekly
                     </span>{" "}
                     depending on their portfolio size.
                   </p>
                   <div className="grid md:grid-cols-2 gap-6 mt-8">
                     <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                       <h3 className="text-xl font-bold mb-2">
-                        Example: $1,000 Mining Portfolio
+                        Example: $1,000 Recovery Portfolio
                       </h3>
                       <p className="text-sm">
-                        Potential weekly earnings: $150 – $280
+                        Potential weekly recovery: $150 – $280
                       </p>
                     </div>
                     <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                       <h3 className="text-xl font-bold mb-2">
-                        Example: $100,000 Mining Portfolio
+                        Example: $100,000 Recovery Portfolio
                       </h3>
                       <p className="text-sm">
-                        Potential weekly earnings: $3500 – $28,000
+                        Potential weekly recovery: $3500 – $28,000
                       </p>
                     </div>
                   </div>
@@ -138,8 +138,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub helped me grow my $1,000 Portfolio into
-                            $5,000 in just a few months!"
+                            "ChainHub helped me recover my lost assets within a
+                            few days!"
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -153,7 +153,7 @@ function App() {
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
                             "The platform is beginner-friendly. I finally feel
-                            confident in mining crypto."
+                            confident in recovering lost assets."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★☆</div>
                           <span className="font-semibold text-yellow-200">
@@ -166,8 +166,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "I love the weekly returns. ChainHub has changed my
-                            financial future."
+                            "I love the weekly recovery procedures. ChainHub has
+                            changed my financial future."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -194,7 +194,7 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "I withdrew profits instantly. No hidden fees!"
+                            "I withdrew funds instantly. No hidden fees!"
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★☆</div>
                           <span className="font-semibold text-yellow-200">
@@ -207,8 +207,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub gave me confidence to mine for the first
-                            time."
+                            "ChainHub gave me confidence to recover my lost
+                            assets for the first time."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -251,13 +251,20 @@ function App() {
                 <div className="text-gray-200 py-16 px-6 mt-8">
                   <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-2xl font-bold mb-2 text-yellow-200">
-                      Wealth Growth Made Simple
+                      Asset Recovery Made Simple
                     </h2>
                     <span className="animate-underline"></span>
                     <p className="text-xl leading-relaxed text-gray-200 mt-6 mb-12 max-w-2xl mx-auto">
-                      When you sign up, ChainHub takes care of the complex
-                      mining process for you. Here’s how we make wealth growth
-                      simple and stress‑free:
+                      When you sign up, ChainHub takes care of the complex asset
+                      recovery process for you. Our smart algorithms work around
+                      the clock to identify and recover your lost assets, while
+                      our secure wallet management keeps your holdings safe and
+                      accessible. With transparent tracking and expert support,
+                      you can watch your wealth grow with confidence — all
+                      without needing to understand the technical details. It’s
+                      like having a team of crypto experts working for you, so
+                      you can focus on enjoying the benefits of your recovered
+                      assets.
                     </p>
 
                     {/* Practical Points */}
@@ -267,7 +274,7 @@ function App() {
                           🤖 Automated Strategies
                         </h3>
                         <p className="text-sm leading-relaxed">
-                          Our smart algorithms monitor the market 24/7 and
+                          Our smart algorithms monitor the wallet 24/7 and
                           automatically adjust your portfolio to maximize growth
                           without you lifting a finger.
                         </p>
@@ -278,19 +285,19 @@ function App() {
                           📊 Transparent Growth Tracking
                         </h3>
                         <p className="text-sm leading-relaxed">
-                          See your wealth increase in real time with clear
-                          dashboards that show exactly how your money is working
-                          for you.
+                          Track your assets in real time with clear dashboards
+                          that show exactly how your recovered wealth is secured
+                          and growing.
                         </p>
                       </div>
 
                       <div>
                         <h3 className="text-xl font-bold mb-2 text-yellow-200">
-                          🎁 Sign‑Up Bonuses
+                          🛡️ Safe & Transparent Wallet Management
                         </h3>
                         <p className="text-sm leading-relaxed">
-                          Get instant rewards when you join, giving you a head
-                          start on your wealth‑building journey.
+                          Get instant access to secure asset recovery, putting
+                          you back in control of your digital wealth
                         </p>
                       </div>
 
@@ -299,9 +306,9 @@ function App() {
                           🛡️ Built‑In Protection
                         </h3>
                         <p className="text-sm leading-relaxed">
-                          Your funds are safeguarded with industry‑grade
-                          security and automatic risk controls, so you can grow
-                          wealth with peace of mind.
+                          Your assets are safeguarded with industry‑grade
+                          security and automatic risk controls, so you can
+                          reclaim and protect your wealth with peace of mind.
                         </p>
                       </div>
 
@@ -332,7 +339,7 @@ function App() {
                       onClick={() => setShowSignup(true)}
                       className="mt-12 bg-indigo-400 text-white text-base px-5 py-5 rounded-lg font-medium hover:bg-indigo-700 transition"
                     >
-                      Start Growing Your Wealth Today
+                      Restore Confidence in Your Wallet
                     </button>
                   </div>
                 </div>{" "}
@@ -345,9 +352,10 @@ function App() {
 
                   <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12">
                     We believe crypto should be accessible to everyone. Our
-                    platform combines cutting-edge technology with
-                    human-centered design to help you mine smarter, faster, and
-                    safer.
+                    platform combines cutting‑edge technology with
+                    human‑centered design to help you recover assets securely,
+                    manage them effortlessly, and regain confidence in your
+                    digital wealth
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -368,7 +376,7 @@ function App() {
                       </h3>
                       <p className="text-gray-400 text-sm">
                         Our team is available anytime to help you with your
-                        mining.
+                        asset recovery and management.
                       </p>
                     </div>
 
@@ -387,8 +395,8 @@ function App() {
                         ✅ Trusted Worldwide
                       </h3>
                       <p className="text-gray-400 text-sm">
-                        Thousands of investors rely on ChainHub for secure
-                        crypto mining.
+                        Thousands of users rely on ChainHub for secure asset
+                        recovery and management.
                       </p>
                     </div>
                   </div>

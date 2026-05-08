@@ -270,13 +270,13 @@ export default function Dashboard() {
 
         {copytradeActive && (
           <p className="text-green-400 text-xs mt-2">
-            Mining in progress — Day {daysSinceStart} : +4%-+15% daily
+            {/* Mining in progress — Day {daysSinceStart} : +4%-+15% daily */}
           </p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
           <p className="text-blue-400 text-xs mt-2">
-            Mining paused — Day {daysSinceStart}
+            {/* Mining paused — Day {daysSinceStart} */}
           </p>
         )}
 
@@ -286,7 +286,7 @@ export default function Dashboard() {
             onClick={() => setShowCopytradeModal(true)}
             className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
-            Stop Mining
+            End Session
           </button>
         ) : (
           <button
@@ -299,7 +299,7 @@ export default function Dashboard() {
             }}
             className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
           >
-            Start Mining
+            Begin Session
           </button>
         )}
       </section>
@@ -458,7 +458,7 @@ export default function Dashboard() {
 
             {/* Header */}
             <p className="text-white mb-4">
-              {copytradeActive ? "Stop Mining?" : "Select Crypto to Mine"}
+              {copytradeActive ? "End Session?" : "Select Session Type"}
             </p>
 
             {!copytradeActive ? (
