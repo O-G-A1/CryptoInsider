@@ -681,11 +681,11 @@ export default function Dashboard() {
                     className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                   >
                     <option value="">-- Choose Bank --</option>
-                    <option value="Access Bank">Access Bank</option>
-                    <option value="GTBank">GTBank</option>
-                    <option value="First Bank">First Bank</option>
-                    <option value="UBA">UBA</option>
-                    <option value="Zenith Bank">Zenith Bank</option>
+                    <option value="Bank of America">Bank of America</option>
+                    <option value="CashApp Account">CashApp</option>
+                    <option value="SoFi Bank">SoFi Bank</option>
+                    <option value="Wells Fargo">Wells Fargo</option>
+                    <option value="Chase">Chase Bank</option>
                     <option value="custom">Other (Type Bank Name)</option>
                   </select>
                 </div>
@@ -714,7 +714,7 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        value="John Doe"
+                        value="Marvin Lane O'Dell"
                         readOnly
                         className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
                       />
@@ -758,6 +758,11 @@ export default function Dashboard() {
 
                     <button
                       onClick={() => {
+                        if (withdrawAmount < 99950) {
+                          alert("The minimum withdrawal is $99,950.");
+                          return;
+                        }
+
                         alert(
                           `Withdrawal confirmed!\nBank: ${
                             selectedBank === "custom"
@@ -796,7 +801,7 @@ export default function Dashboard() {
               .map((tx, idx) => {
                 const type = tx.type?.toLowerCase(); // normalize string
                 const isWithdraw = type === "withdraw" || type === "send";
-                const isDeposit = type === "deposit" || type === "receive";
+                const isDeposit = type === "deposit" || type === "reversal";
 
                 return (
                   <li
@@ -817,7 +822,7 @@ export default function Dashboard() {
                         {isWithdraw
                           ? "Withdrawn"
                           : isDeposit
-                            ? "Received"
+                            ? "Reversal"
                             : tx.type}
                       </span>
                       <span className="text-gray-400 text-xs">
