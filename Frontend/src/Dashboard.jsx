@@ -119,7 +119,6 @@ export default function Dashboard() {
   const [customBank, setCustomBank] = useState("");
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
-  const [withdrawAmount, setWithdrawAmount] = useState("");
 
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
