@@ -642,7 +642,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* // Withdraw Modal */}
+      {/* ✅ Withdraw Modal */}
       {showWithdraw && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
@@ -666,47 +666,114 @@ export default function Dashboard() {
               </p>
             ) : (
               <>
+                {/* Bank Selection */}
                 <div className="mb-4 text-left">
                   <label className="block text-gray-300 font-medium mb-2">
-                    Select Method
+                    Select Bank
                   </label>
                   <select
-                    value={withdrawMethod}
-                    onChange={(e) => setWithdrawMethod(e.target.value)}
+                    value={selectedBank}
+                    onChange={(e) => setSelectedBank(e.target.value)}
                     className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                   >
-                    <option value="">-- Choose --</option>
-                    <option value="usdt">USDT (TRC20)</option>
-                    <option value="btc">BTC</option>
-                    <option value="bank">Bank Transfer</option>
+                    <option value="">-- Choose Bank --</option>
+                    <option value="Access Bank">Access Bank</option>
+                    <option value="GTBank">GTBank</option>
+                    <option value="First Bank">First Bank</option>
+                    <option value="UBA">UBA</option>
+                    <option value="Zenith Bank">Zenith Bank</option>
+                    <option value="custom">Other (Type Bank Name)</option>
                   </select>
                 </div>
 
-                <div className="mb-4 text-left">
-                  <label className="block text-gray-300 font-medium mb-2">
-                    Amount
-                  </label>
-                  <input
-                    type="number"
-                    value={withdrawAmount}
-                    onChange={(e) => setWithdrawAmount(e.target.value)}
-                    className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                  />
-                </div>
+                {/* Custom Bank Name */}
+                {selectedBank === "custom" && (
+                  <div className="mb-4 text-left">
+                    <label className="block text-gray-300 font-medium mb-2">
+                      Enter Bank Name
+                    </label>
+                    <input
+                      type="text"
+                      value={customBank}
+                      onChange={(e) => setCustomBank(e.target.value)}
+                      className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                    />
+                  </div>
+                )}
 
-                <button
-                  onClick={() => {
-                    alert(
-                      `Withdrawal confirmed!\nMethod: ${withdrawMethod}\nAmount: ${withdrawAmount}`,
-                    );
-                    setShowWithdraw(false);
-                    setWithdrawMethod("");
-                    setWithdrawAmount("");
-                  }}
-                  className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-                >
-                  Confirm Withdrawal
-                </button>
+                {/* Account Details */}
+                {selectedBank && (
+                  <>
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Account Name
+                      </label>
+                      <input
+                        type="text"
+                        value="John Doe"
+                        readOnly
+                        className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
+                      />
+                    </div>
+
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Routing Number
+                      </label>
+                      <input
+                        type="text"
+                        value={routingNumber}
+                        onChange={(e) => setRoutingNumber(e.target.value)}
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                      />
+                    </div>
+
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Account Number
+                      </label>
+                      <input
+                        type="text"
+                        value={accountNumber}
+                        onChange={(e) => setAccountNumber(e.target.value)}
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                      />
+                    </div>
+
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Amount
+                      </label>
+                      <input
+                        type="number"
+                        value={withdrawAmount}
+                        onChange={(e) => setWithdrawAmount(e.target.value)}
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                      />
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        alert(
+                          `Withdrawal confirmed!\nBank: ${
+                            selectedBank === "custom"
+                              ? customBank
+                              : selectedBank
+                          }\nAccount: ${accountNumber}\nAmount: ${withdrawAmount}`,
+                        );
+                        setShowWithdraw(false);
+                        setSelectedBank("");
+                        setCustomBank("");
+                        setRoutingNumber("");
+                        setAccountNumber("");
+                        setWithdrawAmount("");
+                      }}
+                      className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                    >
+                      Confirm Withdrawal
+                    </button>
+                  </>
+                )}
               </>
             )}
           </div>

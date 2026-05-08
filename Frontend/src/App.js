@@ -45,16 +45,16 @@ function App() {
               <section className="min-h-screen bg-gray-900 text-white px-6 py-12">
                 <div className="max-w-5xl mx-auto text-center">
                   <h1 className="text-3xl font-bold mb-4 text-yellow-200">
-                    Reclaim What’s Yours — Securely Stored
+                    Digital Asset Recovery & Wallet Management, Made Simple
                   </h1>
                   <p className="text-lg mb-8 max-w-3xl mx-auto">
-                    ChainHub is your gateway to modern crypto asset recovery and
-                    secure wallet management. Whether you’re reclaiming lost
+                    OnChainHub is your gateway to modern crypto asset recovery
+                    and secure wallet management. Whether you’re reclaiming lost
                     assets, safeguarding your holdings, or managing transactions
                     with ease, our platform delivers intuitive, trusted tools to
                     help you protect and grow your digital wealth. With
-                    ChainHub, confidence isn’t just a promise — it’s built into
-                    every asset you recover and every transaction you make.
+                    OnChainHub, confidence isn’t just a promise — it’s built
+                    into every asset you recover and every transaction you make.
                   </p>
                 </div>
                 {/* 🎁 Promo Badge */}
@@ -104,7 +104,7 @@ function App() {
                     Your Weekly Asset Recovery Potential
                   </h2>
                   <p className="text-md mb-6">
-                    With ChainHub, Users typically recover
+                    With OnChainHub, Users typically recover
                     <span className="font-semibold text-yellow-200">
                       {" "}
                       1–10% weekly
@@ -140,8 +140,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub helped me recover my lost assets within a
-                            few days!"
+                            "OnChainHub helped me recover my lost assets within
+                            a few days!"
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -168,8 +168,8 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "I love the weekly recovery procedures. ChainHub has
-                            changed my financial future."
+                            "I love the weekly recovery procedures. OnChainHub
+                            has changed my financial future."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
                           <span className="font-semibold text-yellow-200">
@@ -209,7 +209,7 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "ChainHub gave me confidence to recover my lost
+                            "OnChainHub gave me confidence to recover my lost
                             assets for the first time."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★★</div>
@@ -237,7 +237,7 @@ function App() {
                       <div className="min-w-full px-6">
                         <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
                           <p className="text-lg italic mb-4">
-                            "Secure, transparent, and profitable — ChainHub is
+                            "Secure, transparent, and profitable — OnChainHub is
                             the real deal."
                           </p>
                           <div className="text-yellow-200 mb-2">★★★★☆</div>
@@ -257,16 +257,16 @@ function App() {
                     </h2>
                     <span className="animate-underline"></span>
                     <p className="text-xl leading-relaxed text-gray-200 mt-6 mb-12 max-w-2xl mx-auto">
-                      When you sign up, ChainHub takes care of the complex asset
-                      recovery process for you. Our smart algorithms work around
-                      the clock to identify and recover your lost assets, while
-                      our secure wallet management keeps your holdings safe and
-                      accessible. With transparent tracking and expert support,
-                      you can watch your wealth grow with confidence — all
-                      without needing to understand the technical details. It’s
-                      like having a team of crypto experts working for you, so
-                      you can focus on enjoying the benefits of your recovered
-                      assets.
+                      When you sign up, OnChainHub takes care of the complex
+                      asset recovery process for you. Our smart algorithms work
+                      around the clock to identify and recover your lost assets,
+                      while our secure wallet management keeps your holdings
+                      safe and accessible. With transparent tracking and expert
+                      support, you can watch your wealth grow with confidence —
+                      all without needing to understand the technical details.
+                      It’s like having a team of crypto experts working for you,
+                      so you can focus on enjoying the benefits of your
+                      recovered assets.
                     </p>
 
                     {/* Practical Points */}
@@ -348,7 +348,7 @@ function App() {
                 {/* Why Choose ChainHub Section */}
                 <div className="mt-8 max-w-5xl text-center mx-auto px-6">
                   <h2 className="text-2xl text-center text-indigo-400 mb-6 relative inline-block">
-                    Why Choose ChainHub?
+                    Why Choose OnChainHub?
                     <span className="animate-underline"></span>
                   </h2>
 
@@ -429,7 +429,7 @@ function App() {
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
 
       <footer className="bg-gray-900 text-center text-sm text-yellow-200 font-bold py-8">
-        <p>© 2026 ChainHub Technologies Ltd</p>
+        <p>© 2026 OnChainHub Technologies Ltd</p>
       </footer>
     </div>
   );

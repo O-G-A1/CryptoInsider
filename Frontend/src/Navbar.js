@@ -37,7 +37,7 @@ export default function Navbar({ onSignupClick, onLoginClick }) {
           </svg>
 
           <span className="text-2xl font-bold text-white hover:text-indigo-400">
-            ChainHub
+            OnChainHub
           </span>
         </Link>
 
