@@ -119,6 +119,8 @@ export default function Dashboard() {
   const [customBank, setCustomBank] = useState("");
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
+  const [withdrawMessage, setWithdrawMessage] = useState("");
+  const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
@@ -759,17 +761,22 @@ export default function Dashboard() {
                     <button
                       onClick={() => {
                         if (withdrawAmount < 99950) {
-                          alert("The minimum withdrawal is $99,950.");
+                          setWithdrawMessage(
+                            "The minimum withdrawal is $99,950.",
+                          );
+                          setShowWithdrawPopup(true);
                           return;
                         }
 
-                        alert(
+                        setWithdrawMessage(
                           `Withdrawal confirmed!\nBank: ${
                             selectedBank === "custom"
                               ? customBank
                               : selectedBank
                           }\nAccount: ${accountNumber}\nAmount: ${withdrawAmount}`,
                         );
+                        setShowWithdrawPopup(true);
+
                         setShowWithdraw(false);
                         setSelectedBank("");
                         setCustomBank("");
@@ -781,6 +788,23 @@ export default function Dashboard() {
                     >
                       Confirm Withdrawal
                     </button>
+
+                    {/* ✅ Popup Modal */}
+                    {showWithdrawPopup && (
+                      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                        <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+                          <p className="mb-6 whitespace-pre-line text-gray-800">
+                            {withdrawMessage}
+                          </p>
+                          <button
+                            onClick={() => setShowWithdrawPopup(false)}
+                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </>
                 )}
               </>
