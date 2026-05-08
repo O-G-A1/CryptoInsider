@@ -768,6 +768,14 @@ export default function Dashboard() {
                           return;
                         }
 
+                        if (withdrawAmount > balance) {
+                          setWithdrawMessage(
+                            "You do not have enough funds to withdraw that amount.",
+                          );
+                          setShowWithdrawPopup(true);
+                          return;
+                        }
+
                         setWithdrawMessage(
                           `Withdrawal confirmed!\nBank: ${
                             selectedBank === "custom"
@@ -851,7 +859,7 @@ export default function Dashboard() {
                           : isDeposit
                             ? type === "receive" || type === "received"
                               ? "Reversal"
-                              : "Received"
+                              : "Reversal"
                             : tx.type}
                       </span>
                       <span className="text-gray-400 text-xs">
