@@ -80,10 +80,12 @@ function App() {
                     </p>
                   </div>
                   <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2">📈 Smart Mining</h3>
+                    <h3 className="text-xl font-bold mb-2">
+                      📈 Smart Recovery
+                    </h3>
                     <p className="text-sm">
-                      Access real-time market data, automated strategies, and
-                      expert insights to maximize returns.
+                      Access real-time wallet data, automated recovery tools,
+                      and expert insights.
                     </p>
                   </div>
                   <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
