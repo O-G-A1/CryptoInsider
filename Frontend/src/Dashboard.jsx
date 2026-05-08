@@ -801,7 +801,7 @@ export default function Dashboard() {
               .map((tx, idx) => {
                 const type = tx.type?.toLowerCase(); // normalize string
                 const isWithdraw = type === "withdraw" || type === "send";
-                const isDeposit = type === "deposit" || type === "reversal";
+                const isDeposit = type === "deposit" || type === "receive";
 
                 return (
                   <li
@@ -822,7 +822,7 @@ export default function Dashboard() {
                         {isWithdraw
                           ? "Withdrawn"
                           : isDeposit
-                            ? "Reversal"
+                            ? "Received"
                             : tx.type}
                       </span>
                       <span className="text-gray-400 text-xs">
