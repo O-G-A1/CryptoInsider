@@ -115,6 +115,11 @@ export default function Dashboard() {
       ? new Date(localStorage.getItem("copytradeStartDate"))
       : null,
   );
+  const [selectedBank, setSelectedBank] = useState("");
+  const [customBank, setCustomBank] = useState("");
+  const [routingNumber, setRoutingNumber] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [withdrawAmount, setWithdrawAmount] = useState("");
 
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
