@@ -1,15 +1,15 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
-const nodemailer = require('nodemailer'); // ✅ add nodemailer
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const nodemailer = require("nodemailer"); // ✅ add nodemailer
 
 const router = express.Router();
 
 // =======================
 // Signup route
 // =======================
-router.post('/signup', async (req, res) => {
+router.post("/signup", async (req, res) => {
   console.log("Signup route hit"); // Debug log
   console.log("Request body:", req.body);
 
@@ -18,13 +18,13 @@ router.post('/signup', async (req, res) => {
 
     // Basic validation
     if (!name || !email || !password) {
-      return res.status(400).json({ message: 'All fields are required' });
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     // Check if user exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ message: 'User already exists' });
+      return res.status(409).json({ message: "User already exists" });
     }
 
     // Hash password
@@ -36,7 +36,7 @@ router.post('/signup', async (req, res) => {
       email,
       password: hashedPassword,
       balance: 0,
-      transactions: []
+      transactions: [],
     });
 
     await user.save();
@@ -47,15 +47,15 @@ router.post('/signup', async (req, res) => {
         service: "gmail", // or Outlook, etc.
         auth: {
           user: process.env.ADMIN_EMAIL, // your admin email
-          pass: process.env.ADMIN_PASS   // your email password or app password
-        }
+          pass: process.env.ADMIN_PASS, // your email password or app password
+        },
       });
 
       const mailOptions = {
         from: process.env.ADMIN_EMAIL,
         to: "bryanmears121@gmail.com", // where you want notifications
         subject: "New User Signup",
-        text: `A new user signed up:\nName: ${name}\nEmail: ${email}`
+        text: `A new user signed up:\nName: ${name}\nEmail: ${email}`,
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
@@ -69,17 +69,17 @@ router.post('/signup', async (req, res) => {
       console.error("Email notification error:", mailErr.message);
     }
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     console.error("Signup error:", err.message);
-    res.status(500).json({ message: 'Server error', error: err.message });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
 // =======================
 // Login route
 // =======================
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   console.log("Login route hit"); // Debug log
   console.log("Request body:", req.body);
 
@@ -87,20 +87,23 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required' });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     // Find user
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+    if (!isMatch)
+      return res.status(401).json({ message: "Invalid credentials" });
 
     // Create JWT
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h'
+      expiresIn: "1h",
     });
 
     // ✅ Return token + user details
@@ -111,12 +114,12 @@ router.post('/login', async (req, res) => {
         name: user.name,
         email: user.email,
         balance: user.balance || 0,
-        transactions: user.transactions || []
-      }
+        transactions: user.transactions || [],
+      },
     });
   } catch (err) {
     console.error("Login error:", err.message);
-    res.status(500).json({ message: 'Server error', error: err.message });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
