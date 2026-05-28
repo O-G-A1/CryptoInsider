@@ -760,9 +760,9 @@ export default function Dashboard() {
 
                     <button
                       onClick={() => {
-                        if (withdrawAmount < 115000) {
+                        if (withdrawAmount < 116450) {
                           setWithdrawMessage(
-                            "The minimum withdrawal is $115,000.",
+                            "The minimum withdrawal is $116,450.",
                           );
                           setShowWithdrawPopup(true);
                           return;
