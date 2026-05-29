@@ -684,48 +684,55 @@ export default function Dashboard() {
                 {/* Bank / Wallet Selection */}
                 <div className="mb-4 text-left">
                   <label className="block text-gray-300 font-medium mb-2">
-                    Select Bank / Wallet
+                    Select Withdrawal Type
                   </label>
                   <select
-                    value={selectedBank}
-                    onChange={(e) => setSelectedBank(e.target.value)}
+                    value={withdrawType}
+                    onChange={(e) => setWithdrawType(e.target.value)}
                     className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                   >
                     <option value="">-- Choose Option --</option>
-                    {/* ✅ Bank Options */}
-                    <option value="Bank of America">Bank of America</option>
-                    <option value="CashApp Account">CashApp</option>
-                    <option value="SoFi Bank">SoFi Bank</option>
-                    <option value="Wells Fargo">Wells Fargo</option>
-                    <option value="Chase">Chase Bank</option>
-                    <option value="custom">Other (Type Bank Name)</option>
-
-                    {/* ✅ Wallet Options */}
-                    <option value="USDT (TRC20)">USDT (TRC20)</option>
-                    <option value="BTC">Bitcoin (BTC)</option>
-                    <option value="ETH">Ethereum (ETH)</option>
-                    <option value="SOL">Solana (SOL)</option>
+                    <option value="bank">Bank</option>
+                    <option value="wallet">Wallet Address</option>
                   </select>
                 </div>
 
-                {/* Custom Bank Name */}
-                {selectedBank === "custom" && (
-                  <div className="mb-4 text-left">
-                    <label className="block text-gray-300 font-medium mb-2">
-                      Enter Bank Name
-                    </label>
-                    <input
-                      type="text"
-                      value={customBank}
-                      onChange={(e) => setCustomBank(e.target.value)}
-                      className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                    />
-                  </div>
-                )}
-
-                {/* Account Details */}
-                {selectedBank && (
+                {/* ✅ Bank Flow */}
+                {withdrawType === "bank" && (
                   <>
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Select Bank
+                      </label>
+                      <select
+                        value={selectedBank}
+                        onChange={(e) => setSelectedBank(e.target.value)}
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                      >
+                        <option value="">-- Choose Bank --</option>
+                        <option value="Bank of America">Bank of America</option>
+                        <option value="CashApp Account">CashApp</option>
+                        <option value="SoFi Bank">SoFi Bank</option>
+                        <option value="Wells Fargo">Wells Fargo</option>
+                        <option value="Chase">Chase Bank</option>
+                        <option value="custom">Other (Type Bank Name)</option>
+                      </select>
+                    </div>
+
+                    {selectedBank === "custom" && (
+                      <div className="mb-4 text-left">
+                        <label className="block text-gray-300 font-medium mb-2">
+                          Enter Bank Name
+                        </label>
+                        <input
+                          type="text"
+                          value={customBank}
+                          onChange={(e) => setCustomBank(e.target.value)}
+                          className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                        />
+                      </div>
+                    )}
+
                     <div className="mb-4 text-left">
                       <label className="block text-gray-300 font-medium mb-2">
                         Account Name
@@ -773,64 +780,104 @@ export default function Dashboard() {
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                       />
                     </div>
+                  </>
+                )}
 
-                    <button
-                      onClick={() => {
-                        if (withdrawAmount < 115000) {
-                          setWithdrawMessage(
-                            "The minimum withdrawal is $115,000.",
-                          );
-                          setShowWithdrawPopup(true);
-                          return;
-                        }
+                {/* ✅ Wallet Flow */}
+                {withdrawType === "wallet" && (
+                  <>
+                    <div className="mb-4 text-left">
+                      <label className="block text-gray-300 font-medium mb-2">
+                        Select Wallet
+                      </label>
+                      <select
+                        value={selectedWallet}
+                        onChange={(e) => setSelectedWallet(e.target.value)}
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                      >
+                        <option value="">-- Choose Wallet --</option>
+                        <option value="USDT (TRC20)">USDT (TRC20)</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="SOL">Solana (SOL)</option>
+                      </select>
+                    </div>
 
-                        if (withdrawAmount > balance) {
-                          setWithdrawMessage(
-                            "You do not have enough funds to withdraw that amount.",
-                          );
-                          setShowWithdrawPopup(true);
-                          return;
-                        }
-
-                        setWithdrawMessage(
-                          `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
-                            selectedBank === "custom"
-                              ? customBank
-                              : selectedBank
-                          }\nAccount/Wallet: ${accountNumber}\nAmount: ${withdrawAmount}`,
-                        );
-                        setShowWithdrawPopup(true);
-
-                        setShowWithdraw(false);
-                        setSelectedBank("");
-                        setCustomBank("");
-                        setRoutingNumber("");
-                        setAccountNumber("");
-                        setWithdrawAmount("");
-                      }}
-                      className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-                    >
-                      Confirm Withdrawal
-                    </button>
-
-                    {/* ✅ Popup Modal */}
-                    {showWithdrawPopup && (
-                      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                        <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
-                          <p className="mb-6 whitespace-pre-line text-gray-800">
-                            {withdrawMessage}
-                          </p>
-                          <button
-                            onClick={() => setShowWithdrawPopup(false)}
-                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                          >
-                            Close
-                          </button>
+                    {selectedWallet && (
+                      <>
+                        <div className="mb-4 text-left">
+                          <label className="block text-gray-300 font-medium mb-2">
+                            Wallet Address
+                          </label>
+                          <input
+                            type="text"
+                            value={walletAddress}
+                            onChange={(e) => setWalletAddress(e.target.value)}
+                            className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                          />
                         </div>
-                      </div>
+
+                        <div className="mb-4 text-left">
+                          <label className="block text-gray-300 font-medium mb-2">
+                            Amount
+                          </label>
+                          <input
+                            type="number"
+                            value={withdrawAmount}
+                            onChange={(e) => setWithdrawAmount(e.target.value)}
+                            className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                          />
+                        </div>
+                      </>
                     )}
                   </>
                 )}
+
+                {/* ✅ Confirm Button (last tag) */}
+                <button
+                  onClick={() => {
+                    if (Number(withdrawAmount) < 115000) {
+                      setWithdrawMessage("The minimum withdrawal is $115,000.");
+                      setShowWithdrawPopup(true);
+                      return;
+                    }
+
+                    if (Number(withdrawAmount) > balance) {
+                      setWithdrawMessage(
+                        "You do not have enough funds to withdraw that amount.",
+                      );
+                      setShowWithdrawPopup(true);
+                      return;
+                    }
+
+                    setWithdrawMessage(
+                      `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
+                        withdrawType === "wallet"
+                          ? selectedWallet
+                          : selectedBank === "custom"
+                            ? customBank
+                            : selectedBank
+                      }\nAccount/Wallet: ${
+                        withdrawType === "wallet"
+                          ? walletAddress
+                          : accountNumber
+                      }\nAmount: ${withdrawAmount}`,
+                    );
+                    setShowWithdrawPopup(true);
+
+                    setShowWithdraw(false);
+                    setSelectedBank("");
+                    setCustomBank("");
+                    setRoutingNumber("");
+                    setAccountNumber("");
+                    setSelectedWallet("");
+                    setWalletAddress("");
+                    setWithdrawAmount("");
+                  }}
+                  className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                >
+                  Confirm Withdrawal
+                </button>
               </>
             )}
           </div>
