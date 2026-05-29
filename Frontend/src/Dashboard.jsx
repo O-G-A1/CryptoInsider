@@ -692,10 +692,10 @@ export default function Dashboard() {
                     <option value="custom">Other (Type Bank Name)</option>
 
                     {/* ✅ Wallet Options */}
-                    <option value="USDT (TRC20)">USDT (TRC20)</option>
+                    {/* <option value="USDT (TRC20)">USDT (TRC20)</option>
                     <option value="BTC">Bitcoin (BTC)</option>
                     <option value="ETH">Ethereum (ETH)</option>
-                    <option value="SOL">Solana (SOL)</option>
+                    <option value="SOL">Solana (SOL)</option> */}
                   </select>
                 </div>
 
@@ -743,7 +743,7 @@ export default function Dashboard() {
 
                     <div className="mb-4 text-left">
                       <label className="block text-gray-300 font-medium mb-2">
-                        Account Number / Wallet Address
+                        Account Number
                       </label>
                       <input
                         type="text"
