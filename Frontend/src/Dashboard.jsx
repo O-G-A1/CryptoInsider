@@ -122,6 +122,10 @@ export default function Dashboard() {
   const [withdrawMessage, setWithdrawMessage] = useState("");
   const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
+  const [withdrawType, setWithdrawType] = useState(""); // bank or wallet
+  const [selectedWallet, setSelectedWallet] = useState(""); // USDT, BTC, ETH, SOL
+  const [walletAddress, setWalletAddress] = useState(""); // crypto address input
+
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
     setCopytradeActive(true);
