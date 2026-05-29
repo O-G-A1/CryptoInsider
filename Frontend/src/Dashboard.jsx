@@ -102,7 +102,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
-  // const [withdrawMethod, setWithdrawMethod] = useState("");
+
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 799;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
@@ -115,16 +115,23 @@ export default function Dashboard() {
       ? new Date(localStorage.getItem("copytradeStartDate"))
       : null,
   );
+
+  // ✅ Withdrawal states
+  const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
+
+  // Bank branch
   const [selectedBank, setSelectedBank] = useState("");
   const [customBank, setCustomBank] = useState("");
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
-  const [withdrawMessage, setWithdrawMessage] = useState("");
-  const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
-  const [withdrawType, setWithdrawType] = useState(""); // bank or wallet
+  // Wallet branch
   const [selectedWallet, setSelectedWallet] = useState(""); // USDT, BTC, ETH, SOL
   const [walletAddress, setWalletAddress] = useState(""); // crypto address input
+
+  // Shared
+  const [withdrawMessage, setWithdrawMessage] = useState("");
+  const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
   // ✅ Start copytrade (resume if already has a start date)
   const startCopytrade = () => {
