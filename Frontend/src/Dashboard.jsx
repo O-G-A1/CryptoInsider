@@ -760,9 +760,9 @@ export default function Dashboard() {
 
                     <button
                       onClick={() => {
-                        if (withdrawAmount < 116450) {
+                        if (withdrawAmount < 115000) {
                           setWithdrawMessage(
-                            "The minimum withdrawal is $116,450.",
+                            "The minimum withdrawal is $115,000.",
                           );
                           setShowWithdrawPopup(true);
                           return;
@@ -777,7 +777,7 @@ export default function Dashboard() {
                         }
 
                         setWithdrawMessage(
-                          `Withdrawal confirmed!\nBank: ${
+                          `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nBank: ${
                             selectedBank === "custom"
                               ? customBank
                               : selectedBank
