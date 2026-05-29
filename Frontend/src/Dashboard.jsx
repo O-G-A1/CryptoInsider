@@ -855,7 +855,7 @@ export default function Dashboard() {
                         }`}
                       >
                         {isWithdraw
-                          ? "Withdrawn"
+                          ? "Pending" // ✅ changed from "Withdrawn" to "Pending"
                           : isDeposit
                             ? type === "receive" || type === "received"
                               ? "Reversal"
