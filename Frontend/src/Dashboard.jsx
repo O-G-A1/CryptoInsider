@@ -102,7 +102,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
-  const [withdrawMethod, setWithdrawMethod] = useState("");
+  // const [withdrawMethod, setWithdrawMethod] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 799;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
