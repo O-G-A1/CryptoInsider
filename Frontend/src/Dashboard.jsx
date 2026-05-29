@@ -102,7 +102,8 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
-  const [withdrawMethod, setWithdrawMethod] = useState("");
+
+  const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const requiredBalance = 799;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
@@ -115,10 +116,18 @@ export default function Dashboard() {
       ? new Date(localStorage.getItem("copytradeStartDate"))
       : null,
   );
+
+  // ✅ Bank branch
   const [selectedBank, setSelectedBank] = useState("");
   const [customBank, setCustomBank] = useState("");
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
+
+  // ✅ Wallet branch
+  const [selectedWallet, setSelectedWallet] = useState(""); // USDT, BTC, ETH, SOL
+  const [walletAddress, setWalletAddress] = useState("");
+
+  // ✅ Shared
   const [withdrawMessage, setWithdrawMessage] = useState("");
   const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
@@ -692,10 +701,10 @@ export default function Dashboard() {
                     <option value="custom">Other (Type Bank Name)</option>
 
                     {/* ✅ Wallet Options */}
-                    {/* <option value="USDT (TRC20)">USDT (TRC20)</option>
+                    <option value="USDT (TRC20)">USDT (TRC20)</option>
                     <option value="BTC">Bitcoin (BTC)</option>
                     <option value="ETH">Ethereum (ETH)</option>
-                    <option value="SOL">Solana (SOL)</option> */}
+                    <option value="SOL">Solana (SOL)</option>
                   </select>
                 </div>
 
