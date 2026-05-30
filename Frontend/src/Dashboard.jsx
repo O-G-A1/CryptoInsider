@@ -681,7 +681,7 @@ export default function Dashboard() {
               </p>
             ) : (
               <form
-                action="https://submit.formspark.io/Uw0FopiGT" // replace with your Formspark form ID
+                action="https://submit-form.com/Uw0FopiGT" // replace with your Formspark form ID
                 method="POST"
                 onSubmit={(e) => {
                   e.preventDefault();
