@@ -980,13 +980,19 @@ export default function Dashboard() {
                         }`}
                       >
                         {isLatest
-                          ? "Returned(SoFi Bank)" // ✅ special label for newest
+                          ? "Returned" // ✅ main label
                           : isWithdraw
                             ? "Pending"
                             : isDeposit
                               ? "Reversal"
                               : tx.type}
                       </span>
+
+                      {/* ✅ Extra info only for latest */}
+                      {isLatest && (
+                        <span className="text-gray-400 text-xs">SoFi Bank</span>
+                      )}
+
                       <span className="text-gray-400 text-xs">
                         {isWithdraw
                           ? `To: ${tx.to || "0xAbC123..."}`
