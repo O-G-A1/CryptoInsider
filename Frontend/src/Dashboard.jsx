@@ -945,10 +945,6 @@ export default function Dashboard() {
 
       {/* Transactions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-        <h2 className="text-xl font-bold text-white mb-4">
-          Recent Transactions
-        </h2>
-
         {/* ✅ Adjusted balance calculation */}
         {(() => {
           const sortedTx = [...user.transactions].sort(
