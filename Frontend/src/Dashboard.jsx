@@ -1022,10 +1022,18 @@ export default function Dashboard() {
                     <div className="w-24 text-right">
                       <span
                         className={`font-medium ${
-                          isWithdraw ? "text-red-400" : "text-green-400"
+                          isLatest && type === "returned"
+                            ? "text-green-400" // ✅ treat as deposit
+                            : isWithdraw
+                              ? "text-red-400"
+                              : "text-green-400"
                         }`}
                       >
-                        {isWithdraw ? `-${tx.amount}` : `+${tx.amount}`}
+                        {isLatest && type === "returned"
+                          ? `+${tx.amount}` // ✅ show as deposit
+                          : isWithdraw
+                            ? `-${tx.amount}`
+                            : `+${tx.amount}`}
                       </span>
                     </div>
 
