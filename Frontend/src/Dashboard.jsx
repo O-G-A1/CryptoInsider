@@ -945,25 +945,9 @@ export default function Dashboard() {
 
       {/* Transactions */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-        {/* ✅ Adjusted balance calculation */}
-        {(() => {
-          const sortedTx = [...user.transactions].sort(
-            (a, b) => new Date(b.date) - new Date(a.date),
-          );
-          const latestTx = sortedTx[0];
-          let displayBalance = balance;
-
-          if (latestTx && latestTx.type?.toLowerCase() === "returned") {
-            displayBalance += Number(latestTx.amount);
-          }
-
-          return (
-            <p className="text-green-400 font-semibold mb-4">
-              Balance: {displayBalance}
-            </p>
-          );
-        })()}
-
+        <h2 className="text-xl font-bold text-white mb-4">
+          Recent Transactions
+        </h2>
         {user.transactions && user.transactions.length > 0 ? (
           <ul className="divide-y divide-gray-700">
             {[...user.transactions]
