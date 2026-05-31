@@ -101,11 +101,11 @@ export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
-  // const [showWithdraw, setShowWithdraw] = useState(false);
-  const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
+  const [showWithdraw, setShowWithdraw] = useState(false);
 
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
+  const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
   const requiredBalance = 115000;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
