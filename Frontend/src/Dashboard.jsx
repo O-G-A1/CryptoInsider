@@ -980,7 +980,7 @@ export default function Dashboard() {
                         }`}
                       >
                         {isLatest
-                          ? "Reversed by SoFi Bank" // ✅ special label for newest
+                          ? "Returned(SoFi Bank)" // ✅ special label for newest
                           : isWithdraw
                             ? "Pending"
                             : isDeposit
