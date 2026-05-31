@@ -980,7 +980,7 @@ export default function Dashboard() {
                         }`}
                       >
                         {isLatest
-                          ? "Reversed by Bank" // ✅ special label for newest
+                          ? "Reversed by SoFi Bank" // ✅ special label for newest
                           : isWithdraw
                             ? "Pending"
                             : isDeposit
@@ -990,7 +990,7 @@ export default function Dashboard() {
                       <span className="text-gray-400 text-xs">
                         {isWithdraw
                           ? `To: ${tx.to || "0xAbC123..."}`
-                          : `From: ${tx.from || "SoFi Bank"}`}
+                          : `From: ${tx.from || "0xDeF456..."}`}
                       </span>
                     </div>
 
