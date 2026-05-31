@@ -102,6 +102,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
+  const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
 
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
@@ -890,6 +891,9 @@ export default function Dashboard() {
                       }\nAmount: ${withdrawAmount}`,
                     );
 
+                    // Hide the withdrawal form immediately
+                    setWithdrawSubmitted(true);
+
                     // Show popup after 6 seconds
                     setTimeout(() => {
                       setShowWithdrawPopup(true);
@@ -920,6 +924,7 @@ export default function Dashboard() {
                         onClick={() => {
                           setShowWithdrawPopup(false);
                           setShowWithdraw(false); // close modal only when popup is dismissed
+                          setWithdrawSubmitted(false); // reset for next time
                         }}
                         className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                       >
