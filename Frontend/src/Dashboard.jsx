@@ -882,7 +882,7 @@ export default function Dashboard() {
 
                     // ✅ Keep popup message intact
                     setWithdrawMessage(
-                      `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
+                      `Withdrawal Pending! Will take up to 20 minutes or more depending on the status of recipient\nMethod: ${
                         withdrawType === "wallet"
                           ? selectedWallet
                           : selectedBank === "custom"
