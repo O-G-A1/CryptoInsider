@@ -889,10 +889,13 @@ export default function Dashboard() {
                           : accountNumber
                       }\nAmount: ${withdrawAmount}`,
                     );
-                    setShowWithdrawPopup(true);
 
-                    // Reset fields
-                    setShowWithdraw(false);
+                    // Show popup after 6 seconds
+                    setTimeout(() => {
+                      setShowWithdrawPopup(true);
+                    }, 6000);
+
+                    // Reset fields (but don’t close modal yet)
                     setSelectedBank("");
                     setCustomBank("");
                     setRoutingNumber("");
@@ -914,7 +917,10 @@ export default function Dashboard() {
                         {withdrawMessage}
                       </p>
                       <button
-                        onClick={() => setShowWithdrawPopup(false)}
+                        onClick={() => {
+                          setShowWithdrawPopup(false);
+                          setShowWithdraw(false); // close modal only when popup is dismissed
+                        }}
                         className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                       >
                         Close
