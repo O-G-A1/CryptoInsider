@@ -953,12 +953,15 @@ export default function Dashboard() {
             {[...user.transactions]
               .sort((a, b) => new Date(b.date) - new Date(a.date)) // newest first
               .map((tx, idx) => {
-                const type = tx.type?.toLowerCase(); // normalize string
+                const type = tx.type?.toLowerCase();
                 const isWithdraw = type === "withdraw" || type === "send";
                 const isDeposit =
                   type === "deposit" ||
                   type === "receive" ||
                   type === "received";
+
+                // ✅ Check if this is the newest transaction
+                const isLatest = idx === 0;
 
                 return (
                   <li
@@ -976,13 +979,13 @@ export default function Dashboard() {
                               : "text-gray-400"
                         }`}
                       >
-                        {isWithdraw
-                          ? "Pending" // ✅ changed from "Withdrawn" to "Pending"
-                          : isDeposit
-                            ? type === "receive" || type === "received"
+                        {isLatest
+                          ? "Reversed by Bank" // ✅ special label for newest
+                          : isWithdraw
+                            ? "Pending"
+                            : isDeposit
                               ? "Reversal"
-                              : "Reversal"
-                            : tx.type}
+                              : tx.type}
                       </span>
                       <span className="text-gray-400 text-xs">
                         {isWithdraw
