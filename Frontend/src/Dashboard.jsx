@@ -105,7 +105,7 @@ export default function Dashboard() {
 
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
-  const requiredBalance = 799;
+  const requiredBalance = 115000;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
