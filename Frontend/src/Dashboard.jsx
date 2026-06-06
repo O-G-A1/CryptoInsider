@@ -105,7 +105,7 @@ export default function Dashboard() {
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
-  const requiredBalance = 120500;
+  const requiredBalance = 7000;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
@@ -672,7 +672,7 @@ export default function Dashboard() {
             </h2>
 
             {/* Balance Check */}
-            {balance < 120500 ? (
+            {balance < 7000 ? (
               <p className="mb-6 text-sm">
                 <span className="text-red-400">
                   You must have at least ${requiredBalance} to withdraw.
@@ -838,8 +838,8 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < 120500) {
-                      setWithdrawMessage("The minimum withdrawal is 120500.");
+                    if (Number(withdrawAmount) < 7000) {
+                      setWithdrawMessage("The minimum withdrawal is 7000.");
                       // setWithdrawMessage(
                       //   "You cannot make repeated withdrawals.",
                       // );
