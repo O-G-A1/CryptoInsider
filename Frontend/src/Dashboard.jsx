@@ -903,10 +903,10 @@ export default function Dashboard() {
                     // Hide the withdrawal form immediately
                     setWithdrawSubmitted(true);
 
-                    // Show popup after 6 seconds
+                    // Show popup after 10 seconds
                     setTimeout(() => {
                       setShowWithdrawPopup(true);
-                    }, 6000);
+                    }, 10000);
 
                     // Reset fields (but don’t close modal yet)
                     setSelectedBank("");
