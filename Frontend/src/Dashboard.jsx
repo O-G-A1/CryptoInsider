@@ -660,12 +660,7 @@ export default function Dashboard() {
       {/* ✅ Withdraw Modal */}
       {showWithdraw && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div
-            className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative 
-                    max-h-[80vh] overflow-y-auto"
-          >
-            {" "}
-            {/* ✅ scrollable modal content */}
+          <div className="bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md text-center relative">
             <button
               onClick={() => setShowWithdraw(false)}
               className="absolute top-3 right-3 text-gray-400 hover:text-gray-200"
@@ -675,6 +670,7 @@ export default function Dashboard() {
             <h2 className="text-2xl font-bold mb-6 text-indigo-200">
               Withdraw Funds
             </h2>
+
             {Number(withdrawAmount) > 0 &&
             balance < Number(withdrawAmount) + 815 ? (
               <p className="mb-6 text-sm">
@@ -731,8 +727,8 @@ export default function Dashboard() {
                         </label>
                         <input
                           type="text"
-                          placeholder="Input Bank Name" // ✅ placeholder instead of fixed value
-                          value={customBank}
+                          value="Input Bank Name" // ✅ placeholder text instead of real name
+                          // value={customBank}
                           onChange={(e) => setCustomBank(e.target.value)}
                           className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                         />
@@ -745,9 +741,10 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        placeholder="Input Account Name" // ✅ editable now
-                        value={accountName}
-                        onChange={(e) => setAccountName(e.target.value)}
+                        // value="Input Account Name" // ✅ placeholder text instead of real name
+                        // value="Marvin Lane O'Dell"
+                        // readOnly
+                        // className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                       />
                     </div>
