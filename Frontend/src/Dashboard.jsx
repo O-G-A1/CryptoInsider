@@ -741,10 +741,10 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        value="Input Account Name" // ✅ placeholder text instead of real name
-                        // value="Marvin Lane O'Dell"
-                        // readOnly
-                        className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
+                        value={accountName} // ✅ bind to state
+                        onChange={(e) => setAccountName(e.target.value)} // ✅ allow typing
+                        placeholder="Input Account Name" // ✅ optional placeholder
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                       />
                     </div>
 
