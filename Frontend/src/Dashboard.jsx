@@ -675,8 +675,8 @@ export default function Dashboard() {
             balance < Number(withdrawAmount) + 815 ? (
               <p className="mb-6 text-sm">
                 <span className="text-red-400">
-                  You must have at least ${Number(withdrawAmount) + 815} to
-                  withdraw.
+                  You have not reached the minimum required balance to make a
+                  withdrawal.
                 </span>{" "}
                 <span className="text-white">Current balance: ${balance}</span>
               </p>
