@@ -745,6 +745,7 @@ export default function Dashboard() {
                         // value="Marvin Lane O'Dell"
                         // readOnly
                         // className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
+                        className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                       />
                     </div>
 
