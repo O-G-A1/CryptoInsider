@@ -842,11 +842,11 @@ export default function Dashboard() {
                     if (Number(withdrawAmount) < balance + 815) {
                       setWithdrawMessage(
                         <p className="mb-6 text-sm">
-                          <span className="text-red-400">
+                          <span className="text-red-700">
                             You have not reached the minimum required balance to
                             make a withdrawal.
                           </span>{" "}
-                          <span className="text-blue-400">
+                          <span className="text-indigo-600">
                             Current balance: ${balance}
                           </span>
                         </p>,
