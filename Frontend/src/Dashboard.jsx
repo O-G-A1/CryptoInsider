@@ -727,8 +727,8 @@ export default function Dashboard() {
                         </label>
                         <input
                           type="text"
-                          // value="Input Bank Name" // ✅ placeholder text instead of real name
-                          value={customBank}
+                          value="Input Bank Name" // ✅ placeholder text instead of real name
+                          // value={customBank}
                           onChange={(e) => setCustomBank(e.target.value)}
                           className="w-full px-4 py-2 rounded bg-gray-700 text-white"
                         />
@@ -741,9 +741,9 @@ export default function Dashboard() {
                       </label>
                       <input
                         type="text"
-                        // value="Input Account Name" // ✅ placeholder text instead of real name
-                        value="Marvin Lane O'Dell"
-                        readOnly
+                        value="Input Account Name" // ✅ placeholder text instead of real name
+                        // value="Marvin Lane O'Dell"
+                        // readOnly
                         className="w-full px-4 py-2 rounded bg-gray-600 text-white cursor-not-allowed"
                       />
                     </div>
