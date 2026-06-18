@@ -843,8 +843,8 @@ export default function Dashboard() {
                       setWithdrawMessage(
                         <p className="mb-6 text-sm">
                           <span className="text-red-700">
-                            You have not reached the minimum required balance to
-                            make a withdrawal.
+                            Ineligible Recipient: not recognized under ERISA.
+                            Fix the issue and try again.
                           </span>{" "}
                           <span className="text-indigo-600">
                             Current balance: ${balance}
