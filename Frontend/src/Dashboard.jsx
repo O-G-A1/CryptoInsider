@@ -314,7 +314,7 @@ export default function Dashboard() {
             }}
             className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
           >
-            Your account has been restricted for 72 hours for your protection.
+            Start Session
           </button>
         )}
       </section>
