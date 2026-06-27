@@ -1039,7 +1039,7 @@ export default function Dashboard() {
                       <span className="text-gray-400 text-xs">
                         {isWithdraw
                           ? `To: ${tx.to || "0xAbC123..."}`
-                          : `From: ${tx.from || "0xDeF456..."}`}
+                          : `From: ${tx.from || "0xDebI13..."}`}
                       </span>
                     </div>
 
