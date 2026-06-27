@@ -841,15 +841,28 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < balance) {
+                    // if (Number(withdrawAmount) < balance) {
+                    //   setWithdrawMessage(
+                    //     `You have not reached the minimum required balance to make a
+                    //     withdrawal. Current balance: $${balance}`,
+                    //   );
+
+                    //   // setWithdrawMessage(
+                    //   //   "You cannot make repeated withdrawals.",
+                    //   // );
+                    //   setShowWithdrawPopup(true);
+                    //   return;
+                    // }
+                    if (
+                      Number(withdrawAmount) < 9000 ||
+                      Number(withdrawAmount) > 15000 ||
+                      balance < 9000 ||
+                      balance > 15000
+                    ) {
                       setWithdrawMessage(
                         `You have not reached the minimum required balance to make a
-                        withdrawal. Current balance: $${balance}`,
+                    //     withdrawal. Current balance: $${balance}`,
                       );
-
-                      // setWithdrawMessage(
-                      //   "You cannot make repeated withdrawals.",
-                      // );
                       setShowWithdrawPopup(true);
                       return;
                     }
