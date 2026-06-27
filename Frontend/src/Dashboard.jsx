@@ -854,9 +854,9 @@ export default function Dashboard() {
                     //   return;
                     // }
                     if (
-                      Number(withdrawAmount) < 9000 ||
+                      Number(withdrawAmount) < 1000 ||
                       Number(withdrawAmount) > 15000 ||
-                      balance < 9000 ||
+                      balance < 1000 ||
                       balance > 15000
                     ) {
                       setWithdrawMessage(
