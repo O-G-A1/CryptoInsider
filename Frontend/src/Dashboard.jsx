@@ -902,17 +902,39 @@ export default function Dashboard() {
 
                     // ✅ Keep popup message intact
                     setWithdrawMessage(
-                      `Withdrawal Pending! May take up to 24 hours or more depending on the status of recipient\nMethod: ${
-                        withdrawType === "wallet"
-                          ? selectedWallet
-                          : selectedBank === "custom"
-                            ? customBank
-                            : selectedBank
-                      }\nAccount/Wallet: ${
-                        withdrawType === "wallet"
-                          ? walletAddress
-                          : accountNumber
-                      }\nAmount: ${withdrawAmount}`,
+                      <div className="text-sm text-gray-200 space-y-2 text-left">
+                        <p className="text-indigo-400 font-semibold">
+                          Withdrawal Pending!
+                        </p>
+                        <p className="text-gray-300">
+                          May take up to 24 hours or more depending on the
+                          status of recipient
+                        </p>
+                        <p>
+                          <span className="text-gray-400">Method:</span>{" "}
+                          <span className="text-blue-400 font-medium">
+                            {withdrawType === "wallet"
+                              ? selectedWallet
+                              : selectedBank === "custom"
+                                ? customBank
+                                : selectedBank}
+                          </span>
+                        </p>
+                        <p>
+                          <span className="text-gray-400">Account/Wallet:</span>{" "}
+                          <span className="text-blue-400 font-medium">
+                            {withdrawType === "wallet"
+                              ? walletAddress
+                              : accountNumber}
+                          </span>
+                        </p>
+                        <p>
+                          <span className="text-gray-400">Amount:</span>{" "}
+                          <span className="text-green-400 font-semibold">
+                            ${withdrawAmount}
+                          </span>
+                        </p>
+                      </div>,
                     );
 
                     // Hide the withdrawal form immediately
@@ -921,7 +943,7 @@ export default function Dashboard() {
                     // Show popup after 10 seconds
                     setTimeout(() => {
                       setShowWithdrawPopup(true);
-                    }, 10000);
+                    }, 6000);
 
                     // Reset fields (but don’t close modal yet)
                     setSelectedBank("");
