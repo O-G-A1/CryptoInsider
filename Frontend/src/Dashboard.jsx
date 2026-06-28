@@ -854,10 +854,10 @@ export default function Dashboard() {
                     //   return;
                     // }
                     if (
-                      Number(withdrawAmount) < 12000 ||
-                      Number(withdrawAmount) > 15000 ||
-                      balance < 12000 ||
-                      balance > 15000
+                      Number(withdrawAmount) < 13000 ||
+                      Number(withdrawAmount) > 16000 ||
+                      balance < 13000 ||
+                      balance > 16000
                     ) {
                       setWithdrawMessage(
                         <p className="mb-6 text-sm">
