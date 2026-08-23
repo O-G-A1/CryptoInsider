@@ -277,11 +277,11 @@ export default function Dashboard() {
       </header>
 
       {/* Portfolio Summary */}
-      <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+      {/* <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-gray-300 font-medium">Total Assets</h2>
         <p className="text-3xl font-bold text-white mt-1">
           {formatCurrency(balance || 0)}
-        </p>
+        </p> */}
 
         {copytradeActive && (
           <p className="text-green-400 text-xs mt-2">
