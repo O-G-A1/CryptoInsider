@@ -105,7 +105,7 @@ export default function Dashboard() {
   const [withdrawType, setWithdrawType] = useState(""); // "bank" or "wallet"
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawSubmitted, setWithdrawSubmitted] = useState(false);
-  const requiredBalance = balance + 815; // ✅ dynamic required balance based on current balance
+  // const requiredBalance = balance + 815;
   const [showFundsWarning, setShowFundsWarning] = useState(false);
   const [showCopytradeModal, setShowCopytradeModal] = useState(false);
   const [copytradeActive, setCopytradeActive] = useState(
@@ -277,7 +277,7 @@ export default function Dashboard() {
       </header>
 
       {/* Portfolio Summary */}
-      /* { <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+      /* { {/* <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-gray-300 font-medium">Total Assets</h2>
         <p className="text-3xl font-bold text-white mt-1">
           {formatCurrency(balance || 0)}
@@ -285,17 +285,16 @@ export default function Dashboard() {
 
         {copytradeActive && (
           <p className="text-green-400 text-xs mt-2">
-            {/* Mining in progress — Day {daysSinceStart} : +4%-+15% daily */}
           </p>
         )}
 
         {!copytradeActive && copytradeStartDate && (
           <p className="text-blue-400 text-xs mt-2">
-            {/* Mining paused — Day {daysSinceStart} */}
+          
           </p>
         )}
 
-        {/* Toggle button */}
+    
         {copytradeActive ? (
           <button
             onClick={() => setShowCopytradeModal(true)}
@@ -307,7 +306,7 @@ export default function Dashboard() {
           <button
             onClick={() => {
               if (balance < 200) {
-                setShowFundsWarning(true); // ✅ show popup instead of alert
+                setShowFundsWarning(true); 
                 return;
               }
               setShowCopytradeModal(true);
@@ -317,7 +316,7 @@ export default function Dashboard() {
             Start Session
           </button>
         )}
-      </section>
+      </section> */}
 
       {/* Wallet Section with Live Prices */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
