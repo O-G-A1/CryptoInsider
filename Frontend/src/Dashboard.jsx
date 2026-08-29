@@ -277,46 +277,42 @@ export default function Dashboard() {
       </header>
 
       {/* Portfolio Summary */}
-      /* { {/* <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-        <h2 className="text-gray-300 font-medium">Total Assets</h2>
-        <p className="text-3xl font-bold text-white mt-1">
-          {formatCurrency(balance || 0)}
-        </p> }  */
-
-        {copytradeActive && (
-          <p className="text-green-400 text-xs mt-2">
+      {
+        <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-gray-300 font-medium">Total Assets</h2>
+          <p className="text-3xl font-bold text-white mt-1">
+            {formatCurrency(balance || 0)}
           </p>
-        )}
 
-        {!copytradeActive && copytradeStartDate && (
-          <p className="text-blue-400 text-xs mt-2">
-          
-          </p>
-        )}
+          {copytradeActive && <p className="text-green-400 text-xs mt-2"></p>}
 
-    
-        {copytradeActive ? (
-          <button
-            onClick={() => setShowCopytradeModal(true)}
-            className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            End Session
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              if (balance < 200) {
-                setShowFundsWarning(true); 
-                return;
-              }
-              setShowCopytradeModal(true);
-            }}
-            className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-          >
-            Start Session
-          </button>
-        )}
-      </section> */}
+          {!copytradeActive && copytradeStartDate && (
+            <p className="text-blue-400 text-xs mt-2"></p>
+          )}
+
+          {copytradeActive ? (
+            <button
+              onClick={() => setShowCopytradeModal(true)}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              End Session
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                if (balance < 200) {
+                  setShowFundsWarning(true);
+                  return;
+                }
+                setShowCopytradeModal(true);
+              }}
+              className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            >
+              Start Session
+            </button>
+          )}
+        </section>
+      }
 
       {/* Wallet Section with Live Prices */}
       <section className="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
