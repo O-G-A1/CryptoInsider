@@ -862,8 +862,7 @@ export default function Dashboard() {
                         <p className="mb-6 text-sm">
                           <span className="text-red-400">
                             You have not reached the minimum required balance to
-                            make a withdrawal. You must have at least $
-                            {balance + 1900}.
+                            make a withdrawal.
                           </span>{" "}
                           <span className="text-blue-400">
                             Current balance: ${balance}
