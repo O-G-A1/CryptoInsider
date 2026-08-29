@@ -865,7 +865,7 @@ export default function Dashboard() {
                             make a withdrawal.
                           </span>{" "}
                           <span className="text-blue-400">
-                            Current balance: ${balance}
+                            Current balance is ${balance}
                           </span>
                         </p>,
                       );
