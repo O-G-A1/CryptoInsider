@@ -911,7 +911,7 @@ export default function Dashboard() {
                         </p>
                         <p className="text-black">
                           May take up to 24 hours or more depending on the
-                          status of recipient
+                          status of recipient.
                         </p>
                         <p>
                           <span className="text-black">Method:</span>{" "}
@@ -972,8 +972,8 @@ export default function Dashboard() {
                       <button
                         onClick={() => {
                           setShowWithdrawPopup(false);
-                          setShowWithdraw(false); // close modal only when popup is dismissed
-                          setWithdrawSubmitted(false); // reset for next time
+                          setShowWithdraw(false);
+                          setWithdrawSubmitted(false);
                         }}
                         className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                       >
